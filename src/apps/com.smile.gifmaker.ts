@@ -48,10 +48,11 @@ export default defineGkdApp({
       name: '局部广告-首页左侧红包悬浮控件',
       desc: '自动点击x按钮',
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
+      enable: false,
       rules: [
         {
           matches:
-            '[id="com.smile.gifmaker:id/pendant_mask_bg"] + [id="com.smile.gifmaker:id/pendant_close"][visibleToUser=true]',
+            '[id="com.smile.gifmaker:id/kem_task_pendant_new"] >n [id="com.smile.gifmaker:id/pendant_close"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/12708671',
             'https://i.gkd.li/i/12708676', // 执行规则后，控件隐藏，使用 visibleToUser=true 进行限定，防止反复触发规则
