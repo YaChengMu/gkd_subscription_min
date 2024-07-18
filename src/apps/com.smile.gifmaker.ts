@@ -7,7 +7,7 @@ export default defineGkdApp({
     {
       key: 0,
       name: '青少年模式',
-      quickFind: true,
+      fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
       rules: [
@@ -75,7 +75,7 @@ export default defineGkdApp({
         {
           key: 1,
           name: '我的页面-你可能感兴趣的人',
-          quickFind: true,
+          fastQuery: true,
           matches:
             'ViewGroup[childCount=3] > [text="隐藏"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/14001536',
@@ -83,7 +83,7 @@ export default defineGkdApp({
         {
           key: 2,
           name: '朋友推荐弹窗',
-          quickFind: true,
+          fastQuery: true,
           matches: '[text="朋友推荐"] + [vid="close_btn"]',
           snapshotUrls: 'https://i.gkd.li/i/14232217',
         },
@@ -94,7 +94,7 @@ export default defineGkdApp({
       name: '评价提示',
       actionMaximum: 1,
       resetMatch: 'app',
-      quickFind: true,
+      fastQuery: true,
       rules: [
         {
           matches: '@[vid="close"] +2 * > [text="喜欢就给个好评吧"]',
@@ -109,7 +109,7 @@ export default defineGkdApp({
       name: '全屏广告-直播间广告',
       rules: [
         {
-          quickFind: true,
+          fastQuery: true,
           action: 'back',
           activityIds:
             'com.kuaishou.live.core.basic.activity.LiveSlideActivity',

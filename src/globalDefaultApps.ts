@@ -4,7 +4,15 @@ const apps = await batchImportApps(`${import.meta.dirname}/apps`);
 
 // 全局规则黑名单
 // 在一些非系统应用中禁用所有全局规则
-export const blackListAppIDs: string[] = [];
+export const blackListAppIDs: string[] = [
+  'com.tencent.mm', // 微信
+  'li.songe.gkd', // GKD
+  'com.eg.android.AlipayGphone', //支付宝
+  'com.tencent.wetype', // 微信输入法
+  'com.tmri.app.main', // 交管12123
+  'com.accessibilitymanager', // 无障碍管理器
+  'com.alicloud.databox', // 阿里云盘 开屏广告在 https://i.gkd.li/i/15144565 误触导致自动签到规则执行中断
+];
 
 // 如果某应用的规则中已有全局规则中的某一类的规则, 则在此应用禁用对应全局规则
 function filterAppsByGroup(apps: any[], groupNamePrefix: string): string[] {

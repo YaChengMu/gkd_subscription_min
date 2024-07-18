@@ -7,7 +7,7 @@ export default defineGkdApp({
     // {
     //   key: 0,
     //   name: '开屏广告',
-    //   quickFind: true,
+    //   fastQuery: true,
     //   matchTime: 10000,
     //   resetMatch: 'app',
     //   actionMaximum: 1,
@@ -111,7 +111,7 @@ export default defineGkdApp({
       name: '更新提示',
       desc: '点击"暂不"',
       matchTime: 10000,
-      quickFind: true,
+      fastQuery: true,
       resetMatch: 'app',
       actionMaximum: 1,
       rules: [
@@ -147,7 +147,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          quickFind: true,
+          fastQuery: true,
           activityIds:
             'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
           matches: '@LinearLayout[clickable=true] - * > [text="反馈"]',
@@ -175,7 +175,7 @@ export default defineGkdApp({
       actionMaximum: 3,
       rules: [
         {
-          quickFind: true,
+          fastQuery: true,
           activityIds: 'com.aster.comic.app.view.reader.ReaderActivity',
           matches: '@[clickable=true] > [text="点我重试"]',
           exampleUrls:
