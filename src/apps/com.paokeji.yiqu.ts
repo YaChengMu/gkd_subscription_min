@@ -41,14 +41,14 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          name: '腾讯SDK-1',
           actionDelay: 350, //防误触
+          activityIds: 'com.aster.comic.app.view.MainActivity',
           matches:
-            '[id="android:id/content"] >(-n+4) FrameLayout > FrameLayout[childCount=1] > ImageView[index=0&&id=null]',
+            '[text^="摇动"||text*="扭动"||text*="立即领取"] <<n [id="android:id/content"] >n ImageView[width<=70]',
           snapshotUrls: [
             'https://i.gkd.li/i/13830354',
             'https://i.gkd.li/i/13842716',
-            'https://i.gkd.li/i/13842966',
+            'https://i.gkd.li/i/15374245',
           ],
         },
         {
@@ -66,18 +66,21 @@ export default defineGkdApp({
           actionDelay: 350, //防误触
           matches: [
             '[id="com.byted.pangle.m:id/tt_reward_full_count_down_after"]',
-            '[text="反馈"] <<n View + View[childCount=1]',
-            '[text*="跳过" && text.length<=6] <2 @View -(3-n) View < View',
+            //'[text*="跳过" && text.length<=6] <2 @View -(3-n) View < View',
+            '[text*="跳过"]',
             '[text="反馈"] -n @View[index<=1] > Image[text.length=0]',
-            '[text="反馈"] <<n View - View[childCount=1]',
+            '[text="反馈"] <n View <n View > View[index<=1] > Image[text.length=0]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/13810767', //规则1
-            'https://i.gkd.li/i/13830798', //规则2
-            'https://i.gkd.li/i/13829749', //规则3
-            'https://i.gkd.li/i/13809737', //规则4 index=0
-            'https://i.gkd.li/i/13809578', //规则4 index=1
-            'https://i.gkd.li/i/13810150', //规则5
+            'https://i.gkd.li/i/13829749', //规则2
+            'https://i.gkd.li/i/14362119', //规则2
+            'https://i.gkd.li/i/13809737', //规则3
+            'https://i.gkd.li/i/13809578', //规则3
+            'https://i.gkd.li/i/14717730', //规则3
+            'https://i.gkd.li/i/16062358', //规则3
+            'https://i.gkd.li/i/13830798', //规则4
+            'https://i.gkd.li/i/13810150', //规则4
           ],
         },
         {
@@ -95,14 +98,6 @@ export default defineGkdApp({
             'https://i.gkd.li/i/13829312', //规则3
             'https://i.gkd.li/i/14584695', //规则4
           ],
-        },
-        {
-          key: 4,
-          name: '腾讯SDK-2',
-          actionDelay: 350, //防误触
-          matches:
-            '[id="android:id/content"] >3 FrameLayout[childCount=2] > FrameLayout[childCount=1] > ImageView',
-          snapshotUrls: 'https://i.gkd.li/i/15173845',
         },
       ],
     },
@@ -127,22 +122,33 @@ export default defineGkdApp({
       key: 3,
       name: '全屏广告-弹窗广告',
       rules: [
-        {
-          key: 0,
-          activityIds:
-            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
-          matches: '[text="反馈"] + @View[childCount=2] > [text="跳过"]',
-          snapshotUrls: 'https://i.gkd.li/i/14362119',
-        },
+        // {
+        //   key: 0,
+        //   activityIds:
+        //     'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+        //   matches: '[text="反馈"] + @View[childCount=2] > [text="跳过"]',
+        //   snapshotUrls: 'https://i.gkd.li/i/14362119',
+        // },
+        // {
+        //   key: 1,
+        //   activityIds:
+        //     'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+        //   matches:
+        //     '[text="反馈"] -(2,4) @View[childCount=1][visibleToUser=true] > Image[childCount=0][text=""]',
+        //   snapshotUrls: [
+        //     'https://i.gkd.li/i/14717730',
+        //     'https://i.gkd.li/i/16062358',
+        //   ],
+        // },
         {
           key: 1,
+          actionDelay: 350, //防误触
           activityIds:
-            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
-          matches:
-            '[text="反馈"] -(2,4) @View[childCount=1][visibleToUser=true] > Image[childCount=0][text=""]',
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Activity_T',
+          matches: '[id="android:id/content"] >n ImageView[width<=70]',
           snapshotUrls: [
-            'https://i.gkd.li/i/14717730',
-            'https://i.gkd.li/i/16062358',
+            'https://i.gkd.li/i/13842966',
+            'https://i.gkd.li/i/15173845',
           ],
         },
         {
@@ -155,14 +161,10 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          activityIds: 'com.aster.comic.app.view.MainActivity',
-          matches:
-            '[id="android:id/content"] >2 FrameLayout[childCount=9] >3 FrameLayout[childCount=2] > @FrameLayout[childCount=1] > ImageView',
-          snapshotUrls: 'https://i.gkd.li/i/15374245',
-        },
-        {
-          key: 4,
-          activityIds: 'com.aster.comic.app.view.MainActivity',
+          activityIds: [
+            'com.aster.comic.app.view.MainActivity',
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+          ],
           matches: '[text="反馈"] + @View > Image[childCount=0]',
           snapshotUrls: 'https://i.gkd.li/i/15711106',
         },
