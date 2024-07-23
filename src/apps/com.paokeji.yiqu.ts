@@ -4,32 +4,33 @@ export default defineGkdApp({
   id: 'com.paokeji.yiqu',
   name: '喵趣漫画',
   groups: [
-    // {
-    //   key: 0,
-    //   name: '开屏广告',
-    //   fastQuery: true,
-    //   matchTime: 10000,
-    //   resetMatch: 'app',
-    //   actionMaximum: 1,
-    //   actionMaximumKey: 0,
-    //   rules: [
-    //     {
-    //       key: 0,
-    //       matches:
-    //         '[childCount=0][visibleToUser=true][(text.length<10&&(text*="跳过"||text*="跳过"||text*="skip"||text*="Skip")) || id$="tt_splash_skip_btn" || vid*="skip" || vid*="Skip" || (vid*="count" && vid*="down" && vid!*="download") || desc*="跳过" || desc*="skip"]',
-    //       snapshotUrls: 'https://i.gkd.li/i/14753912',
-    //     },
-    //     {
-    //       key: 1,
-    //       matches:
-    //         'FrameLayout > FrameLayout[childCount>2] > @View[clickable=true] + TextView <<n [id="android:id/content"]',
-    //       snapshotUrls: [
-    //         'https://i.gkd.li/i/14031922',
-    //         'https://i.gkd.li/i/14322264',
-    //       ],
-    //     },
-    //   ],
-    // },
+    {
+      key: 0,
+      name: '开屏广告',
+      fastQuery: true,
+      matchTime: 10000,
+      resetMatch: 'app',
+      actionMaximum: 1,
+      actionMaximumKey: 0,
+      rules: [
+        {
+          key: 0,
+          action: 'clickCenter',
+          matches:
+            '[childCount=0][visibleToUser=true][(text.length<10&&(text*="跳过"||text*="跳过"||text*="skip"||text*="Skip")) || id$="tt_splash_skip_btn" || vid*="skip" || vid*="Skip" || (vid*="count" && vid*="down" && vid!*="download") || desc*="跳过" || desc*="skip"]',
+          snapshotUrls: 'https://i.gkd.li/i/14753912',
+        },
+        // {
+        //   key: 1,
+        //   matches:
+        //     'FrameLayout > FrameLayout[childCount>2] > @View[clickable=true] + TextView <<n [id="android:id/content"]',
+        //   snapshotUrls: [
+        //     'https://i.gkd.li/i/14031922',
+        //     'https://i.gkd.li/i/14322264',
+        //   ],
+        // },
+      ],
+    },
     {
       key: 1,
       name: '全屏广告',
@@ -63,13 +64,14 @@ export default defineGkdApp({
         {
           key: 2,
           name: '穿山甲SDK',
-          actionDelay: 350, //防误触
+          // actionDelay: 350, //防误触
           matches: [
             '[id="com.byted.pangle.m:id/tt_reward_full_count_down_after"]',
             //'[text*="跳过" && text.length<=6] <2 @View -(3-n) View < View',
             '[text*="跳过"]',
             '[text="反馈"] -n @View[index<=1] > Image[text.length=0]',
             '[text="反馈"] <n View <n View > View[index<=1] > Image[text.length=0]',
+            '[text="反馈"] +n @View > Image[text.length=0]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/13810767', //规则1
