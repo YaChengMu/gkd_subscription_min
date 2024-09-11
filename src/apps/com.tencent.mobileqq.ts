@@ -735,10 +735,12 @@ export default defineGkdApp({
           },
           activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
           matches:
-            'LinearLayout[childCount=4] > LinearLayout > FrameLayout > FrameLayout > @View[visibleToUser=true] <<n [vid="root"]',
-          exampleUrls:
-            'https://m.gkd.li/57941037/940f4965-0058-4101-ab62-20d131e9c1d1',
-          snapshotUrls: 'https://i.gkd.li/i/14732983',
+            'LinearLayout[childCount=1] > FrameLayout[childCount=1] > FrameLayout[childCount=1] > @View[visibleToUser=true][childCount=0] <<n [vid="root"]',
+          exampleUrls: 'https://e.gkd.li/438add53-c7cb-41e5-ab98-910f4570ea72',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14732983',
+            'https://i.gkd.li/i/16834757',
+          ],
         },
         {
           key: 1,
@@ -762,6 +764,21 @@ export default defineGkdApp({
             'https://i.gkd.li/i/15388608',
             'https://i.gkd.li/i/16154341',
           ],
+        },
+      ],
+    },
+    {
+      key: 31,
+      name: '功能类-授权登录时关闭获取QQ好友关系',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.tencent.open.agent.PublicFragmentActivityForOpenSDK',
+          matches:
+            '@CompoundButton[checked=true] - RelativeLayout > [text="你的QQ好友关系"]',
+          exampleUrls: 'https://e.gkd.li/4d69a243-6a57-47ca-bc25-0a5353d80179',
+          snapshotUrls: 'https://i.gkd.li/i/16929347',
         },
       ],
     },

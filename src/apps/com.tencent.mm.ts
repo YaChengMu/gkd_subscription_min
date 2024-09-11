@@ -437,7 +437,7 @@ export default defineGkdApp({
     },
     {
       key: 28,
-      name: '分段广告-订阅号消息页面视频推荐',
+      name: '分段广告-订阅号消息-视频推荐',
       desc: '点击[X]-点击[不喜欢此类视频]-点击[确定]',
       activityIds:
         'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
@@ -504,7 +504,7 @@ export default defineGkdApp({
     },
     {
       key: 31,
-      name: '分段广告-订阅号消息页面-推荐阅读',
+      name: '分段广告-订阅号消息-推荐阅读',
       desc: '点击关闭',
       activityIds:
         'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
@@ -579,6 +579,103 @@ export default defineGkdApp({
             'https://i.gkd.li/i/15144570',
             'https://i.gkd.li/i/15360744',
           ],
+        },
+      ],
+    },
+    {
+      key: 35,
+      name: '分段广告-订阅号消息内容-广告',
+      desc: '点击下拉框-[不感兴趣]-[与我无关]',
+      activityIds: [
+        'com.tencent.mm.plugin.brandservice.ui.timeline.preload.ui.TmplWebView', //调整为TmplWebView, 同时兼容多种ID
+        'com.tencent.mm.plugin.webview.ui.tools.fts.MMSosWebViewUI',
+      ],
+      rules: [
+        {
+          key: 0,
+          excludeMatches: [
+            // 防止在第二段、第三段出现时触发，防止在文章末尾广告关闭后触发
+            '[text="不感兴趣" || text="与我无关" || text="感谢你的反馈"][visibleToUser=true]',
+          ],
+          matches:
+            '@[clickable=true][visibleToUser=true] > TextView[text="广告"][visibleToUser=true]', // 某些微信版本上该节点的`clickable=false`
+          exampleUrls: [
+            'https://e.gkd.li/e73bb653-cc79-455c-958b-38aff6687c37',
+            'https://e.gkd.li/5915f80b-66b9-4441-9d36-3caa3fe1be58',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/12642232', // ui.TmplWebViewMMUI
+            'https://i.gkd.li/i/13199281', // ui.TmplWebViewTooLMpUI
+            'https://i.gkd.li/i/14006180', // com.tencent.mm.plugin.webview.ui.tools.fts.MMSosWebViewUI
+            'https://i.gkd.li/i/15198464', // 使用excludeMatches防止在文章末尾广告关闭后误触
+            'https://i.gkd.li/i/16796663', // 内容尾部广告
+            'https://i.gkd.li/i/16796725', // 内容中部广告
+            'https://i.gkd.li/i/16798663', // clickable=false，使用clickable=true避免误触
+            'https://i.gkd.li/i/15198455', // 无id
+          ],
+        },
+        {
+          // 第二段
+          preKeys: [0],
+          key: 25,
+          excludeMatches: '[text="感谢你的反馈"][visibleToUser=true]',
+          matches: '[text="不感兴趣"][clickable=true][visibleToUser=true]', // 为确保能够关闭尾部广告，此处点击“不感兴趣”而非“关闭此广告”
+          snapshotUrls: [
+            'https://i.gkd.li/i/16796666', // 内容尾部广告
+            'https://i.gkd.li/i/16796729', // 内容中部广告
+            'https://i.gkd.li/i/15061424', // 使用excludeMatches防止在文章末尾广告关闭后误触
+            'https://i.gkd.li/i/16798661', // clickable=false，使用clickable=true避免误触
+            'https://i.gkd.li/i/15198459', // 无id
+          ],
+        },
+        {
+          // 第三段
+          preKeys: [25],
+          key: 50,
+          matches: '[text="与我无关"][clickable=true][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/16796674', // 内容尾部广告
+            'https://i.gkd.li/i/16796732', // 内容中部广告
+            'https://i.gkd.li/i/16798658', // clickable=false，使用clickable=true避免误触
+            'https://i.gkd.li/i/15198461', // 无id
+          ],
+        },
+      ],
+    },
+    {
+      key: 36,
+      name: '功能类-自动点击[查看原视频]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.ui.chatting.gallery.ImageGalleryUI',
+          matches: '[text^="查看原视频"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/5332aff9-05bb-4b44-b832-5e2d9b1c1270',
+          snapshotUrls: 'https://i.gkd.li/i/16833732',
+        },
+      ],
+    },
+    {
+      key: 37,
+      name: '全屏广告-小程序弹窗广告',
+      desc: '点击关闭',
+      matchTime: 20000,
+      actionMaximum: 1,
+      resetMatch: 'app',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.tencent.mm.plugin.appbrand.ui.AppBrandUI',
+          excludeMatches: '[text="跳过"][visibleToUser=true]', // 防止提前触发导致失效
+          matches:
+            '@ImageView[visibleToUser=true][childCount=0][text=null] < FrameLayout[childCount=1] < FrameLayout[childCount=1] <2 FrameLayout[childCount=2] - FrameLayout >4 [text="广告"]',
+          exampleUrls: 'https://e.gkd.li/d2b12af6-c204-4da7-8553-4765ef8b8c31',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13459614',
+            'https://i.gkd.li/i/16943989',
+            'https://i.gkd.li/i/16920797',
+          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/16958795',
         },
       ],
     },

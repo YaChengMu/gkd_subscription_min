@@ -43,7 +43,6 @@ export default defineGkdApp({
         {
           key: 0,
           actionDelay: 350, //防误触
-          activityIds: 'com.aster.comic.app.view.MainActivity',
           matches:
             '[text^="摇动"||text*="扭动"||text*="立即领取"] <<n [id="android:id/content"] >n ImageView[width<=70]',
           snapshotUrls: [
