@@ -7,6 +7,7 @@ export default defineGkdApp({
     {
       key: -1,
       name: '开屏广告',
+      matchRoot: true,
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
@@ -324,6 +325,28 @@ export default defineGkdApp({
           exampleUrls:
             'https://m.gkd.li/57941037/80e5730d-6634-4a0a-9c58-c57f7ad5e58c',
           snapshotUrls: 'https://i.gkd.li/i/15858057',
+        },
+      ],
+    },
+    {
+      key: 14,
+      name: '分段广告-搜索结果广告',
+      desc: '点击右下角[菜单]-点击[不感兴趣]',
+      fastQuery: true,
+      activityIds: 'com.bilibili.search2.main.BiliMainSearchActivity',
+      rules: [
+        {
+          key: 1,
+          matches:
+            '@[vid="more"][clickable=true][visibleToUser=true] -3 [vid="tag_layout"] > [vid="ad_tag_with_dot"]',
+          exampleUrls: 'https://e.gkd.li/e5dd30e7-e8dd-42bc-8953-23368e65cca4',
+          snapshotUrls: 'https://i.gkd.li/i/17269053',
+        },
+        {
+          preKeys: [1],
+          matches: '@[clickable=true] > [text="不感兴趣"]',
+          exampleUrls: 'https://e.gkd.li/5e6e4b69-ba97-473d-9f62-631c296da589',
+          snapshotUrls: 'https://i.gkd.li/i/17269055',
         },
       ],
     },
