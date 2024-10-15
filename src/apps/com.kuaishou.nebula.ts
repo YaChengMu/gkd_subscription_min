@@ -60,12 +60,6 @@ export default defineGkdApp({
             'https://m.gkd.li/57941037/12059549-21c2-47b7-9acf-ec221cc14f25',
           snapshotUrls: 'https://i.gkd.li/i/15747381',
         },
-        {
-          quickFind: true,
-          activityIds: 'com.yxcorp.gifshow.HomeActivity',
-          matches: '[vid="close_pendant"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/16202256',
-        },
       ],
     },
   ],
