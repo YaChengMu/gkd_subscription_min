@@ -1,5 +1,5 @@
-import { RawApp } from '@gkd-kit/api';
 import { batchImportApps } from '@gkd-kit/tools';
+import { RawApp } from '@gkd-kit/api';
 
 const apps = await batchImportApps(`${import.meta.dirname}/apps`);
 
