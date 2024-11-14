@@ -39,16 +39,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 1,
-      name: '青少年模式',
-      fastQuery: true,
-      matchTime: 10000,
-      actionMaximum: 1,
-      resetMatch: 'app',
-      rules: 'TextView[text*="青少年模式"] +n TextView[text="我知道了"]',
-      snapshotUrls: 'https://i.gkd.li/i/13746766',
-    },
-    {
       key: 2,
       name: '局部广告-动态推荐卡片广告',
       desc: '点击卡片右上角[广告]按钮-点击不感兴趣',
@@ -105,7 +95,6 @@ export default defineGkdApp({
         },
       ],
     },
-    // key = 5已弃用
     {
       key: 6,
       name: '更新提示',
@@ -340,6 +329,37 @@ export default defineGkdApp({
           matches: '@[clickable=true] > [text="不感兴趣"]',
           exampleUrls: 'https://e.gkd.li/5e6e4b69-ba97-473d-9f62-631c296da589',
           snapshotUrls: 'https://i.gkd.li/i/17269055',
+        },
+      ],
+    },
+    {
+      key: 15,
+      name: '分段广告-视频详情页下方推广',
+      desc: '关闭[广告/推广/直播]',
+      fastQuery: true,
+      activityIds: 'com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity',
+      rules: [
+        {
+          key: 0,
+          matches:
+            '@[vid="more"] -(3,5) [vid="ad_desc" || vid="live_lottie_layout"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/219c40c4-debf-40d8-889a-7eb39c87126c',
+          snapshotUrls: [
+            'https://i.gkd.li/i/17675629',
+            'https://i.gkd.li/i/17675894',
+          ],
+        },
+        {
+          preKeys: [0],
+          key: 1,
+          matches:
+            '@[clickable=true] > [text="不感兴趣" || text="相似内容过多"]',
+          exampleUrls: 'https://e.gkd.li/23937c2d-379c-4fb5-aaee-7295bcf0afca',
+          snapshotUrls: [
+            'https://i.gkd.li/i/17676025',
+            'https://i.gkd.li/i/17676149',
+            'https://i.gkd.li/i/17677147',
+          ],
         },
       ],
     },
