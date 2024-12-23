@@ -14,8 +14,7 @@ export default defineGkdApp({
       priorityTime: 10000,
       rules: [
         {
-          action: 'clickCenter',
-          matches: '[text^="跳过"][text.length<10]',
+          matches: '[vid="hiad_skip_text"]',
           snapshotUrls: 'https://i.gkd.li/i/15523945',
         },
       ],

@@ -7,10 +7,14 @@ export default defineGkdApp({
     {
       key: 10,
       name: '全屏广告-首页红包弹窗',
-      desc: '自动点击x按钮',
+      desc: '点击关闭',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
       rules: [
         {
+          key: 1,
           name: '老友回归红包弹窗',
           matches:
             '@ImageView[id=null][clickable=true] + ViewGroup > [text!=null] + [text!=null]',
@@ -20,23 +24,23 @@ export default defineGkdApp({
           ],
         },
         {
+          key: 2,
           name: '限时高额奖励弹窗',
           matches:
             '@ImageView[id=null][clickable=true] < ViewGroup + ViewGroup >2 [text="立即领取"]',
-          snapshotUrls: ['https://i.gkd.li/i/12708681'],
+          snapshotUrls: 'https://i.gkd.li/i/12708681',
         },
       ],
     },
     {
       key: 11,
       name: '局部广告-首页左侧红包悬浮控件',
-      desc: '自动点击x按钮',
+      desc: '点击关闭',
       activityIds: 'com.yxcorp.gifshow.HomeActivity',
-      enable: false,
       rules: [
         {
           matches:
-            '[id="com.smile.gifmaker:id/kem_task_pendant_new"] >n [id="com.smile.gifmaker:id/pendant_close"][visibleToUser=true]',
+            '[id="com.smile.gifmaker:id/pendant_mask_bg"] + [id="com.smile.gifmaker:id/pendant_close"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/12708671',
             'https://i.gkd.li/i/12708676', // 执行规则后，控件隐藏，使用 visibleToUser=true 进行限定，防止反复触发规则
@@ -76,11 +80,12 @@ export default defineGkdApp({
     {
       key: 13,
       name: '评价提示',
+      fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
-      fastQuery: true,
       rules: [
         {
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
           matches: '@[vid="close"] +2 * > [text="喜欢就给个好评吧"]',
           exampleUrls:
             'https://m.gkd.li/57941037/da412e0f-47db-4cc0-8821-184c6ba42882',
