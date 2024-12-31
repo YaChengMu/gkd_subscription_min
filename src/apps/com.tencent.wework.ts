@@ -8,16 +8,15 @@ export default defineGkdApp({
       // 节点id疑似随机生成,尽量不用id属性
       key: 1,
       name: '功能类-自动抢红包',
-      desc: '自己发的红包不抢',
+      desc: '',
       rules: [
         {
           key: 0,
           fastQuery: true,
           name: '点击别人发的红包',
-          activityIds:
-            'com.tencent.wework.msg.controller.ExternalContactMessageListActivity',
+          activityIds: 'com.tencent.wework.msg.controller.MessageListActivity',
           matches:
-            'RelativeLayout[childCount=2] > ImageView + * @RelativeLayout[childCount=4] > LinearLayout[index=1] > LinearLayout[childCount=1] > [text="恭喜发财，大吉大利"]',
+            'LinearLayout[childCount=1] < LinearLayout + RelativeLayout > TextView',
           exampleUrls:
             'https://m.gkd.li/57941037/64bdd899-9a30-4816-bafc-a9e2a0d09ec6',
           snapshotUrls: [
@@ -30,9 +29,8 @@ export default defineGkdApp({
           key: 1,
           name: '开红包',
           activityIds:
-            'com.tencent.wework.enterprise.redenvelopes.controller.RedEnvelopeCollectorActivity',
-          matches:
-            'RelativeLayout[childCount=3] > FrameLayout + RelativeLayout[childCount=3] + ImageView',
+            'com.tencent.wework.enterprise.redenvelopes.controller.RedEnvelopeCollectorWithCoverActivity',
+          matches: 'FrameLayout + RelativeLayout + ImageView',
           exampleUrls:
             'https://m.gkd.li/57941037/52525cdb-0746-483c-b1ba-2282f3a8b8ed',
           snapshotUrls: [
@@ -45,7 +43,7 @@ export default defineGkdApp({
           key: 2,
           name: '从金额页面返回到聊天页面',
           activityIds:
-            'com.tencent.wework.enterprise.redenvelopes.controller.RedEnvelopeDetailActivity',
+            'com.tencent.wework.enterprise.redenvelopes.controller.RedEnvelopeDetailWithCoverActivity',
           matches: 'LinearLayout[childCount=3] > LinearLayout TextView',
           exampleUrls:
             'https://m.gkd.li/57941037/2a69cf93-1d10-48c4-8456-663197c6feca',
