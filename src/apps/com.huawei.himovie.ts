@@ -14,7 +14,8 @@ export default defineGkdApp({
       priorityTime: 10000,
       rules: [
         {
-          matches: '[id="com.huawei.hms.ads.uiengine:id/hiad_skip_text"]',
+          action: 'clickCenter',
+          matches: '[text*="跳过"][text.length<10][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/15523945',
         },
       ],
