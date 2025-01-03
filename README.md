@@ -23,9 +23,9 @@
 https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 ```
 
-当前版本: v51
+当前版本: v52
 
-当前订阅文件已适配 55 个应用，共有 279 应用规则组，3 全局规则组
+当前订阅文件已适配 55 个应用，共有 281 应用规则组，3 全局规则组
 
 查看 [适配 APP 列表](./dist/README.md)
 
@@ -43,7 +43,7 @@ https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.j
 
 ## 感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=AIsouler/GKD_subscription&_v=51)
+![img](https://contrib.rocks/image?repo=AIsouler/GKD_subscription&_v=52)
 
 ## Star History
 

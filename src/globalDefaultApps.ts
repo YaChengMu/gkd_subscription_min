@@ -12,7 +12,7 @@ export const blackListAppIDs: string[] = [
   'com.tencent.wetype', // 微信输入法
   'com.tmri.app.main', // 交管12123
   'com.accessibilitymanager', // 无障碍管理器
-  'com.alicloud.databox', // 阿里云盘 开屏广告在 https://i.gkd.li/i/15144565 误触导致自动签到规则执行中断
+  'com.alicloud.databox', // 阿里云盘
 ];
 
 // 如果某应用的规则中已有全局规则中的某一类的规则, 则在此应用禁用对应全局规则

@@ -771,6 +771,16 @@ export default defineGkdApp({
             'https://i.gkd.li/i/17827969',
           ],
         },
+        {
+          key: 4,
+          name: '推荐你试试这些玩法',
+          activityIds:
+            'com.qzone.reborn.feedx.activity.QZoneFriendFeedXActivity',
+          fastQuery: true,
+          matches: '@[desc="关闭"] - [text="推荐你试试这些玩法"]',
+          exampleUrls: 'https://e.gkd.li/6cf71a22-0e21-4877-86a7-69d84353ad5a',
+          snapshotUrls: 'https://i.gkd.li/i/18236745',
+        },
       ],
     },
     {
@@ -785,6 +795,21 @@ export default defineGkdApp({
             '@CompoundButton[checked=true] - RelativeLayout > [text="你的QQ好友关系"]',
           exampleUrls: 'https://e.gkd.li/4d69a243-6a57-47ca-bc25-0a5353d80179',
           snapshotUrls: 'https://i.gkd.li/i/16929347',
+        },
+      ],
+    },
+    {
+      key: 32,
+      name: '其他-联系人页面-顶部可能认识的人推荐',
+      desc: '点击关闭',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.SplashActivity',
+          matches:
+            '@ImageView[childCount=0][clickable=true][visibleToUser=true] -2 [text="开启推荐，发现可能认识的人。"]',
+          exampleUrls: 'https://e.gkd.li/7922ab73-cc99-4559-b18c-5ab54dd9633a',
+          snapshotUrls: 'https://i.gkd.li/i/18237415',
         },
       ],
     },
