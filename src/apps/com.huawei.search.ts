@@ -5,30 +5,27 @@ export default defineGkdApp({
   name: '智慧搜索',
   groups: [
     {
-      key: 0,
-      name: '分段广告-下拉搜索横幅广告',
-      fastQuery: true,
+      key: 1,
+      name: '全屏广告-下拉搜索横幅广告',
       activityIds: [
         'com.huawei.search.HomeActivity',
         'com.huawei.search.MainActivity',
       ],
       rules: [
         {
-          key: 0,
           matches:
-            '[id="com.huawei.search:id/iv_topic_close_in_image" || id="com.huawei.search:id/iv_topic_left_close" || id="com.huawei.search:id/iv_topic_close_in_pps"]',
+            '[id="com.huawei.search:id/iv_topic_close_in_image"||id="com.huawei.search:id/iv_topic_left_close"||id="com.huawei.search:id/iv_topic_close_in_pps"]',
           snapshotUrls: [
-            'https://i.gkd.li/i/12667938',
-            'https://i.gkd.li/i/12745008',
-            'https://i.gkd.li/i/12841076',
-            'https://i.gkd.li/i/13266095',
+            'https://i.gkd.li/import/12667938',
+            'https://i.gkd.li/import/12745008',
+            'https://i.gkd.li/import/12841076',
+            'https://i.gkd.li/import/13266095', // iv_topic_close_in_pps
           ],
         },
         {
-          preKeys: [0],
-          key: 1,
-          matches: 'TextView[text="直接关闭"]',
-          snapshotUrls: ['https://i.gkd.li/i/12745001'],
+          matches:
+            'ViewGroup[id="com.huawei.search:id/unlike_flow_layout"] > TextView[text="直接关闭"]',
+          snapshotUrls: ['https://i.gkd.li/import/12745001'],
         },
       ],
     },

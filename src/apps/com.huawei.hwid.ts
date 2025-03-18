@@ -7,16 +7,14 @@ export default defineGkdApp({
     {
       // 我不知道这个广告从哪里来的，它出乎意料地跳出并覆盖在Gspace上面
       key: 0,
-      name: '全屏广告-弹窗广告',
-      matchTime: 10000,
-      actionMaximum: 1,
-      resetMatch: 'app',
+      name: '全屏广告-页面中间跳出广告',
+      activityIds: [
+        'com.huawei.openalliance.ad.ppskit.activity.InnerPPSInterstitialAdActivity',
+      ],
       rules: [
         {
-          activityIds:
-            'com.huawei.openalliance.ad.ppskit.activity.InnerPPSInterstitialAdActivity',
           matches: '[id="com.huawei.hwid:id/interstitial_close"]',
-          snapshotUrls: 'https://i.gkd.li/i/12709068',
+          snapshotUrls: ['https://i.gkd.li/import/12709068'],
         },
       ],
     },

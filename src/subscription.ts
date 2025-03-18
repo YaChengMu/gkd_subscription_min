@@ -21,10 +21,10 @@ apps.forEach((appConfig) => {
 export default defineGkdSubscription({
   id: 303,
   name: 'YaChengMu的GKD订阅',
-  version: 0,
+  version: 1,
   author: 'YaChengMu',
   checkUpdateUrl: './gkd.version.json5',
-  supportUri: 'https://github.com/gkd-kit/subscription-template',
+  supportUri: 'https://github.com/yachengmu/gkd_subscription_min',
   categories,
   globalGroups,
   apps: rawApps,
