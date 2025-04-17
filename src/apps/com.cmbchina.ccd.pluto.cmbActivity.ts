@@ -11,21 +11,24 @@ export default defineGkdApp({
       matchTime: 10000,
       actionMaximum: 1,
       resetMatch: 'app',
-      activityIds: [
-        'com.cmbchina.ccd.pluto.cmbActivity.CMBRootActivityV2',
-        'com.cmbchina.ccd.pluto.cmbActivity.secplugin',
-      ],
-      rules:
-        '[id="com.cmbchina.ccd.pluto.cmbActivity:id/bt_sure_tips"] - [id="com.cmbchina.ccd.pluto.cmbActivity:id/bt_cancel_tips"]',
-      snapshotUrls: [
-        'https://i.gkd.li/import/12647025',
-        'https://i.gkd.li/import/12727203',
-        'https://i.gkd.li/import/13345771', //
+      rules: [
+        {
+          activityIds: [
+            '.CMBRootActivityV2',
+            '.secplugin.activity.login.fingerprint.cmbR6VH0R',
+          ],
+          matches: '[text="暂不更新"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12647025',
+            'https://i.gkd.li/i/12727203',
+            'https://i.gkd.li/i/13345771',
+          ],
+        },
       ],
     },
     {
       key: 2,
-      name: '全屏广告-首页弹窗',
+      name: '全屏广告-首页弹窗广告',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
@@ -34,8 +37,8 @@ export default defineGkdApp({
       rules:
         '[id="com.cmbchina.ccd.pluto.cmbActivity:id/lly_pop_shell"] > [id="com.cmbchina.ccd.pluto.cmbActivity:id/img_cf_view_close"]',
       snapshotUrls: [
-        'https://i.gkd.li/import/12647000',
-        'https://i.gkd.li/import/13360282',
+        'https://i.gkd.li/i/12647000',
+        'https://i.gkd.li/i/13360282',
       ],
     },
     {
@@ -55,8 +58,8 @@ export default defineGkdApp({
           matches:
             '[id="com.cmbchina.ccd.pluto.cmbActivity:id/img_floating_ad_cmb"] - [id="com.cmbchina.ccd.pluto.cmbActivity:id/img_close_floating_ad_cmb"]',
           snapshotUrls: [
-            'https://i.gkd.li/import/12647039', // 信用卡页面
-            'https://i.gkd.li/import/12647052', // 我的页面
+            'https://i.gkd.li/i/12647039', // 信用卡页面
+            'https://i.gkd.li/i/12647052', // 我的页面
           ],
         },
         {
@@ -64,32 +67,44 @@ export default defineGkdApp({
           activityIds: [
             'com.cmbchina.ccd.pluto.cmbActivity.CMBRootActivityV2',
             'com.cmbchina.ccd.pluto.cmbActivity.repaymentBillv3.billRepay',
+            'com.cmbchina.ccd.pluto.cmbActivity.repaymentBillv3.billDetail.view',
           ],
           matches:
-            '[id="com.cmbchina.ccd.pluto.cmbActivity:id/img_cmb_drag_pendant_bg"] - [id="com.cmbchina.ccd.pluto.cmbActivity:id/img_cmb_drag_pendant_close"]',
-          snapshotUrls: ['https://i.gkd.li/import/12647127'],
+            '@[vid="img_cmb_drag_pendant_close"] + [vid="img_cmb_drag_pendant_bg"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12647127',
+            'https://i.gkd.li/i/14209121',
+          ],
         },
         {
           name: '发现页',
           activityIds: 'com.cmbchina.ccd.pluto.cmbActivity.CMBRootActivityV2',
           matches:
             '[id="com.cmbchina.ccd.pluto.cmbActivity:id/view_cat"] + [id="com.cmbchina.ccd.pluto.cmbActivity:id/view_close"]',
-          snapshotUrls: 'https://i.gkd.li/import/13402782',
+          snapshotUrls: 'https://i.gkd.li/i/13402782',
         },
       ],
     },
     {
-      enable: false,
       key: 4,
-      name: '权限提示-消息页面-通知开关',
+      name: '权限提示-通知权限',
       desc: '点击x按钮，不开启系统通知',
+      fastQuery: true,
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
+      rules:
+        '[id="com.cmbchina.ccd.pluto.cmbActivity:id/btn_open_notify"] + [id="com.cmbchina.ccd.pluto.cmbActivity:id/iv_delete"]',
+      snapshotUrls: ['https://i.gkd.li/i/12647068'],
+    },
+    {
+      key: 5,
+      name: '权限提示-定位权限',
       fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
-      activityIds: ['com.cmbchina.ccd.pluto.cmbActivity.messagebox'],
-      rules:
-        '[id="com.cmbchina.ccd.pluto.cmbActivity:id/btn_open_notify"] + [id="com.cmbchina.ccd.pluto.cmbActivity:id/iv_delete"]',
-      snapshotUrls: ['https://i.gkd.li/import/12647068'],
+      rules: '[text="定位服务"] +n * > [text="取消"]',
+      snapshotUrls: 'https://i.gkd.li/i/14209071',
     },
   ],
 });

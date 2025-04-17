@@ -16,8 +16,7 @@ export default defineGkdApp({
         {
           key: 0,
           anyMatches: [
-            '@View[clickable=true][text=null] + TextView[index=parent.childCount.minus(1)][text=null] <n FrameLayout[childCount>2] >(7,8,9,10) [text*="翻转手机" || text*="前倾手机" || text*="第三方应用" || text*="转动手机" || text*="扭动手机" || text*="点击或上滑" && visibleToUser=true]',
-            'FrameLayout > FrameLayout[childCount>2] > @View[clickable=true][text=null] + TextView[index=parent.childCount.minus(1) && text=null && visibleToUser=true]',
+            '@View[clickable=true && text=null] + TextView[index=parent.childCount.minus(1) && clickable=true && text=null] <(3,4,5) FrameLayout[childCount>2] >(8,9,10) TextView[index=parent.childCount.minus(1) && text*="跳转"]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/13188653',
         },
