@@ -7,149 +7,162 @@ export default defineGkdApp({
     {
       key: 0,
       name: '分段广告-朋友圈广告',
-      desc: '点击/关闭广告',
-      fastQuery: true,
+      desc: '点击卡片广告右上角,直接关闭/出现菜单,确认关闭',
       activityIds: [
-        '.plugin.sns.ui.improve.ImproveSnsTimelineUI',
         '.plugin.sns.ui.SnsTimeLineUI',
+        '.plugin.sns.ui.improve.ImproveSnsTimelineUI',
         '.plugin.profile.ui.ContactInfoUI',
       ],
       rules: [
-        // 第一段
         {
           key: 0,
-          name: '第一段 点击朋友圈广告',
-          matches:
-            '@LinearLayout[clickable=true && left>850] <2 LinearLayout < LinearLayout - ImageView[desc!=null] < LinearLayout[childCount=2 && index=0]',
-          exampleUrls: 'https://e.gkd.li/d1941064-d4e9-4bb2-99ab-ba30e0ce8126',
+          fastQuery: true,
+          matches: [
+            '@LinearLayout[clickable=true] > [text="广告" || text="廣告" || text="Sponsored"][visibleToUser=true]',
+          ],
           snapshotUrls: [
+            'https://i.gkd.li/i/13000395',
+            'https://i.gkd.li/i/12905837',
             'https://i.gkd.li/i/13791200',
             'https://i.gkd.li/i/16568338',
-            'https://i.gkd.li/i/19644924',
           ],
         },
-        // 第二，三段
         {
           key: 1,
-          name: '第二，三段 点击[关闭广告]',
-          matches:
-            '@*[clickable=true && index<3] <<(3,4,6) *[childCount>3] - ImageView[text=null] < LinearLayout[childCount=2 && index=0]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/13926578', // 第二段
-            'https://i.gkd.li/i/15137016', // <<(4)
-            'https://i.gkd.li/i/18817451', // <<(6)
-            'https://i.gkd.li/i/19650367', // <<(6)
-            'https://i.gkd.li/i/19650629', // 第三段
-            'https://i.gkd.li/i/12663984', // 直接关闭
-            'https://i.gkd.li/i/14207480', // Close the ad
-            'https://i.gkd.li/i/12907642', // 关闭该广告
+          fastQuery: true,
+          position: {
+            left: 'width * 0.9223',
+            top: 'height * 0.5',
+          },
+          anyMatches: [
+            '@LinearLayout >2 [text="广告"][visibleToUser=false]',
+            'RecyclerView > FrameLayout[childCount=1] > RelativeLayout > FrameLayout > LinearLayout > LinearLayout > LinearLayout > @LinearLayout[childCount=2][getChild(0).getChild(0).text!=null] > LinearLayout[index=1][clickable=false][visibleToUser=false]',
           ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/14783802',
+            'https://i.gkd.li/i/15531539',
+            'https://i.gkd.li/i/19665911',
+          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/19717709',
+        },
+        {
+          key: 2,
+          matches:
+            '[name$="RecyclerView"||name$="ListView"] >(1,2) RelativeLayout >3 LinearLayout > LinearLayout > LinearLayout[childCount=2] > LinearLayout[index=1][clickable=true][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14647413',
+            'https://i.gkd.li/i/19633571',
+          ],
+        },
+
+        // 预留key
+        // 第二段
+        {
+          preKeys: [0, 1, 2],
+          key: 25,
+          name: '点击[关闭]',
+          fastQuery: true,
+          anyMatches: [
+            '[text^="关闭" || text*="Close" || text="關閉此廣告"][clickable=true][visibleToUser=true]', //1
+            '@LinearLayout[clickable=true] > [text="关闭该广告" || text*="Close"][visibleToUser=true]', //2
+            '@LinearLayout[index=1][clickable=true] <2 * < * - [text*="广告"]', //3
+            '@[text="关闭该广告"] -2 [text^="对这条广告不感兴趣"][visibleToUser=true]', //4
+          ],
+          snapshotUrls: [
+            //1
+            'https://i.gkd.li/i/13926578',
+            'https://i.gkd.li/i/15531274',
+            'https://i.gkd.li/i/14207480',
+            'https://i.gkd.li/i/15137016',
+            'https://i.gkd.li/i/13791202',
+            //2
+            'https://i.gkd.li/i/14783820',
+            'https://i.gkd.li/i/15284966',
+            //3
+            'https://i.gkd.li/i/14647839',
+            'https://i.gkd.li/i/19666176',
+            //4
+            'https://i.gkd.li/i/19633486',
+          ],
+        },
+
+        // 预留key
+        // 第三段
+        {
+          preKeys: [25],
+          key: 50,
+          name: '点击[关闭]',
+          matches: '[text*="关闭" || text="Close"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12663984',
+            'https://i.gkd.li/i/12905846',
+            'https://i.gkd.li/i/14647940',
+            'https://i.gkd.li/i/14783534',
+          ],
+        },
+
+        // 预留key
+        // 第四段
+        {
+          preKeys: [50],
+          key: 75,
+          name: '点击[确认]',
+          fastQuery: true,
+          matches:
+            '@[text="确认"][visibleToUser=true] -2 [text="不感兴趣原因"]',
+          snapshotUrls: 'https://i.gkd.li/i/14647940',
         },
       ],
     },
     {
       key: 1,
-      name: '青少年模式',
-      fastQuery: true,
-      actionMaximum: 1,
-      resetMatch: 'app',
-      rules: [
-        {
-          action: 'clickCenter',
-          activityIds: [
-            '.plugin.finder.ui.FinderHomeAffinityUI',
-            '.plugin.finder.nearby.NearbyUI',
-            '.ui.LauncherUI',
-          ],
-          matches: '[text^="为呵护未成年人健康成长"] +2 Button',
-          snapshotUrls: [
-            'https://i.gkd.li/i/18769951',
-            'https://i.gkd.li/i/14896723',
-            'https://i.gkd.li/i/18135103',
-          ],
-        },
-      ],
-    },
-    {
-      key: 3,
-      name: '功能类-青少年模式自动点击验证密码',
-      desc: '点击“验证密码”以申请临时访问',
-      matchTime: 10000,
-      actionMaximum: 1,
-      fastQuery: true,
-      activityIds: [
-        '.plugin.webview.ui.tools.MMWebViewUI',
-        '.plugin.teenmode.ui.AuthorizationRequestUI',
-      ],
-      rules: [
-        {
-          key: 0,
-          matches: '@LinearLayout[childCount=2] > TextView[text="验证密码"]',
-          snapshotUrls: 'https://i.gkd.li/i/13588338',
-        },
-        {
-          key: 1,
-          matches: 'View[desc="验证密码"][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/13631987',
-        },
-        {
-          key: 2,
-          matches:
-            'WebView[childCount=6] View[index=4] > [text="验证密码"][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/14050004',
-        },
-      ],
-    },
-    {
-      key: 4,
-      name: '功能类-电脑端登录微信时自动确认登录',
+      name: '功能类-电脑微信快捷自动登录',
       fastQuery: true,
       matchTime: 10000,
-      actionMaximum: 2,
+      actionMaximum: 1,
       rules: [
         {
-          key: 1,
-          action: 'clickCenter',
           activityIds: [
             '.plugin.webwx.ui.ExtDeviceWXLoginUI',
             '.ui.LauncherUI',
           ],
-          matches:
-            'RelativeLayout[id!=null] + LinearLayout[childCount=2] > @Button[clickable=true] + TextView[clickable=true]',
+          matches: 'TextView[text="取消登录"] - Button[text="登录"]',
           snapshotUrls: [
+            'https://i.gkd.li/i/13522625',
             'https://i.gkd.li/i/13522577',
-            'https://i.gkd.li/i/19245204',
           ],
-        },
-        {
-          key: 2,
-          matches: '[text="验证已通过"] +2 [text="确定"][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/19243011',
         },
       ],
     },
     {
-      key: 5,
-      name: '功能类-自动授权微信号信息',
+      key: 2,
+      name: '功能类-自动授权登录',
       desc: '自动允许使用头像昵称等',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
       rules: [
         {
-          key: 1,
-          action: 'clickCenter',
-          activityIds: ['.plugin.base.stub.UIEntryStub', '.ui.LauncherUI'],
-          matches: ['[text^="获取你的"]', '[text="允许"][clickable=true]'],
+          activityIds: [
+            '.plugin.base.stub.UIEntryStub',
+            '.ui.LauncherUI',
+            '.plugin.webview.ui.tools.MMWebViewUI',
+          ],
+          matches: [
+            '[text^="获取你的" || text^="取得你的" || text^="你的昵称"]',
+            '[text="允许" || text="允許"]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/12663602',
             'https://i.gkd.li/i/13065462',
+            'https://i.gkd.li/i/15271716',
+            'https://i.gkd.li/i/19496823',
           ],
         },
       ],
     },
     {
-      key: 6,
+      key: 4,
       name: '功能类-微信读书网页版扫码登录自动授权',
       matchTime: 10000,
       actionMaximum: 1,
@@ -170,7 +183,7 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 7,
+      key: 5,
       name: '功能类-自动领取微信红包',
       desc: '自动领取私聊红包,群聊红包',
       fastQuery: true,
@@ -179,24 +192,28 @@ export default defineGkdApp({
           key: 3,
           name: '点击别人发的红包',
           activityIds: '.ui.LauncherUI',
-          matches: '@[vid="b4t"][childCount=2] > LinearLayout[childCount=1]',
+          matches:
+            'LinearLayout[childCount=1] >2 @FrameLayout[clickable=true] >2 LinearLayout[getChild(1).childCount=1] +2 RelativeLayout > [text="微信红包"]',
           snapshotUrls: 'https://i.gkd.li/i/18134826',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/18134823', // 自己发的， LinearLayout[childCount=1] 区分
+            'https://i.gkd.li/i/18134833', // 已领取的， getChild(1).childCount=1 区分
+          ],
         },
         {
           preKeys: [3],
           key: 4,
           name: '点击红包-开',
           activityIds: '.plugin.luckymoney.ui.LuckyMoneyNotHookReceiveUI',
-          action: 'clickCenter',
-          matches: '[vid="iyr"] +2 [vid="j6h"]',
+          matches: '@Button[desc="开"] -3 LinearLayout >2 [text$="红包"]',
           snapshotUrls: 'https://i.gkd.li/i/18134828',
           excludeSnapshotUrls: 'https://i.gkd.li/i/12567698', // 金币动画的快照
         },
         {
-          preKeys: [4],
+          preKeys: [3, 4],
           name: '从红包结算界面返回',
           activityIds: '.plugin.luckymoney.ui.LuckyMoneyDetailUI',
-          matches: '@ImageView <3 [vid="izy"]',
+          matches: '@ImageView[desc="返回"] +2 LinearLayout >8 [text$="红包"]',
           snapshotUrls: [
             'https://i.gkd.li/i/18134829',
             'https://i.gkd.li/i/18135031',
@@ -205,25 +222,34 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 8,
+      key: 7,
       name: '功能类-自动选中发送原图',
-      desc: '自动选中原图，可手动取消勾选',
-      fastQuery: true,
+      desc: '自动选中底部中间的发送原图，可手动取消勾选',
       actionMaximum: 1,
-      activityIds: '.plugin.gallery.ui.AlbumPreviewUI',
+      activityIds: [
+        '.plugin.gallery.ui.AlbumPreviewUI',
+        '.plugin.gallery.ui.ImagePreviewUI',
+      ],
       rules: [
         {
-          key: 1, // 8.0.56
-          action: 'clickCenter',
-          matches:
-            '@ImageButton[clickable=true && width!=height] + TextView <2 RelativeLayout[childCount=2 && width!=height] < RelativeLayout[vid!=""] + RelativeLayout[vid!="" && clickable=true]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/18764301', // 已选中
-            'https://i.gkd.li/i/16987145', // 未选中
-            'https://i.gkd.li/i/16987141', // 已选中
+          key: 1,
+          fastQuery: true,
+          anyMatches: [
+            '@ImageButton[desc="未选中,原图,复选框"][visibleToUser=true] + [text="原图"]',
+            '@[desc="未选中,原图,复选框"][visibleToUser=true]',
           ],
           exampleUrls: [
-            'https://e.gkd.li/354ca046-80ca-41d0-a31f-931a19a4695f',
+            'https://e.gkd.li/32dc0943-e85f-416d-bb01-6ed610d4bdd8',
+            'https://e.gkd.li/93d41161-ab69-4c2d-83bb-637d7292f5e6',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/16987145', // 未选中
+            'https://i.gkd.li/i/16987144', // 未选中
+            'https://i.gkd.li/i/19625049', // 无法快速查询
+          ],
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/16987141', // 已选中
+            'https://i.gkd.li/i/16987147', // 已选中
           ],
         },
       ],
@@ -231,38 +257,110 @@ export default defineGkdApp({
     {
       key: 9,
       name: '功能类-自动查看原图',
-      desc: '自动点击[查看原图]',
-      fastQuery: true,
-      actionMaximum: 1,
-      activityIds: '.ui.LauncherUI',
+      desc: '自动点击底部左侧[查看原图]按钮',
+      activityIds: ['.ui.chatting.gallery.ImageGalleryUI', '.ui.LauncherUI'],
       rules: [
         {
           key: 0,
-          action: 'clickCenter',
-          matches: '[text^="查看原图" && clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/19638010',
+          fastQuery: true,
+          anyMatches: [
+            'Button[text^="查看"][clickable=true][visibleToUser=true]',
+            'Button[clickable=true][text^="查看"][visibleToUser=true]',
+          ],
+          exampleUrls:
+            'https://m.gkd.li/57941037/6bb9e68a-43f5-4482-96b1-899cc86fef32',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13523031',
+            'https://i.gkd.li/i/17698956',
+            'https://i.gkd.li/i/19515095',
+            'https://i.gkd.li/i/19645122', // 无法快速查询
+          ],
         },
+      ],
+    },
+    {
+      key: 10,
+      name: '开屏广告-微信小程序',
+      fastQuery: true,
+      matchTime: 10000,
+      forcedTime: 10000,
+      // actionMaximum: 1, // 经常需要点2次，首次点击过早大概率跳不过
+      priorityTime: 10000,
+      activityIds: [
+        '.plugin.appbrand.ui.AppBrandUI',
+        '.plugin.appbrand.launching.AppBrandLaunchProxyUI',
+      ],
+      rules: [
         {
-          preKeys: [0],
-          key: 2,
-          matches: '[text="我知道了" && clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/19637941',
+          actionDelay: 800, // 过早点击首次大概率跳不过
+          matches: [
+            '[text="广告"][visibleToUser=true]',
+            '[text="跳过"][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/12785183',
+            'https://i.gkd.li/i/13306883',
+            'https://i.gkd.li/i/13407275',
+            'https://i.gkd.li/i/15108441',
+          ],
         },
       ],
     },
     {
       key: 11,
-      name: '功能类-网页版文件传输助手扫码后自动打开',
+      name: '功能类-网页版文件传输助手扫码自动授权',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
       rules: [
         {
-          action: 'clickCenter',
           activityIds: '.ui.LauncherUI',
-          matches:
-            'TextView + LinearLayout[childCount=2] > @Button[clickable=true] + TextView[clickable=true]',
+          matches: '[text="打开网页版文件传输助手"] + * > Button[text="打开"]',
           snapshotUrls: 'https://i.gkd.li/i/12793745',
+        },
+      ],
+    },
+    {
+      key: 17,
+      name: '青少年模式',
+      fastQuery: true,
+      matchTime: 20000,
+      actionMaximum: 1,
+      rules: [
+        {
+          activityIds: ['.plugin.finder.', '.ui.LauncherUI'],
+          matches:
+            '@[text="我知道了"][index=parent.childCount.minus(1)] <n LinearLayout > [text^="为呵护未成年人健康成长"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13538145',
+            'https://i.gkd.li/i/13575195',
+            'https://i.gkd.li/i/14735456',
+            'https://i.gkd.li/i/14896723',
+            'https://i.gkd.li/i/18135103',
+            'https://i.gkd.li/i/19683937',
+          ],
+        },
+      ],
+    },
+    {
+      key: 18,
+      name: '功能类-青少年模式自动点击验证密码',
+      desc: '点击“验证密码”以申请临时访问',
+      matchTime: 10000,
+      actionMaximum: 1,
+      rules: [
+        {
+          key: 0,
+          fastQuery: true,
+          activityIds: '.plugin.teenmode.ui.AuthorizationRequestUI',
+          matches: '@LinearLayout[childCount=2] > TextView[text="验证密码"]',
+          snapshotUrls: 'https://i.gkd.li/i/13588338',
+        },
+        {
+          key: 1,
+          activityIds: '.plugin.webview.ui.tools.MMWebViewUI',
+          matches: 'View[desc="验证密码"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/13631987',
         },
       ],
     },
@@ -273,8 +371,7 @@ export default defineGkdApp({
         {
           key: 0,
           fastQuery: true,
-          activityIds:
-            'com.tencent.mm.plugin.brandservice.ui.timeline.BizTimeLineUI',
+          activityIds: '.plugin.brandservice.ui.timeline.BizTimeLineUI',
           matches: '@[clickable=true] > [text="展开更早的消息"]',
           snapshotUrls: 'https://i.gkd.li/i/13790550',
         },
@@ -286,13 +383,26 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 22,
+      name: '功能类-开启青少年模式后的每日验证',
+      desc: '点击"验证密码"',
+      rules: [
+        {
+          activityIds: '.plugin.webview.ui.tools.MMWebViewUI',
+          matches:
+            'WebView[childCount=6] View[index=4] > [text="验证密码"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/14050004',
+        },
+      ],
+    },
+    {
       key: 25,
       name: '局部广告-订阅号消息-推荐文章',
       desc: '点击关闭',
       rules: [
         {
           activityIds:
-            'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+            '.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
           matches:
             'View[childCount=2] > View[desc$="推​荐​"][childCount=3] > ImageView[index=2][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/14392392',
@@ -302,19 +412,18 @@ export default defineGkdApp({
     {
       key: 26,
       name: '功能类-付款后自动点击完成/返回商家',
-      fastQuery: true,
-      activityIds: '.framework.app.UIPageFragmentActivity',
       rules: [
         {
+          fastQuery: true,
+          activityIds: '.framework.app.UIPageFragmentActivity',
           matches:
-            'ViewGroup[childCount=1] >2 Button[childCount=2][clickable=true] > ImageView + TextView[text!=null]',
+            '[vid="kinda_button_impl_wrapper"][desc="完成" || desc="返回商家"]',
           exampleUrls:
             'https://m.gkd.li/57941037/a5177d9d-6745-443f-baf5-af57153430d8',
           snapshotUrls: [
             'https://i.gkd.li/i/14399355',
-            'https://i.gkd.li/i/19250738',
+            'https://i.gkd.li/i/14662147',
           ],
-          // 我的零钱页面
           excludeSnapshotUrls: 'https://i.gkd.li/i/14532946',
         },
       ],
@@ -324,7 +433,7 @@ export default defineGkdApp({
       name: '分段广告-订阅号消息-视频推荐',
       desc: '点击[X]-点击[不喜欢此类视频]-点击[确定]',
       activityIds:
-        'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+        '.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
       rules: [
         {
           key: 0,
@@ -362,7 +471,7 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.tencent.mm.plugin.webwx.ui.WebWXUnlockUI',
+          activityIds: '.plugin.webwx.ui.WebWXUnlockUI',
           matches: '[text="解锁"]',
           exampleUrls:
             'https://m.gkd.li/57941037/85bb6dcd-0d04-46c1-af14-6e4b57ff4dca',
@@ -377,7 +486,7 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.tencent.mm.plugin.webview.ui.tools.MMWebViewUI',
+          activityIds: '.plugin.webview.ui.tools.MMWebViewUI',
           matches:
             '@TextView[clickable=true] + * > [visibleToUser=true][text^="使用 APP"] <<n [id="android:id/content"]',
           exampleUrls:
@@ -391,7 +500,7 @@ export default defineGkdApp({
       name: '分段广告-订阅号消息-推荐阅读',
       desc: '点击关闭',
       activityIds:
-        'com.tencent.mm.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
+        '.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
       rules: [
         {
           key: 0,
@@ -425,7 +534,7 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.tencent.mm.pluginsdk.permission.PermissionActivity',
+          activityIds: '.pluginsdk.permission.PermissionActivity',
           matches: ['[text="权限申请"]', '[text="取消"]'],
           exampleUrls:
             'https://m.gkd.li/57941037/43632b72-d389-4fe7-9708-dac78e900679',
@@ -438,7 +547,7 @@ export default defineGkdApp({
       name: '功能类-付款时自动点击[支付]',
       fastQuery: true,
       actionMaximum: 1,
-      activityIds: 'com.tencent.mm.framework.app.UIPageFragmentActivity',
+      activityIds: '.framework.app.UIPageFragmentActivity',
       rules: [
         {
           key: 0,
@@ -477,8 +586,8 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/12642232', // ui.TmplWebViewMMUI
             'https://i.gkd.li/i/13199281', // ui.TmplWebViewTooLMpUI
-            'https://i.gkd.li/i/14006180', // com.tencent.mm.plugin.webview.ui.tools.fts.MMSosWebViewUI
-            'https://i.gkd.li/i/17093010', // com.tencent.mm.plugin.webview.ui.tools.MMWebViewUI
+            'https://i.gkd.li/i/14006180', // .plugin.webview.ui.tools.fts.MMSosWebViewUI
+            'https://i.gkd.li/i/17093010', // .plugin.webview.ui.tools.MMWebViewUI
             'https://i.gkd.li/i/16796663', // 内容尾部广告
             'https://i.gkd.li/i/16796725', // 内容中部广告
             'https://i.gkd.li/i/16798663', // clickable=false，使用clickable=true避免误触
@@ -538,76 +647,79 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          action: 'clickCenter',
-          activityIds: [
-            '.ui.chatting.gallery.ImageGalleryUI',
-            '.ui.LauncherUI',
-          ],
-          matches: '[vid="cna"] > Button',
+          activityIds: '.ui.chatting.gallery.ImageGalleryUI',
+          matches: '[text^="查看原视频"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/5332aff9-05bb-4b44-b832-5e2d9b1c1270',
           snapshotUrls: 'https://i.gkd.li/i/16833732',
         },
       ],
     },
     {
-      key: 38,
-      name: '功能类-别人发的语音自动转文字',
-      desc: '长按语音后自动转文字',
+      key: 37,
+      name: '全屏广告-小程序弹窗广告',
+      desc: '点击关闭',
+      matchTime: 20000,
+      // actionMaximum: 1,
+      actionCd: 300, // 有时候需要点击多次
+      actionDelay: 300, // 过早触发有概率无效
       rules: [
         {
           fastQuery: true,
-          activityIds: '.ui.LauncherUI',
-          matches: '@[clickable=true] >(1,2) [text="转文字"]',
-          snapshotUrls: ['https://i.gkd.li/i/19246070'],
-        },
-      ],
-    },
-    {
-      key: 39,
-      name: '开屏广告-微信小程序',
-      fastQuery: true,
-      matchTime: 10000,
-      forcedTime: 10000,
-      // actionMaximum: 1, // 经常需要点2次，首次点击过早大概率跳不过
-      priorityTime: 10000,
-      activityIds: [
-        'com.tencent.mm.plugin.appbrand.ui.AppBrandUI',
-        'com.tencent.mm.plugin.appbrand.launching.AppBrandLaunchProxyUI',
-      ],
-      rules: [
-        {
-          actionDelay: 800, // 过早点击首次大概率跳不过
-          matches: [
-            '[text="广告"][visibleToUser=true]',
-            '[text="跳过"][visibleToUser=true]',
-          ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/12785183',
-            'https://i.gkd.li/i/13306883',
-            'https://i.gkd.li/i/13407275',
-            'https://i.gkd.li/i/15108441',
-          ],
-        },
-      ],
-    },
-    {
-      key: 40,
-      name: '全屏广告-小程序弹窗广告',
-      desc: '点击关闭',
-      fastQuery: true,
-      actionMaximum: 2,
-      matchTime: 10000,
-      activityIds: '.plugin.appbrand.ui.AppBrandUI00',
-      rules: [
-        {
-          key: 1,
+          activityIds: '.plugin.appbrand.ui.AppBrandUI',
+          excludeMatches: '[text="跳过"][visibleToUser=true]', // 防止提前触发
           matches:
-            'FrameLayout > TextView + FrameLayout > FrameLayout > ImageView[width=height]',
+            '@ImageView[visibleToUser=true][childCount=0][text=null] < FrameLayout[childCount=1] < FrameLayout[childCount=1] <2 FrameLayout[childCount=2] - FrameLayout >4 [text="广告"]',
           exampleUrls: 'https://e.gkd.li/d2b12af6-c204-4da7-8553-4765ef8b8c31',
           snapshotUrls: [
             'https://i.gkd.li/i/13459614',
             'https://i.gkd.li/i/16943989',
             'https://i.gkd.li/i/16920797',
+          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/16958795',
+        },
+      ],
+    },
+    {
+      key: 38,
+      name: '功能类-自动语音转文字',
+      desc: '点击语音旁边的转文字',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: ['.ui.LauncherUI', '.ui.chatting.ChattingUI'],
+          matches: '@[clickable=true] > [text="转文字"]',
+          snapshotUrls: 'https://i.gkd.li/i/18135057',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/18135054',
+        },
+      ],
+    },
+    {
+      key: 39,
+      name: '功能类-语音通话呼入10秒后自动点击接听',
+      rules: [
+        {
+          matchTime: 15000,
+          actionDelay: 10000,
+          activityIds: '.plugin.voip.ui.VideoActivity',
+          matches: 'Button[desc="接听"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/fbfea6ba-ce43-4641-a919-9c21fa49dc73',
+          snapshotUrls: 'https://i.gkd.li/i/18225086',
+        },
+      ],
+    },
+    {
+      key: 40,
+      name: '功能类-点击语音条菜单里的转文字',
+      desc: '点击 长按语音条后弹出的菜单 中的转文字',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: ['.ui.LauncherUI', '.ui.chatting.ChattingUI'],
+          matches: '@[clickable=true] >2 [text="转文字"]',
+          exampleUrls: 'https://e.gkd.li/c35fafc8-9d96-4178-9aac-f16394d2c666',
+          snapshotUrls: [
+            'https://i.gkd.li/i/19774491',
+            'https://i.gkd.li/i/19792042',
           ],
         },
       ],

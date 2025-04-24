@@ -45,31 +45,24 @@ export default defineGkdApp({
       fastQuery: true,
       actionMaximum: 1,
       resetMatch: 'app',
-      activityIds: '.AlipayLogin',
       rules: [
         {
           key: 0,
+          activityIds: '.AlipayLogin',
           matches: '@[desc="取消"] + [text*="位置权限"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/caa96cc4-9943-40d8-8cb6-8c89aa60b20f',
           snapshotUrls: 'https://i.gkd.li/i/18549931',
         },
         {
           key: 1,
-          matches: [
-            '[text^="开启定位" || text^="定位到"][childCount=0]',
-            '@[desc="关闭"][clickable=true]',
-          ],
+          activityIds: '.AlipayLogin',
+          matches:
+            '@[desc="关闭"] - LinearLayout >2 [text^="定位到" || text^="开启定位权限"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/c153cd53-16a1-4d77-bf99-9cac8821ccf8',
           snapshotUrls: [
             'https://i.gkd.li/i/18551258',
-            'https://i.gkd.li/i/19446438',
+            'https://i.gkd.li/i/19267032',
           ],
-        },
-        {
-          key: 2,
-          name: '开屏广告',
-          matches: '@View < [vid="splash_skip_tip_container"]',
-          snapshotUrls: 'https://i.gkd.li/i/19040262',
         },
       ],
     },
@@ -299,10 +292,11 @@ export default defineGkdApp({
     },
     {
       key: 17,
-      name: '功能类-关闭免密支付开关',
+      name: '全屏广告-关闭免密支付广告',
       actionMaximum: 1,
       rules: [
         {
+          key: 0,
           fastQuery: true,
           activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
           matches:
@@ -313,6 +307,17 @@ export default defineGkdApp({
             'https://i.gkd.li/i/14630825', // 关闭后
             'https://i.gkd.li/i/17107841',
           ],
+        },
+        {
+          key: 1,
+          fastQuery: true,
+          activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
+          matches: [
+            '[text^="开通"][text$="免密支付"][visibleToUser=true]',
+            '@[clickable=true] > [text="关闭"][visibleToUser=true]',
+          ],
+          exampleUrls: 'https://e.gkd.li/c8388cd5-a97f-4683-9ef1-2caa0a24de91',
+          snapshotUrls: 'https://i.gkd.li/i/19449399',
         },
       ],
     },

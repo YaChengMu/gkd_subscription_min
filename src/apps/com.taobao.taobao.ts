@@ -15,7 +15,7 @@ export default defineGkdApp({
       rules: [
         {
           matches:
-            '@[vid*="close"] > [text*="跳过" && text.length<10 && visibleToUser=true]',
+            '@[vid*="close"] > [text*="跳过"][text.length<10][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/17576743',
             'https://i.gkd.li/i/17578451',
@@ -52,7 +52,7 @@ export default defineGkdApp({
           resetMatch: 'app',
           activityIds: 'com.taobao.tao.welcome.Welcome',
           matches:
-            '@ImageView[desc="图片"][childCount=0][clickable=true] <<n [vid="poplayer_native_state_id"]',
+            '@ImageView[desc="图片"][childCount=0][clickable=true][visibleToUser=true] <<n [vid="poplayer_native_state_id"]',
           exampleUrls: 'https://e.gkd.li/5c77eaf1-b4dc-48c9-96af-131ae9644ffa',
           snapshotUrls: 'https://i.gkd.li/i/18218537',
         },
@@ -95,20 +95,6 @@ export default defineGkdApp({
           matches:
             'View[childCount=2] > @Image[text!=""][clickable=true] + View',
           snapshotUrls: 'https://i.gkd.li/i/13521702',
-        },
-      ],
-    },
-    {
-      key: 4,
-      name: '功能类-自动选中发送原图',
-      actionMaximum: 1,
-      rules: [
-        {
-          activityIds:
-            'com.taobao.taopai.business.image.album.ImageGalleryActivity',
-          matches:
-            '[text="预览"] + [text="原图"][clickable=true][width!=height]',
-          snapshotUrls: 'https://i.gkd.li/i/19126601',
         },
       ],
     },
