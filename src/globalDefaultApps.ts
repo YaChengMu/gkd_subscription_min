@@ -46,6 +46,7 @@ export const blackListAppIDs: string[] = [
   'com.getsurfboard', // Surfboard
   'moe.nb4a', // NekoBox
   'com.v2ray.ang', // v2rayNG
+  'com.v2ray.v2fly', // v2flyNG
   'com.xiaoyv.bangumi', // Bangumi for Android
   'com.funny.translation', // 译站
   'com.looker.droidify', // Droid-ify
@@ -148,6 +149,22 @@ export const blackListAppIDs: string[] = [
   'com.fankes.miui.notify', // MIUI 原生通知图标
   'com.simo.ssl.killer', // SSL Killer
   'net.afdian.afdian', // 爱发电
+  'org.thoughtcrime.securesms', // Signal 全局规则误触 https://i.gkd.li/i/19952277
+  'com.example.piliplus', // PiliPlus
+  'com.mtphotosapp', // MT Photos 全局规则误触 https://i.gkd.li/i/20023048
+  'com.predidit.kazumi', // Kazumi
+  'com.github.catfriend1.syncthingandroid', // Syncthing-Fork
+  'org.fcitx.fcitx5.android', // 小企鹅输入法
+  'org.fcitx.fcitx5.android.plugin.clipcoard_filter', // 小企鹅输入法（剪贴板过滤器插件）
+  'org.fcitx.fcitx5.android.plugin.rime', // 小企鹅输入法（中州韵插件）
+  'org.fcitx.fcitx5.android.plugin.anthy', // 小企鹅输入法（Anthy 插件）
+  'org.fdroid.fdroid', // F-Droid
+  'org.fdroid.fdroid.privileged', // F-Droid 特权扩展
+  'com.digibites.accubattery', // AccuBattery
+  'com.domosekai.cardreader', // 读卡识途
+  'com.noctuasoftware.stellarium_free', // Stellarium
+  'net.osmand', // OSMAnd
+  'com.google.android.apps.maps', // Google 地图
 
   'com.canghai.haoka',
   'com.xy.td',
@@ -156,6 +173,7 @@ export const blackListAppIDs: string[] = [
   'io.github.huskydg.magisk',
   'xzr.konabess',
   'org.lsposed.manager',
+  'org.lsposed.daemon',
   'tw.nekomimi.nekogram',
   'io.github.qauxv',
   'com.rezvorck.tiktokplugin',
@@ -274,6 +292,7 @@ export const blackListAppIDs: string[] = [
   'com.mycompany.app.soulbrowser', // soul浏览器
 
   'com.google.android.contactkeys', // Android System Key Verifier
+  'com.google.android.safetycore', // Android System SafetyCore
 ];
 
 // 在应用中单独禁用某个全局规则
@@ -345,6 +364,7 @@ export const openAdWhiteListAppIDs = new Set([
   'com.heytap.browser', // 一加浏览器
   'com.heytap.themestore', // oppo主题商店
   'com.bbk.theme', // vivo主题商店
+  'com.vivo.game', // vivo游戏中心 https://i.gkd.li/i/20097148
 ]);
 
 // 更新提示白名单

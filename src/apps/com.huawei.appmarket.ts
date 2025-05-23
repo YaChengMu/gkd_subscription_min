@@ -7,12 +7,17 @@ export default defineGkdApp({
     {
       key: 0,
       name: '开屏广告',
-      actionMaximum: 1,
+      fastQuery: true,
       matchTime: 10000,
-      quickFind: true,
+      actionMaximum: 1,
       resetMatch: 'app',
-      rules: '[id="com.huawei.appmarket:id/skip_textview"]',
-      snapshotUrls: 'https://i.gkd.li/import/16611800',
+      priorityTime: 10000,
+      rules: [
+        {
+          matches: '[vid="clock_layout"]',
+          snapshotUrls: 'https://i.gkd.li/i/15523957',
+        },
+      ],
     },
     {
       key: 1,
