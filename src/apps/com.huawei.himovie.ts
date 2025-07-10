@@ -11,34 +11,43 @@ export default defineGkdApp({
       matchTime: 10000,
       actionMaximum: 1,
       resetMatch: 'app',
+      actionMaximumKey: 0,
       priorityTime: 10000,
       rules: [
         {
+          key: 0,
           action: 'clickCenter',
-          matches: '[text*="跳过"][text.length<10][visibleToUser=true]',
+          matches: '[vid="hiad_skip_text"]',
+          snapshotUrls: 'https://i.gkd.li/i/15523945',
+        },
+        {
+          key: 1,
+          action: 'clickCenter',
+          matches:
+            '([text*="跳过"][text.length<10][visibleToUser=true]) || ([visibleToUser=true][text*="跳过"][text.length<10])',
+          exampleUrls: 'https://e.gkd.li/ec00ceef-3930-4240-92f5-56816fc90be2',
           snapshotUrls: [
-            'https://i.gkd.li/i/15523945',
-            'https://i.gkd.li/i/18296365',
+            'https://i.gkd.li/i/20745477',
+            'https://i.gkd.li/i/20773665',
           ],
         },
       ],
     },
     {
       key: 1,
-      name: '局部广告-首页横幅广告',
-      activityIds: [
-        'com.huawei.openalliance.ad.activity.FeedbackActivity',
-        'com.huawei.video.content.impl.explore.main.activity.MainActivity',
-        'com.huawei.videodetail.impl.activity.vod.VodDetailActivity',
-      ],
+      name: '全屏广告-弹窗广告',
+      desc: '点击关闭',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
       rules: [
         {
-          matches: '[id="com.huawei.himovie:id/advert_flag"]',
-          snapshotUrls: 'https://i.gkd.li/i/16191970',
-        },
-        {
-          matches: '[text="直接关闭"]',
-          snapshotUrls: 'https://i.gkd.li/i/16191978',
+          fastQuery: true,
+          activityIds:
+            'com.huawei.video.content.impl.explore.main.activity.MainActivity',
+          matches: '[vid="advert_dialog_close_image_view"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/c842b073-bbea-4a37-a45b-4d2a86cfa6c5',
+          snapshotUrls: 'https://i.gkd.li/i/20775878',
         },
       ],
     },

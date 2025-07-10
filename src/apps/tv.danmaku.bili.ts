@@ -239,11 +239,11 @@ export default defineGkdApp({
 
         //预留key
         {
-          preKeys: [0, 1, 2],
+          preKeys: [0, 1],
           key: 50,
           name: '点击[不感兴趣]/[相似内容过多]',
           matches:
-            '@[clickable=true] > [text="相似内容过多" || text="不感兴趣" || text="up主不感兴趣" || text="对该up的直播不感兴趣"]',
+            '@[clickable=true] > [text="相似内容过多" || text="不感兴趣" || text="up主不感兴趣" || text="对该up的直播不感兴趣" || text="我不想看"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13625309',
             'https://i.gkd.li/i/13742257',
@@ -252,10 +252,22 @@ export default defineGkdApp({
             'https://i.gkd.li/i/17428471',
             'https://i.gkd.li/i/18274380',
             'https://i.gkd.li/i/18292926',
+            'https://i.gkd.li/i/20710223',
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/18292929',
             'https://i.gkd.li/i/18306849',
+          ],
+        },
+        {
+          preKeys: [50],
+          key: 70,
+          matches:
+            '@FrameLayout[clickable=true] > [text="此类内容过多" || text="相似内容过多"][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/2aba6082-1047-464e-959c-82ee62e492aa',
+          snapshotUrls: [
+            'https://i.gkd.li/i/20718890',
+            'https://i.gkd.li/i/20720187',
           ],
         },
       ],
@@ -375,13 +387,21 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          matches:
+          anyMatches: [
             '@[vid="more"] -(3,5) [vid="ad_desc" || vid="live_lottie_layout"][visibleToUser=true]',
-          exampleUrls: 'https://e.gkd.li/219c40c4-debf-40d8-889a-7eb39c87126c',
+            '[id="tv.danmaku.bili.adbiz:id/more" || id="tv.danmaku.bili.adbiz:id/more_layout"][visibleToUser=true]',
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/219c40c4-debf-40d8-889a-7eb39c87126c',
+            'https://e.gkd.li/dc54e6ee-24df-49a8-874a-f381326122c3',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/17675629',
             'https://i.gkd.li/i/17675894',
             'https://i.gkd.li/i/18306858',
+            'https://i.gkd.li/i/20739380',
+            'https://i.gkd.li/i/20744764',
+            'https://i.gkd.li/i/20794380',
           ],
         },
         {
@@ -396,6 +416,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/17677147',
             'https://i.gkd.li/i/18296940',
             'https://i.gkd.li/i/18306839',
+            'https://i.gkd.li/i/20739391',
           ],
         },
         {
