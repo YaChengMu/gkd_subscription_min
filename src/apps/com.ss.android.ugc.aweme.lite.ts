@@ -35,6 +35,11 @@ export default defineGkdApp({
             '[text="朋友推荐"] +2 [id="com.ss.android.ugc.aweme.lite:id/close"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/13650523',
         },
+        {
+          activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
+          matches: 'ViewGroup[desc="完成任务，关闭，按钮"]',
+          snapshotUrls: 'https://i.gkd.li/i/22877456',
+        },
       ],
     },
     {
