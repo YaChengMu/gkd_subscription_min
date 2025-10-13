@@ -136,40 +136,6 @@ export default defineGkdApp({
       name: '全屏广告-弹窗广告',
       rules: [
         {
-          key: 0,
-          fastQuery: true,
-          activityIds: [
-            'com.tencent.mobileqq.activity.SplashActivity',
-            'com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog',
-          ],
-          matches:
-            'ImageView[id="com.tencent.mobileqq:id/close"][clickable=true]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/13206663',
-            'https://i.gkd.li/i/12642081',
-          ],
-        },
-        {
-          key: 2,
-          name: '钱包页面弹窗广告',
-          activityIds: 'cooperation.qwallet.plugin.QWalletToolFragmentActivity',
-          matches: '[desc="弹窗推荐活动"] + [desc="关闭"]',
-          exampleUrls:
-            'https://m.gkd.li/57941037/11e8f456-4c88-431a-ad58-f626bee61df9',
-          snapshotUrls: 'https://i.gkd.li/i/14822290',
-        },
-        {
-          key: 3,
-          name: '黄钻页面弹窗广告',
-          activityIds: 'com.tencent.mobileqq.activity.QQBrowserActivity',
-          matches:
-            'TextView[text.length=0&&clickable=true&&visibleToUser=true] + View > Button[text.length=0&&focusable=true]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/12914978',
-            'https://i.gkd.li/i/12914886',
-          ],
-        },
-        {
           key: 4,
           fastQuery: true,
           activityIds:
@@ -248,67 +214,30 @@ export default defineGkdApp({
     {
       key: 7,
       name: '功能类-登录授权',
-      desc: '自动点击登录。包括 PC 登录确认、QQ 互联登录确认。',
-      fastQuery: true,
-      actionMaximum: 1,
+      desc: '自动点击登录',
       rules: [
         {
           key: 1,
-          name: '点击登录',
+          fastQuery: true,
+          matchRoot: true,
+          actionMaximum: 3,
+          actionCd: 500,
           activityIds: [
             'com.tencent.biz.qrcode.activity.QRLoginAuthActivity',
-            'com.tencent.mobileqq.activity.DevlockQuickLoginActivity',
-            'com.tencent.mobileqq.activity.DevLockQuickVerifyActivity',
+            'com.tencent.open.agent.PublicFragmentActivityForOpenSDK',
+            'com.tencent.open.agent.QuickLoginAuthorityActivity',
           ],
           matches: [
-            '[text="登录确认" || text="一键验证"][visibleToUser=true]',
-            'Button[text="登录" || text="确认" || text^="允许登录"][clickable=true][visibleToUser=true]',
+            '[text="登录确认" || text$="申请使用"][visibleToUser=true]',
+            'Button[text="登录" || text="同意" || text="确认"][clickable=true][visibleToUser=true]',
           ],
           snapshotUrls: [
-            'https://i.gkd.li/i/13623520',
-            'https://i.gkd.li/i/12789287',
-            'https://i.gkd.li/i/13063027',
-            'https://i.gkd.li/i/13166314',
+            'https://i.gkd.li/i/20737721',
             'https://i.gkd.li/i/20737651',
+            'https://i.gkd.li/i/20737675',
+            'https://i.gkd.li/i/20737673',
+            'https://i.gkd.li/i/22631619',
           ],
-        },
-        {
-          key: 2,
-          name: '点击同意',
-          activityIds:
-            'com.tencent.open.agent.PublicFragmentActivityForOpenSDK',
-          matches: 'Button[text="同意"][clickable=true][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/14752498',
-        },
-        {
-          preKeys: [2],
-          key: 3,
-          name: '点击确认',
-          activityIds:
-            'com.tencent.open.agent.PublicFragmentActivityForOpenSDK',
-          matches: 'Button[text="确认"]',
-          snapshotUrls: 'https://i.gkd.li/i/14752519',
-        },
-      ],
-    },
-    {
-      key: 9,
-      name: '局部广告-浮窗广告',
-      activityIds: 'com.tencent.mobileqq.activity.QQBrowserActivity',
-      rules: [
-        {
-          key: 0,
-          matches:
-            'TextView[text="QQ等级规则"] + View > TextView[id=null&&text.length=0]',
-          snapshotUrls: 'https://i.gkd.li/i/12914734',
-        },
-        {
-          key: 1,
-          name: '右侧悬浮广告',
-          activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
-          matches:
-            'FrameLayout[desc="发表帖子"] - LinearLayout[id!=null] >3 ImageView[id!=null][clickable=false] - View[id!=null][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/12708844',
         },
       ],
     },
@@ -485,29 +414,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 21,
-      name: '全屏广告-首页弹窗广告',
-      activityIds: 'com.tencent.mobileqq.activity.QPublicTransFragmentActivity',
-      rules: [
-        {
-          key: 0,
-          name: '元梦之星弹窗广告',
-          matches:
-            'ViewGroup[childCount=2] > ViewGroup[childCount=3][index=1] > ViewGroup[clickable=true][visibleToUser=true][index=1][childCount=0]',
-          snapshotUrls: 'https://i.gkd.li/i/13797876',
-        },
-        {
-          key: 1,
-          name: '现金瓜分弹窗',
-          matches:
-            'RelativeLayout >5 ViewGroup[childCount=6] > ViewGroup[index=2][clickable=true]',
-          exampleUrls:
-            'https://m.gkd.li/57941037/a9fe74db-07b4-47e6-beed-80983f61d2e3',
-          snapshotUrls: 'https://i.gkd.li/i/14207286',
-        },
-      ],
-    },
-    {
       key: 22,
       name: '分段广告-天气页卡片广告',
       desc: '点击关闭-点击关闭此条广告',
@@ -544,26 +450,6 @@ export default defineGkdApp({
           matches:
             'View < @ViewGroup[clickable=true][visibleToUser=true] - ViewGroup > ViewGroup[childCount=6] > ViewGroup[childCount=2]',
           snapshotUrls: 'https://i.gkd.li/i/14549504',
-        },
-      ],
-    },
-    {
-      key: 23,
-      name: '全屏广告-新春回馈礼弹窗',
-      desc: '点击关闭',
-      rules: [
-        {
-          fastQuery: true,
-          action: 'clickCenter',
-          activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
-          matches:
-            'RelativeLayout[childCount=4] > View + RelativeLayout[childCount=2] + ImageView + ImageView',
-          exampleUrls:
-            'https://m.gkd.li/57941037/b09d6db6-0e67-421a-aa7d-35453bf9a0bc',
-          snapshotUrls: [
-            'https://i.gkd.li/i/14134934',
-            'https://i.gkd.li/i/14151820', // 误触快照
-          ],
         },
       ],
     },
