@@ -71,5 +71,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 5,
+      name: '全屏广告-视频广告',
+      rules: [
+        {
+          activityIds:
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+          matches: 'TextView[text="已成功领取奖励"]',
+          snapshotUrls: 'https://i.gkd.li/i/22895824',
+        },
+      ],
+    },
   ],
 });

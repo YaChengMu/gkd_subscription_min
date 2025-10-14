@@ -35,11 +35,6 @@ export default defineGkdApp({
             '[text="朋友推荐"] +2 [id="com.ss.android.ugc.aweme.lite:id/close"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/13650523',
         },
-        {
-          activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
-          matches: 'ViewGroup[desc="完成任务，关闭，按钮"]',
-          snapshotUrls: 'https://i.gkd.li/i/22877456',
-        },
       ],
     },
     {
@@ -71,6 +66,24 @@ export default defineGkdApp({
             'https://i.gkd.li/i/13946092', //未勾选原图
             'https://i.gkd.li/i/13946033', //已勾选原图
           ],
+        },
+      ],
+    },
+    {
+      key: 11,
+      name: '全屏广告-打卡领华为手机',
+      rules: [
+        {
+          activityIds:
+            'com.ss.android.ugc.aweme.bullet.ui.BulletContainerActivity',
+          matches:
+            '@ViewGroup <4 ViewGroup < ViewGroup < ViewGroup <2 ViewGroup < ViewGroup <2 LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="a+e"]',
+          snapshotUrls: 'https://i.gkd.li/i/22895746',
+        },
+        {
+          activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
+          matches: 'ViewGroup[desc="完成任务，关闭，按钮"]',
+          snapshotUrls: 'https://i.gkd.li/i/22877456',
         },
       ],
     },
