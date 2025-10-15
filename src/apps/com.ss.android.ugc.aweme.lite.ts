@@ -76,8 +76,7 @@ export default defineGkdApp({
         {
           activityIds:
             'com.ss.android.ugc.aweme.bullet.ui.BulletContainerActivity',
-          matches:
-            '@ViewGroup <4 ViewGroup < ViewGroup < ViewGroup <2 ViewGroup < ViewGroup <2 LinearLayout < HorizontalScrollView < ScrollView < FrameLayout < [vid="a+e"]',
+          matches: 'ViewGroup[desc^="已看"&&desc!="已看完"] +1 ViewGroup',
           snapshotUrls: 'https://i.gkd.li/i/22895746',
         },
         {
