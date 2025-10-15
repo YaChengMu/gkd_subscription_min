@@ -20,6 +20,7 @@ export default defineGkdApp({
           matches: [
             '@ImageView < FrameLayout <2 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
             '@ImageView < FrameLayout <3 FrameLayout < FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+            '@ImageView < FrameLayout <5 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22875694',
