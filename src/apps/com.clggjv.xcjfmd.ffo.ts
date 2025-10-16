@@ -28,6 +28,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22927729',
           ],
         },
+        {
+          key: 2,
+          activityIds: 'com.sigmob.sdk.base.common.PortraitAdActivity',
+          matches: 'TextView[id="close_btn"]',
+          snapshotUrls: 'https://i.gkd.li/i/22939952',
+        },
       ],
     },
     {
