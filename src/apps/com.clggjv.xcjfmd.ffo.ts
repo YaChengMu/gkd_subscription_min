@@ -17,6 +17,7 @@ export default defineGkdApp({
         {
           key: 1,
           activityIds: 'com.clggjv.xcjfmd.ffo.MainActivity',
+          action: 'clickCenter',
           matches: [
             '@ImageView < FrameLayout <2 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
             '@ImageView < FrameLayout <3 FrameLayout < FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
