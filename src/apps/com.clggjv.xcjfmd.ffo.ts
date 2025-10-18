@@ -19,12 +19,14 @@ export default defineGkdApp({
           activityIds: 'com.clggjv.xcjfmd.ffo.MainActivity',
           matches: [
             '@ImageView < FrameLayout <2 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+            '@ImageView < FrameLayout <2 FrameLayout < FrameLayout < FrameLayout < [id="android:id/content"]',
             '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
             '@ImageView < FrameLayout <5 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
             '@ImageView < FrameLayout <3 FrameLayout < FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/22875694',
+            'https://i.gkd.li/i/22981753',
             'https://i.gkd.li/i/22962861',
             'https://i.gkd.li/i/22927729',
             'https://i.gkd.li/i/22920195',

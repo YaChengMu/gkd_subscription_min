@@ -5,6 +5,21 @@ export default defineGkdApp({
   name: '华为主题',
   groups: [
     {
+      key: 0,
+      name: '开屏广告',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
+      priorityTime: 10000,
+      rules: [
+        {
+          action: 'clickCenter',
+          matches: '[id="com.huawei.hms.ads.uiengine:id/hiad_skip_text"]',
+          snapshotUrls: ['https://i.gkd.li/i/22982091'],
+        },
+      ],
+    },
+    {
       key: 1,
       name: '局部广告-悬浮广告',
       fastQuery: true,
