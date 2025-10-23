@@ -399,6 +399,14 @@ export default defineGkdApp({
             'https://m.gkd.li/57941037/2d714755-efe9-4c63-8187-7f9b7a5a199c',
           snapshotUrls: 'https://i.gkd.li/i/15144844',
         },
+        {
+          key: 2,
+          name: '余额宝广告',
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          matches: '@TextView[width<50 && height<50] -n [text="去看看"]',
+          snapshotUrls: 'https://i.gkd.li/i/23054580',
+        },
       ],
     },
     {
@@ -523,6 +531,23 @@ export default defineGkdApp({
             'https://i.gkd.li/i/22951439',
             'https://i.gkd.li/i/22960401',
           ],
+        },
+      ],
+    },
+    {
+      key: 29,
+      name: '功能类-访问被拒绝时点击[返回]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          matches: [
+            '[text="访问被拒绝"][visibleToUser=true]',
+            '[id="com.alipay.mobile.antui:id/back_button"][visibleToUser=true]',
+          ],
+          exampleUrls: 'https://e.gkd.li/c1ddb8bf-084b-4109-b777-96c02858d266',
+          snapshotUrls: 'https://i.gkd.li/i/23046994',
         },
       ],
     },
