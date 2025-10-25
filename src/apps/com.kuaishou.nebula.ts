@@ -78,8 +78,11 @@ export default defineGkdApp({
         {
           activityIds:
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-          matches: 'TextView[text="已成功领取奖励"]',
-          snapshotUrls: 'https://i.gkd.li/i/22895824',
+          matches: ['[text="已成功领取奖励"]', '[text="继续解锁"]'],
+          snapshotUrls: [
+            'https://i.gkd.li/i/22895824',
+            'https://i.gkd.li/i/23139582',
+          ],
         },
       ],
     },
