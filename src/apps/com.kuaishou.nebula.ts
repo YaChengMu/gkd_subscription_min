@@ -77,12 +77,14 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
+          action: 'clickNode',
           activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
           matches: '[text="去观看"]',
           snapshotUrls: 'https://i.gkd.li/i/23139582',
         },
         {
           fastQuery: true,
+          action: 'clickNode',
           activityIds:
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
           matches: '[text="已成功领取奖励"] +1 ImageView',
@@ -90,6 +92,7 @@ export default defineGkdApp({
         },
         {
           fastQuery: true,
+          action: 'clickNode',
           activityIds:
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
           matches: '[text="继续解锁"] < ViewGroup',
