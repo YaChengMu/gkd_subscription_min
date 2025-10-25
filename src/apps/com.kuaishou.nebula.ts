@@ -77,18 +77,23 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          matchDelay: 7000,
-          actionCd: 100,
+          activityIds: 'com.yxcorp.gifshow.webview.KwaiYodaWebViewActivity',
+          matches: '[text="去观看"]',
+          snapshotUrls: 'https://i.gkd.li/i/23139582',
+        },
+        {
+          fastQuery: true,
           activityIds:
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-          matches: [
-            '[text="已成功领取奖励"] +1 ImageView',
-            '[text="继续解锁"] < ViewGroup',
-          ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/22895824',
-            'https://i.gkd.li/i/23139582',
-          ],
+          matches: '[text="已成功领取奖励"] +1 ImageView',
+          snapshotUrls: 'https://i.gkd.li/i/22895824',
+        },
+        {
+          fastQuery: true,
+          activityIds:
+            'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
+          matches: '[text="继续解锁"] < ViewGroup',
+          snapshotUrls: 'https://i.gkd.li/i/23139582',
         },
       ],
     },
