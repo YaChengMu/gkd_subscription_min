@@ -76,9 +76,15 @@ export default defineGkdApp({
       name: '全屏广告-视频广告',
       rules: [
         {
+          fastQuery: true,
+          matchDelay: 7000,
+          actionCd: 100,
           activityIds:
             'com.yxcorp.gifshow.ad.neo.video.award.AwardVideoPlayActivity',
-          matches: ['[text="已成功领取奖励"]', '[text="继续解锁"]'],
+          matches: [
+            '[text="已成功领取奖励"] +1 ImageView',
+            '[text="继续解锁"] < ViewGroup',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/22895824',
             'https://i.gkd.li/i/23139582',
