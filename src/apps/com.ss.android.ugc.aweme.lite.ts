@@ -81,6 +81,7 @@ export default defineGkdApp({
           snapshotUrls: 'https://i.gkd.li/i/22895746',
         },
         {
+          forcedTime: 30000,
           activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
           matches: 'ViewGroup[desc="完成任务，关闭，按钮"]',
           snapshotUrls: 'https://i.gkd.li/i/22877456',
