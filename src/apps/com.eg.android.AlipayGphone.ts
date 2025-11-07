@@ -128,12 +128,16 @@ export default defineGkdApp({
           activityIds: [
             'com.alipay.mobile.about.ui.AboutAlipayActivity',
             '.AlipayLogin',
+            'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaTransActivity$Main',
           ],
-          matches:
-            '[text="版本更新"||text^="Version"] - [id="com.alipay.mobile.antui:id/btn_close"]',
+          matches: [
+            '[text="版本更新" || text^="Version"]',
+            '[id="com.alipay.mobile.antui:id/btn_close" || id="com.alipay.mobile.accountauthbiz:id/close_dialog_button"]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/13490805',
             'https://i.gkd.li/i/13580594',
+            'https://i.gkd.li/i/23236828',
           ],
         },
         {
@@ -551,6 +555,22 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23046994',
             'https://i.gkd.li/i/23096790',
           ],
+        },
+      ],
+    },
+    {
+      key: 30,
+      name: '其他-滑动验证时返回',
+      rules: [
+        {
+          fastQuery: true,
+          action: 'back',
+          activityIds:
+            'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaTransActivity$Main',
+          matches:
+            '[childCount=0][text="为保障您的正常访问请进行验证"] <<n [id="com.alipay.multiplatform.phone.xriver_integration:id/h5_trans_progress_rl"]',
+          exampleUrls: 'https://e.gkd.li/f2571f51-3a8c-4e47-a7c5-3363375c1b78',
+          snapshotUrls: 'https://i.gkd.li/i/23158302',
         },
       ],
     },

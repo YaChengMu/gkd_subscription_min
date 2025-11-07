@@ -31,6 +31,7 @@ export default defineGkdApp({
             '.ui.activity.HomeActivity',
             '.ui.activity.MainFrameActivity',
           ],
+          excludeMatches: '[text="我的订单"][visibleToUser=true]',
           matches:
             '[text="开心收下" || text="去抢购" || text="立即抽免单" || text="去刮奖" || text="立即领取" || text="去领大额金币" || text="送你大额现金" || text*="红包助手" || text="刮刮卡发来的消息通知" || text="立即充值"][visibleToUser=true]',
           snapshotUrls: [
@@ -48,6 +49,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/17625608',
             'https://i.gkd.li/i/18481318',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23352586',
         },
         {
           key: 4,
@@ -72,9 +74,6 @@ export default defineGkdApp({
         },
         {
           key: 7,
-          matchTime: 10000,
-          actionMaximum: 1,
-          resetMatch: 'app',
           activityIds: [
             '.ui.activity.HomeActivity',
             '.ui.activity.MainFrameActivity',
@@ -110,6 +109,12 @@ export default defineGkdApp({
             '@ImageView[index=0][vid="pdd"][childCount=0][visibleToUser=true][width<120&&height<120] < RelativeLayout[childCount=2] < FrameLayout[childCount=1] < FrameLayout[childCount=1] < [parent=null]',
           exampleUrls: 'https://e.gkd.li/64f35ab7-37e1-4060-aa91-468116a42cae',
           snapshotUrls: 'https://i.gkd.li/i/18375615',
+        },
+        {
+          key: 10,
+          activityIds: '.activity.NewPageActivity',
+          matches: '[desc="关闭按钮"]',
+          snapshotUrls: 'https://i.gkd.li/i/23383792',
         },
       ],
     },
@@ -232,17 +237,17 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          name: '邀请好友弹窗',
           activityIds: [
             'com.xunmeng.pinduoduo.activity.NewPageMaskActivity',
             'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
           ],
-          matches: 'Button[text="关闭弹窗"][clickable=true]',
+          matches: 'Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/13927594',
             'https://i.gkd.li/i/14434154',
             'https://i.gkd.li/i/14456017',
             'https://i.gkd.li/i/13308175',
+            'https://i.gkd.li/i/23256823',
           ],
         },
       ],

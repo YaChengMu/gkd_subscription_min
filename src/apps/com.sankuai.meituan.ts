@@ -14,16 +14,16 @@ export default defineGkdApp({
       rules: [
         {
           activityIds: [
-            'com.meituan.android.upgrade.ui.f',
             'com.meituan.android.upgrade.UpgradeDialogActivity',
             'com.meituan.android.pt.homepage.activity.MainActivity',
           ],
-          matches: 'ImageView[vid="update_logo"] + Button[vid="btn_close"]',
+          matches: [
+            '[vid="update_logo" || text="立即升级"]',
+            '[vid="btn_close" || text="暂不升级"]',
+          ],
           snapshotUrls: [
-            'https://i.gkd.li/i/12614559',
-            'https://i.gkd.li/i/12673132',
-            'https://i.gkd.li/i/13292635',
             'https://i.gkd.li/i/18375410',
+            'https://i.gkd.li/i/23165455',
           ],
         },
       ],
@@ -158,6 +158,21 @@ export default defineGkdApp({
           matches: '@ImageView[visibleToUser=true] - [text^="收藏店铺领"]',
           exampleUrls: 'https://e.gkd.li/20bbae61-859b-478d-9032-8213c79dec39',
           snapshotUrls: 'https://i.gkd.li/i/16632959',
+        },
+        {
+          key: 3,
+          fastQuery: true,
+          activityIds: 'com.sankuai.waimai.store.drug.home.NewDrugHomeActivity',
+          matches:
+            '@ImageView[width<80 && height<80][clickable=true] <n * < [vid="novel_float_view_new"]',
+          snapshotUrls: 'https://i.gkd.li/i/23165473',
+        },
+        {
+          key: 4,
+          fastQuery: true,
+          activityIds: 'com.sankuai.waimai.store.drug.home.NewDrugHomeActivity',
+          matches: '[vid="live_float_view_container"] > [vid="close_btn"]',
+          snapshotUrls: 'https://i.gkd.li/i/23165473',
         },
       ],
     },
