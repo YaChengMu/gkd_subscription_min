@@ -71,6 +71,19 @@ export default defineGkdApp({
     },
     {
       key: 11,
+      name: '全屏广告',
+      rules: [
+        {
+          activityIds:
+            'com.ss.android.ugc.aweme.live.LiveDummyHybridTransparentActivity',
+          matches:
+            '@Image[clickable=true][text!=null][width<100 && height<100] +4 View >2 [text="同意协议并查看额度"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/23558501',
+        },
+      ],
+    },
+    {
+      key: 12,
       name: '全屏广告-打卡领华为手机',
       rules: [
         {

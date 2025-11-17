@@ -16,24 +16,48 @@ export default defineGkdApp({
         },
         {
           key: 1,
-          activityIds: 'com.clggjv.xcjfmd.ffo.MainActivity',
-          matches: [
-            '@ImageView < FrameLayout <2 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
-            '@ImageView < FrameLayout <2 FrameLayout < FrameLayout < FrameLayout < [id="android:id/content"]',
-            '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
-            '@ImageView < FrameLayout <5 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
-            '@ImageView < FrameLayout <3 FrameLayout < FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
-          ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/22875694',
-            'https://i.gkd.li/i/22981753',
-            'https://i.gkd.li/i/22962861',
-            'https://i.gkd.li/i/22927729',
-            'https://i.gkd.li/i/22920195',
-          ],
+          activityIds:'',
+          matches: '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/22920195',
         },
         {
           key: 2,
+          activityIds: [
+            'com.bytedance.sdk.openadsdk.core.component.reward.activity.TTFullScreenVideoActivity',
+            'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
+            'com.sigmob.sdk.base.common.PortraitTransparentAdActivity',
+          ],
+          matches:[
+            'WebView[text="穿山甲"] >n View[id="59dbac"]',
+            'ViewGroup[desc="virtualNode"] >n ViewGroup[desc="59dbac"]',
+            '[text="跳过"]',
+            'View[id="ad_area"] >n [id="close_btn"]'
+          ],
+          snapshotUrls:[
+            'https://i.gkd.li/i/22939952',
+            'https://i.gkd.li/i/22927729',
+          ]
+        },
+        // {
+        //   key: 1,
+        //   activityIds: 'com.clggjv.xcjfmd.ffo.MainActivity',
+        //   matches: [
+        //     '@ImageView < FrameLayout <2 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+        //     '@ImageView < FrameLayout <2 FrameLayout < FrameLayout < FrameLayout < [id="android:id/content"]',
+        //     '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+        //     '@ImageView < FrameLayout <5 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+        //     '@ImageView < FrameLayout <3 FrameLayout < FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+        //   ],
+        //   snapshotUrls: [
+        //     'https://i.gkd.li/i/22875694',
+        //     'https://i.gkd.li/i/22981753',
+        //     'https://i.gkd.li/i/22962861',
+        //     'https://i.gkd.li/i/22927729',
+        //     'https://i.gkd.li/i/22920195',
+        //   ],
+        // },
+        {
+          key: 3,
           activityIds: 'com.sigmob.sdk.base.common.PortraitAdActivity',
           matches: 'TextView[id="close_btn"]',
           snapshotUrls: 'https://i.gkd.li/i/22939952',
