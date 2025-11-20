@@ -16,8 +16,9 @@ export default defineGkdApp({
         },
         {
           key: 1,
-          activityIds:'',
-          matches: '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
+          activityIds: '',
+          matches:
+            '@ImageView < FrameLayout <3 FrameLayout <2 FrameLayout < FrameLayout < [id="android:id/content"]',
           snapshotUrls: 'https://i.gkd.li/i/22920195',
         },
         {
@@ -27,16 +28,16 @@ export default defineGkdApp({
             'com.bytedance.sdk.openadsdk.stub.activity.Stub_Standard_Portrait_Activity',
             'com.sigmob.sdk.base.common.PortraitTransparentAdActivity',
           ],
-          matches:[
+          matches: [
             'WebView[text="穿山甲"] >n View[id="59dbac"]',
             'ViewGroup[desc="virtualNode"] >n ViewGroup[desc="59dbac"]',
             '[text="跳过"]',
-            'View[id="ad_area"] >n [id="close_btn"]'
+            'View[id="ad_area"] >n [id="close_btn"]',
           ],
-          snapshotUrls:[
+          snapshotUrls: [
             'https://i.gkd.li/i/22939952',
             'https://i.gkd.li/i/22927729',
-          ]
+          ],
         },
         // {
         //   key: 1,
