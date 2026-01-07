@@ -74,30 +74,20 @@ export default defineGkdApp({
       name: '全屏广告',
       rules: [
         {
+          key: 0,
           activityIds:
             'com.ss.android.ugc.aweme.live.LiveDummyHybridTransparentActivity',
           matches:
             '@Image[clickable=true][text!=null][width<100 && height<100] +4 View >2 [text="同意协议并查看额度"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/23558501',
         },
-      ],
-    },
-    {
-      key: 12,
-      name: '全屏广告-打卡领华为手机',
-      rules: [
         {
-          activityIds:
-            'com.ss.android.ugc.aweme.bullet.ui.BulletContainerActivity',
+          key: 1,
+          fastQuery: true,
+          activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
           matches:
-            'ViewGroup[desc!="已看完"&&(desc^="已看"||desc*="每间隔")&&desc!="已看8个"] +1 ViewGroup',
-          snapshotUrls: 'https://i.gkd.li/i/22895746',
-        },
-        {
-          forcedTime: 30000,
-          activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
-          matches: 'ViewGroup[desc="完成任务，关闭，按钮"]',
-          snapshotUrls: 'https://i.gkd.li/i/22877456',
+            '@UIView[text="不感兴趣"][clickable=true] +2 FlattenUIText[text="不感兴趣"]',
+          snapshotUrls: 'https://i.gkd.li/i/24123937',
         },
       ],
     },

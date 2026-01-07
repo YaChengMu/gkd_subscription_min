@@ -18,7 +18,7 @@ export default defineGkdApp({
           fastQuery: true,
           excludeActivityIds: 'com.jd.lib.search.view.Activity.SearchActivity',
           matches:
-            '[text*="跳过"][text.length<10][width<400 && height<200][visibleToUser=true]',
+            '[text*="跳过"][text.length<10][width<500 && height<200][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/16323111',
           excludeSnapshotUrls: 'https://i.gkd.li/i/16323115',
         },
@@ -26,7 +26,7 @@ export default defineGkdApp({
           key: 1,
           excludeActivityIds: 'com.jd.lib.search.view.Activity.SearchActivity',
           matches:
-            '[text*="跳过"][text.length<10][width<400 && height<200][visibleToUser=true]',
+            '[text*="跳过"][text.length<10][width<500 && height<200][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/17602356', // "跳过" 节点不支持fastQuery
           excludeSnapshotUrls: 'https://i.gkd.li/i/16323115',
         },
@@ -149,6 +149,7 @@ export default defineGkdApp({
           excludeMatches: [
             'ImageView[desc="关闭页面"] - [text="优惠券"]',
             'TextView[text="退换/售后"][id=null]',
+            '[text="立即购买"][visibleToUser=true]',
           ],
           matches:
             '[desc="关闭页面" || desc="关闭按钮"][clickable=true][visibleToUser=true]',
@@ -159,6 +160,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/15416926',
             'https://i.gkd.li/i/15862131',
             'https://i.gkd.li/i/16818580', // 增加excludeMatches: 'TextView[text="退换/售后"]', 避免在刚刚打开该快照页面时误触（此时activityId并未改变）
+            'https://i.gkd.li/i/24170046', // 增加excludeMatches: '[text="立即购买"][visibleToUser=true]', 避免在该快照误触
           ],
         },
         {
@@ -282,6 +284,22 @@ export default defineGkdApp({
           matches: '[text="开启刷脸支付"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/bad5489e-0ec6-4039-8e4e-52b4b444f019',
           snapshotUrls: 'https://i.gkd.li/i/20709175',
+        },
+      ],
+    },
+    {
+      key: 16,
+      name: '功能类-展开全部订单信息',
+      desc: '订单已完成-点击全部订单信息',
+      rules: [
+        {
+          actionMaximum: 1,
+          resetMatch: 'match',
+          fastQuery: true,
+          // activityIds: [],
+          matches: '[text="全部订单信息"][clickable=true][visibleToUser=true]',
+          exampleUrls: 'https://e.gkd.li/e1a3b6f7-b6cb-4379-90b5-cb4b927dacc4',
+          snapshotUrls: 'https://i.gkd.li/i/24372039',
         },
       ],
     },

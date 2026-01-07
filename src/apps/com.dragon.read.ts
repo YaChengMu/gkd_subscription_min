@@ -16,7 +16,7 @@ export default defineGkdApp({
           fastQuery: true,
           actionDelay: 1000, // 过早点击可能导致应用闪退
           matches:
-            '@[desc="跳过广告"][clickable=true] > [text*="跳过"][text.length<10][width<400 && height<200][visibleToUser=true]',
+            '@[desc="跳过广告"][clickable=true] > [text*="跳过"][text.length<10][width<500 && height<200][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/e36d701f-bcee-48d5-99da-1c5301101d9e',
           snapshotUrls: 'https://i.gkd.li/i/23282793',
         },
@@ -35,7 +35,7 @@ export default defineGkdApp({
           key: 1,
           fastQuery: true,
           matches:
-            '@ImageView[childCount=0][clickable=true][visibleToUser=true] - LinearLayout >(2,3) [text="广告" || text="立享优惠" || text*="查看" || text^="立即"][text.length<5]',
+            '@ImageView[childCount=0][clickable=true][visibleToUser=true] - LinearLayout >(2,3) [text="广告" || text="立享优惠" || text*="查看" || text^="立即" || text^="点击参与"][text.length<5]',
           snapshotUrls: [
             'https://i.gkd.li/i/12908734',
             'https://i.gkd.li/i/14540281',
@@ -69,18 +69,6 @@ export default defineGkdApp({
             'https://i.gkd.li/i/14548657',
             'https://i.gkd.li/i/14622531',
             'https://i.gkd.li/i/14810480',
-          ],
-        },
-        {
-          key: 5,
-          fastQuery: true,
-          activityIds: '.reader.ui.ReaderActivity',
-          matches:
-            '@[clickable=true] >(1,2) [text="继续阅读下一页"][visibleToUser=true]',
-          exampleUrls: 'https://e.gkd.li/b571222b-4ac1-4ba8-9a2c-4439c531d6e4',
-          snapshotUrls: [
-            'https://i.gkd.li/i/13674556',
-            'https://i.gkd.li/i/13843155',
           ],
         },
       ],
@@ -228,32 +216,63 @@ export default defineGkdApp({
       activityIds: 'com.dragon.read.reader.ui.ReaderActivity',
       rules: [
         {
+          /*
+           ** 目前新广告中该规则基本已无法匹配，优化匹配规则
+           ** 同时现阶段该规则与“局部广告-阅读页面广告”中的“key=5"规则相冲突，已在其中做删除
+           ** actionCd: 因同类型广告出现“当前可点击”与“3秒后可点击”两种状态，而在“3秒后可点击”状态下
+           **           按钮未被隐藏会被规则持续匹配，因此选择此属性降低“3秒后可点击”状态下的点击频率
+           */
           key: 0,
           name: '点击[反馈]按钮',
-          matches: '[text="反馈"][visibleToUser=true][name$="UIText"]',
+          actionCd: 3500,
+          actionDelay: 200,
+          matches:
+            '[text="反馈" || desc="反馈"][visibleToUser=true][name$="UIText" || name$="ViewGroup"]',
+          exampleUrls: [
+            'https://e.gkd.li/3837a70f-30e3-42d1-9354-696dcda598b7',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/13520160',
             'https://i.gkd.li/i/13816453',
+            'https://i.gkd.li/i/24128141',
           ],
         },
         {
-          key: 3,
+          key: 1,
           matches:
             '@ImageView[clickable=true][childCount=0][visibleToUser=true] < FrameLayout - LinearLayout >2 [text="广告"]',
           exampleUrls: 'https://e.gkd.li/c172db67-a489-488b-a5f5-35aa9657c444',
           snapshotUrls: 'https://i.gkd.li/i/18724040',
         },
+        //key: 2广告多发于夜间模式
         {
-          preKeys: [0, 3],
-          key: 1,
+          key: 2,
+          name: '底部横幅广告-点击[x]',
+          matches:
+            'ViewGroup[childCount>4] > @ViewGroup[childCount=1][clickable=true][focusable=true][visibleToUser=true][width<50 && height<50] +n [desc!=null]',
+          exampleUrls: 'https://e.gkd.li/ab2021a9-8e5c-4d2a-8df1-8c6aff4e38f6',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24189866',
+            'https://i.gkd.li/i/24189900',
+            'https://i.gkd.li/i/24189911',
+            'https://i.gkd.li/i/24189915',
+            'https://i.gkd.li/i/24205796',
+            'https://i.gkd.li/i/24205810',
+          ],
+        },
+        {
+          preKeys: [0, 1, 2],
           name: '点击[不感兴趣]/[关闭此广告]',
           matches: '[text="不感兴趣" || text="关闭此广告"]',
+          exampleUrls: 'https://e.gkd.li/e04bcb90-ad61-43d9-97e9-b4f6e3873320',
           snapshotUrls: [
             'https://i.gkd.li/i/13520219',
             'https://i.gkd.li/i/13674550',
             'https://i.gkd.li/i/13816454',
             'https://i.gkd.li/i/14913207',
             'https://i.gkd.li/i/18724041',
+            'https://i.gkd.li/i/24128392',
+            'https://i.gkd.li/i/24189605',
           ],
         },
       ],
