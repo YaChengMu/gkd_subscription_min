@@ -186,8 +186,14 @@ export default defineGkdApp({
         {
           fastQuery: true,
           activityIds: 'com.tencent.richframework.gallery.QQGalleryActivity',
-          matches: '[text^="查看原图"]',
-          snapshotUrls: 'https://i.gkd.li/i/14757735',
+          anyMatches: [
+            '[text^="查看原图"][clickable=true][visibleToUser=true]',
+            '@[clickable=true] > [text^="查看原图"][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/14757735',
+            'https://i.gkd.li/i/24489364',
+          ],
         },
       ],
     },
@@ -309,32 +315,51 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.activity.SplashActivity',
           matches:
-            'ImageView[childCount=0] < RelativeLayout < FrameLayout +2 LinearLayout >3 @ViewGroup[clickable=true][childCount=5][!(getChild(4).text^="已")] + TextView[text="拼手气红包"]',
+            'ImageView[childCount=0] <<(1,2) RelativeLayout < FrameLayout +2 LinearLayout >3 ViewGroup > TextView[index=parent.childCount.minus(1)][!(text^="已")] <n @ViewGroup[clickable=true] + TextView[text="拼手气红包"]',
           exampleUrls:
             'https://m.gkd.li/57941037/7a933a7f-dc5a-4eb7-8a6f-fe3cc4e8fb5e',
           snapshotUrls: [
             'https://i.gkd.li/i/14221309',
             'https://i.gkd.li/i/18574530',
+            'https://i.gkd.li/i/18725007',
+            'https://i.gkd.li/i/24551887',
           ],
         },
         {
           preKeys: [0],
           key: 1,
-          activityIds: 'cooperation.qwallet.plugin.QWalletToolFragmentActivity',
-          matches: '[desc="拆红包"][visibleToUser=true]',
+          fastQuery: true,
+          activityIds: [
+            'cooperation.qwallet.plugin.QWalletToolFragmentActivity',
+            'com.tencent.biz.TenpayActivity',
+          ],
+          anyMatches: [
+            '@[desc="关闭"][clickable=true] < RelativeLayout -2 ViewGroup >4 [text^="来晚一步"][visibleToUser=true]',
+            '[desc="拆红包"][visibleToUser=true]',
+          ],
           exampleUrls:
             'https://m.gkd.li/57941037/61006833-9806-45b2-b3a1-55b9b248958f',
-          snapshotUrls: 'https://i.gkd.li/i/14221242',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14221242',
+            'https://i.gkd.li/i/18724880',
+            'https://i.gkd.li/i/24551748',
+          ],
         },
         {
           preKeys: [1],
           key: 2,
           fastQuery: true,
-          activityIds: 'cooperation.qwallet.plugin.QWalletToolFragmentActivity',
-          matches: '@[desc="返回"] + [text="红包记录"]',
+          activityIds: [
+            'cooperation.qwallet.plugin.QWalletToolFragmentActivity',
+            'com.tencent.biz.TenpayActivity',
+          ],
+          matches: '@[desc="返回"] +n [text="红包记录"]',
           exampleUrls:
             'https://m.gkd.li/57941037/b90e6a69-ac57-41a5-bd2c-c500b92a58ba',
-          snapshotUrls: 'https://i.gkd.li/i/14221279',
+          snapshotUrls: [
+            'https://i.gkd.li/i/14221279',
+            'https://i.gkd.li/i/24551886',
+          ],
         },
       ],
     },
@@ -396,6 +421,22 @@ export default defineGkdApp({
             'com.tencent.biz.qrcode.activity.UnlockPCQuickVerifyActivity',
           matches: '[text="解锁"]',
           snapshotUrls: 'https://i.gkd.li/i/15360265',
+        },
+      ],
+    },
+    {
+      key: 34,
+      name: '功能类-关闭体验模式提醒',
+      desc: '点击[我知道了]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.QPublicFragmentActivity',
+          matches: [
+            '[text^="当前处于"][text*="体验模式"][visibleToUser=true]',
+            '[text="我知道了"][clickable=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24561058',
         },
       ],
     },
