@@ -16,7 +16,7 @@ export default defineGkdApp({
           fastQuery: true,
           action: 'clickCenter',
           matches:
-            '[text*="跳过"][text.length<10][width<500 && height<200][visibleToUser=true]',
+            '[text*="跳过"][text.length<10][width<500 && height<300][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/20773821',
         },
       ],
@@ -45,12 +45,14 @@ export default defineGkdApp({
             'com.android.mediacenter.PageActivity',
             'com.android.mediacenter.MainActivity',
           ],
-          matches: '[vid="campaign_dialog_close_image_view"]',
+          matches:
+            'ImageView[vid="campaign_dialog_close_image_view" || vid="iv_close"][clickable=true]',
           exampleUrls:
             'https://m.gkd.li/57941037/00c83449-9809-4de8-9c7c-c6ce1b9fa2c3',
           snapshotUrls: [
             'https://i.gkd.li/i/14193738',
             'https://i.gkd.li/i/15523958',
+            'https://i.gkd.li/i/24676040',
           ],
         },
       ],

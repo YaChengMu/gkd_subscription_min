@@ -304,6 +304,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/19645122', // 无法快速查询
           ],
         },
+        {
+          key: 1,
+          activityIds: '.ui.LauncherUI',
+          matches: '[text^="原图"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25009442',
+        },
       ],
     },
     {
@@ -354,9 +360,10 @@ export default defineGkdApp({
       fastQuery: true,
       matchTime: 20000,
       actionMaximum: 1,
+      activityIds: ['.plugin.finder.', '.ui.LauncherUI'],
       rules: [
         {
-          activityIds: ['.plugin.finder.', '.ui.LauncherUI'],
+          key: 0,
           matches:
             '@[text="我知道了"][index=parent.childCount.minus(1)] <n LinearLayout > [text^="为呵护未成年人健康成长"][visibleToUser=true]',
           snapshotUrls: [
@@ -367,6 +374,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/18135103',
             'https://i.gkd.li/i/19683937',
           ],
+        },
+        {
+          key: 1,
+          matches:
+            '@[text="不再提醒"][clickable=true] <2 [index=parent.childCount.minus(1)] -n [text^="为呵护未成年人健康成长"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/24796791',
         },
       ],
     },
@@ -633,7 +646,7 @@ export default defineGkdApp({
             '[text="不感兴趣" || text="与我无关" || text="感谢你的反馈"][visibleToUser=true]',
           ],
           matches:
-            '@View[childCount<5] > [text^="广告"][text.length<4][visibleToUser=true]', // 某些微信版本上该节点的`clickable=false`
+            '@View[childCount<5][bottom<2000] > [text^="广告"][text.length<4][visibleToUser=true]', // 某些微信版本上该节点的`clickable=false`
           exampleUrls: [
             'https://e.gkd.li/e73bb653-cc79-455c-958b-38aff6687c37',
             'https://e.gkd.li/5915f80b-66b9-4441-9d36-3caa3fe1be58',
@@ -741,9 +754,17 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: ['.ui.LauncherUI', '.ui.chatting.ChattingUI'],
-          matches: '@[clickable=true] > [text="转文字"]',
-          snapshotUrls: 'https://i.gkd.li/i/18135057',
+          activityIds: [
+            '.ui.LauncherUI',
+            '.ui.chatting.ChattingUI',
+            '.ui.chatting.variants.ChattingMainUI',
+          ],
+          matches:
+            '@RelativeLayout[clickable=true] -2 FrameLayout >2 [desc^="语音" && desc$="未播放"] + [text^="0" || text^="1" || text^="2" || text^="3" || text^="4" || text^="5" || text^="6" || text^="7" || text^="8" || text^="9"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/18135057',
+            'https://i.gkd.li/i/24989479',
+          ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/18135054',
         },
       ],
@@ -772,12 +793,17 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: ['.ui.LauncherUI', '.ui.chatting.ChattingUI'],
+          activityIds: [
+            '.ui.LauncherUI',
+            '.ui.chatting.ChattingUI',
+            '.ui.chatting.variants.ChattingMainUI',
+          ],
           matches: '@[clickable=true] >2 [text="转文字"]',
           exampleUrls: 'https://e.gkd.li/c35fafc8-9d96-4178-9aac-f16394d2c666',
           snapshotUrls: [
             'https://i.gkd.li/i/19774491',
             'https://i.gkd.li/i/19792042',
+            'https://i.gkd.li/i/25002786',
           ],
         },
       ],

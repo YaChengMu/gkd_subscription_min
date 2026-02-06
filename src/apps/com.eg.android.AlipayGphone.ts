@@ -7,10 +7,10 @@ export default defineGkdApp({
     {
       key: 0,
       name: '全屏广告-关闭花呗升级弹窗',
+      fastQuery: true,
       rules: [
         {
           key: 1,
-          fastQuery: true,
           activityIds: [
             'com.alipay.android.msp.ui.views.MspContainerActivity',
             'com.alipay.android.msp.ui.views.MspUniRenderActivity',
@@ -26,7 +26,6 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          fastQuery: true,
           activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
           matches: [
             '[text*="花呗服务"]',
@@ -36,6 +35,14 @@ export default defineGkdApp({
             'https://i.gkd.li/i/13631362',
             'https://i.gkd.li/i/13857535',
           ],
+        },
+        {
+          key: 3,
+          activityIds:
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          matches:
+            '@Image[width<90] - [text="花呗服务升级"] <<3 Dialog <2 View < View[index=parent.childCount.minus(1)] <n WebView <<4 [id="com.alipay.multiplatform.phone.xriver_integration:id/h5_pc_container"]',
+          snapshotUrls: 'https://i.gkd.li/i/25000603',
         },
       ],
     },
@@ -63,11 +70,12 @@ export default defineGkdApp({
           key: 1,
           activityIds: '.AlipayLogin',
           matches:
-            '@[desc="关闭"] - LinearLayout >2 [text^="定位到" || text^="开启定位权限"][visibleToUser=true]',
+            '@[desc="关闭"] - LinearLayout >(2,4) [text^="定位到" || text^="开启定位权限"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/c153cd53-16a1-4d77-bf99-9cac8821ccf8',
           snapshotUrls: [
             'https://i.gkd.li/i/18551258',
             'https://i.gkd.li/i/19267032',
+            'https://i.gkd.li/i/25041632',
           ],
         },
       ],
@@ -176,13 +184,14 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main',
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
           ],
-          matches: '[text="去添加"] + [text="近期不再提醒我"]',
+          matches: '[text^="去"][text.length>2] + [text="近期不再提醒我"]',
           exampleUrls: 'https://e.gkd.li/de3df4c8-6ab4-45a0-aec5-0fbdfa75e823',
           snapshotUrls: [
             // 弹窗中的文字和图片每隔几秒切换
             'https://i.gkd.li/i/16427922',
             'https://i.gkd.li/i/22984695',
             'https://i.gkd.li/i/22984696',
+            'https://i.gkd.li/i/24981728',
           ],
         },
       ],
@@ -653,6 +662,22 @@ export default defineGkdApp({
           ],
           exampleUrls: 'https://e.gkd.li/4dfc8429-e633-4cab-8f0e-7cf1f86f98ce',
           snapshotUrls: 'https://i.gkd.li/i/23619464',
+        },
+      ],
+    },
+    {
+      key: 33,
+      name: '青少年模式',
+      rules: [
+        {
+          key: 0,
+          name: '底部悬浮卡片-启用未成年人保护模式"',
+          fastQuery: true,
+          activityIds: '.AlipayLogin',
+          matches: [
+            '@[id="com.alipay.android.phone.wallet.manufacturebiz:id/teenager_cancel"] - RelativeLayout[childCount=4] > [text="启用未成年人保护模式"]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/24992663',
         },
       ],
     },
