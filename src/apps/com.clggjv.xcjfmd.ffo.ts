@@ -70,8 +70,10 @@ export default defineGkdApp({
     {
       key: 1,
       name: '功能类-通知弹窗',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
       rules: {
-        key: 0,
         matches:
           '@Button <2 View < View < View < View < View < View < FrameLayout < [id="android:id/content"]',
         snapshotUrls: 'https://i.gkd.li/i/22875699',
