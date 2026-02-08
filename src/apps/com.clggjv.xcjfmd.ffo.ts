@@ -29,17 +29,9 @@ export default defineGkdApp({
             'com.sigmob.sdk.base.common.PortraitTransparentAdActivity',
           ],
           matches: [
-            'WebView[text="穿山甲"] >n View[id="59dbac"]',
-            'ViewGroup[desc="virtualNode"] >n ViewGroup[desc="59dbac"]',
-            '[text="跳过"]',
-            'View[id="ad_area"] >n [id="close_btn"]',
             '[text="反馈"] < View + View > @View > Image[childCount=0][text=""]',
           ],
-          snapshotUrls: [
-            'https://i.gkd.li/i/22939952',
-            'https://i.gkd.li/i/22927729',
-            'https://i.gkd.li/i/25120492',
-          ],
+          snapshotUrls: ['https://i.gkd.li/i/25120492'],
         },
         // {
         //   key: 1,
