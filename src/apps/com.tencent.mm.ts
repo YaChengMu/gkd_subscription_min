@@ -128,13 +128,14 @@ export default defineGkdApp({
             '.ui.LauncherUI',
           ],
           matches: [
-            '[text="登录 Windows 微信" || text^="Log in to Weixin for"][visibleToUser=true]',
-            '[text="登录" || text="Log In"][visibleToUser=true]',
+            '[text="登录 Windows 微信" || text^="登入 WeChat" || text^="Log in to Weixin for"][visibleToUser=true]',
+            '[text="登录" || text="登入" || text="Log In"][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/13522625',
             'https://i.gkd.li/i/13522577',
             'https://i.gkd.li/i/22356438',
+            'https://i.gkd.li/i/25315046', //zh_TW
           ],
         },
       ],
@@ -228,10 +229,12 @@ export default defineGkdApp({
           name: '点击红包-开',
           matchRoot: true,
           activityIds: '.plugin.luckymoney.ui.LuckyMoney',
-          matches: '@Button[desc="开"] -3 LinearLayout >2 [text$="红包"]',
+          matches:
+            '@Button[desc="开" || desc="開"] -3 LinearLayout >2 [text$="红包" || text$="紅包"]',
           snapshotUrls: [
             'https://i.gkd.li/i/18134828',
             'https://i.gkd.li/i/21177180',
+            'https://i.gkd.li/i/25315061', //zh_TW
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/12567698', // 金币动画的快照
         },
@@ -239,12 +242,14 @@ export default defineGkdApp({
           preKeys: [1, 2],
           name: '从红包结算界面返回',
           activityIds: '.plugin.luckymoney.ui.LuckyMoney',
-          matches: '@ImageView[desc="返回"] +n LinearLayout >8 [text$="红包"]',
+          matches:
+            '@ImageView[desc="返回"] +n LinearLayout >8 [text$="红包" || text$="紅包"]',
           snapshotUrls: [
             'https://i.gkd.li/i/18134829',
             'https://i.gkd.li/i/18135031',
             'https://i.gkd.li/i/23825631',
             'https://i.gkd.li/i/24414957',
+            'https://i.gkd.li/i/25315062', //zh_TW
           ],
         },
       ],
@@ -263,8 +268,8 @@ export default defineGkdApp({
           key: 1,
           fastQuery: true,
           anyMatches: [
-            '@[desc="未选中,原图,复选框"][visibleToUser=true] + [text="原图"]',
-            '@[desc="未选中,原图,复选框"][visibleToUser=true]',
+            '@[desc="未选中,原图,复选框" || desc="未選定，原圖，複選對話方塊"][visibleToUser=true] + [text="原图" || text="原圖"]',
+            '@[desc="未选中,原图,复选框" || desc="未選定，原圖，複選對話方塊"][visibleToUser=true]',
           ],
           exampleUrls: [
             'https://e.gkd.li/32dc0943-e85f-416d-bb01-6ed610d4bdd8',
@@ -328,8 +333,8 @@ export default defineGkdApp({
         {
           actionDelay: 800, // 过早点击首次大概率跳不过
           matches: [
-            '[text="广告"][visibleToUser=true]',
-            '[text="跳过"][visibleToUser=true]',
+            '[text="广告" || text="廣告"][visibleToUser=true]',
+            '[text="跳过" || text="跳過"][visibleToUser=true]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/12785183',
@@ -445,7 +450,7 @@ export default defineGkdApp({
           activityIds:
             '.plugin.brandservice.ui.flutter.BizFlutterTLFlutterViewActivity',
           matches:
-            'View[childCount=2] > View[desc$="推​荐​"][childCount=3] > ImageView[index=2][clickable=true][visibleToUser=true]',
+            'View[childCount=2] > View[desc$="推​荐​" || desc$="推​薦​"][childCount=3] > ImageView[index=2][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/14392392',
         },
       ],
@@ -524,8 +529,8 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.plugin.webwx.ui.WebWXUnlockUI',
           anyMatches: [
-            '[text="解锁"][clickable=true][visibleToUser=true]',
-            '@[text="解锁"][clickable=true] < LinearLayout -2 [text^="解锁"][visibleToUser=true]',
+            '[text="解锁" || text="解鎖"][clickable=true][visibleToUser=true]',
+            '@[text="解锁" || text="解鎖"][clickable=true] < LinearLayout -2 [text^="解锁" || text="解鎖"][visibleToUser=true]',
           ],
           exampleUrls:
             'https://m.gkd.li/57941037/85bb6dcd-0d04-46c1-af14-6e4b57ff4dca',
@@ -734,7 +739,7 @@ export default defineGkdApp({
         {
           fastQuery: true,
           activityIds: '.plugin.appbrand.ui.AppBrandUI',
-          excludeMatches: '[text="跳过"][visibleToUser=true]', // 防止提前触发
+          excludeMatches: '[text="跳过" || text="跳過"][visibleToUser=true]', // 防止提前触发
           matches:
             '@ImageView[visibleToUser=true][childCount=0][text=null] < FrameLayout[childCount=1] < FrameLayout[childCount=1] <2 FrameLayout[childCount=2] - FrameLayout >4 [text="广告"]',
           exampleUrls: 'https://e.gkd.li/d2b12af6-c204-4da7-8553-4765ef8b8c31',

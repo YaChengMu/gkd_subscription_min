@@ -66,9 +66,9 @@ export default defineGkdApp({
           exampleUrls: 'https://e.gkd.li/6cf71a22-0e21-4877-86a7-69d84353ad5a',
           snapshotUrls: 'https://i.gkd.li/i/18236745',
         },
+        // 消息列表页面顶部广告
         {
           key: 2,
-          name: '消息列表页面顶部广告1',
           fastQuery: true,
           activityIds: '.activity.SplashActivity',
           matches:
@@ -77,11 +77,17 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          name: '消息列表页面顶部广告2',
           activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
           matches:
             '@ImageView[desc="关闭"][clickable=true] <n RelativeLayout - RelativeLayout >3 ImageView[desc="快捷入口"]',
           snapshotUrls: 'https://i.gkd.li/i/24230528',
+        },
+        {
+          key: 4,
+          activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
+          matches:
+            '@ImageView[width<100 && height<100][clickable=true] - TextView[text!=null] <n * + * >3 ImageView[desc="快捷入口"]',
+          snapshotUrls: 'https://i.gkd.li/i/25235782',
         },
       ],
     },
@@ -437,6 +443,22 @@ export default defineGkdApp({
             '[text="我知道了"][clickable=true]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/24561058',
+        },
+      ],
+    },
+    {
+      key: 35,
+      name: '功能类-自动跳转第三方应用',
+      desc: '点击[允许]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.QQBrowserActivity',
+          matches: [
+            '[text$="打开其他应用"]',
+            '[text="允许"][clickable=true][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/25142977',
         },
       ],
     },

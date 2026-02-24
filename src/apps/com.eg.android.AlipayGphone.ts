@@ -90,7 +90,7 @@ export default defineGkdApp({
           name: '底部悬浮提示',
           activityIds: [
             'com.alipay.android.phone.messageboxapp.ui.MsgBoxTabActivity',
-            'com.eg.android.AlipayGphone.AlipayLogin',
+            '.AlipayLogin',
           ],
           matches: [
             '[text^="开启通知权限" || text^="开通推送通知"][visibleToUser=true]',
@@ -240,7 +240,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          activityIds: 'com.eg.android.AlipayGphone.AlipayLogin',
+          activityIds: '.AlipayLogin',
           matches:
             'RelativeLayout[childCount=2][desc="全屏广告"] ImageView[desc="关闭"]',
           snapshotUrls: 'https://i.gkd.li/i/14034152',
@@ -594,6 +594,7 @@ export default defineGkdApp({
     {
       key: 29,
       name: '功能类-无法访问时点击[返回]',
+      desc: '访问被拒绝/人气太旺啦',
       rules: [
         {
           fastQuery: true,
@@ -602,10 +603,11 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverTransActivity$Main',
             '.AlipayLogin',
             'com.alipay.android.phone.wallet.blessingcard_receive.biz.activity.ReceiveDialogActivity',
+            'com.alipay.android.living.activity.LivingDetailActivity',
           ],
           matches: [
             '[text="访问被拒绝" || text="人气太旺啦，请稍后再试"][visibleToUser=true]',
-            '[id="com.alipay.mobile.antui:id/back_button"][visibleToUser=true]',
+            '[id="com.alipay.mobile.antui:id/back_button"][clickable=true]',
           ],
           exampleUrls: 'https://e.gkd.li/c1ddb8bf-084b-4109-b777-96c02858d266',
           snapshotUrls: [
@@ -614,6 +616,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23549719',
             'https://i.gkd.li/i/24183318',
             'https://i.gkd.li/i/25199767',
+            'https://i.gkd.li/i/25485052',
           ],
         },
       ],
@@ -680,6 +683,46 @@ export default defineGkdApp({
             '@[id="com.alipay.android.phone.wallet.manufacturebiz:id/teenager_cancel"] - RelativeLayout[childCount=4] > [text="启用未成年人保护模式"]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/24992663',
+        },
+      ],
+    },
+    {
+      key: 34,
+      name: '功能类-小游戏申请发消息-拒绝',
+      desc: '①保持以上选择 ②点击[取消] ③直接拒绝',
+      fastQuery: true,
+      activityIds: [
+        'com.alipay.android.phone.messageboxstatic.extension.ProcessTransActivity',
+        'com.alipay.android.phone.mbox.biz.legacy.sbs.', // 通配
+      ],
+      rules: [
+        {
+          key: 1,
+          name: '①保持以上选择-✅',
+          matches:
+            '@CheckBox[clickable=true][checked=false] + [text$="不再询问"]',
+          snapshotUrls: 'https://i.gkd.li/i/25098582', // 未选中
+          excludeSnapshotUrls: 'https://i.gkd.li/i/25098563', // [checked=true] 已选中
+          exampleUrls: 'https://e.gkd.li/d0e5b909-7d7d-4fcb-9368-631e50d020d6',
+        },
+        {
+          key: 2,
+          name: '②取消',
+          matchDelay: 200,
+          matches:
+            '[text="发送一次以下消息"] +n * > Button[text="取消"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/22981739',
+            'https://i.gkd.li/i/23238549',
+          ],
+        },
+        {
+          key: 3,
+          name: '③直接拒绝',
+          matchDelay: 200,
+          matches:
+            '[text="发送以下消息"] +n * > [text$="不再询问"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25199524',
         },
       ],
     },
