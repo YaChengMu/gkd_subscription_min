@@ -19,7 +19,7 @@ export default defineGkdApp({
             '.msg.controller.MessageListActivity',
           ],
           matches:
-            'RelativeLayout[childCount=2] > ImageView[childCount=0] + RelativeLayout >2 @RelativeLayout[clickable=true][childCount=4] > LinearLayout[index=1][getChild(0).childCount=1] + RelativeLayout[childCount=1] > TextView[text="红包"]',
+            'RelativeLayout[childCount=2] > ImageView[childCount=0] + RelativeLayout >2 @RelativeLayout[clickable=true] >n TextView[text="红包"] < RelativeLayout -1 LinearLayout > LinearLayout[childCount=1]',
           snapshotUrls: [
             'https://i.gkd.li/i/14151095',
             'https://i.gkd.li/i/24560890',

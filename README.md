@@ -20,7 +20,7 @@
 
 ## 说明 📝
 
-当前版本: v--VERSION--
+当前版本: v112
 
 当前订阅文件已适配 --APP_SIZE-- 个应用，共有 --GROUP_SIZE-- 应用规则组，--GLOBALGROUP_SIZE-- 全局规则组。
 
