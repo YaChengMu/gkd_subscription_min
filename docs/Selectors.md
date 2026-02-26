@@ -10,9 +10,9 @@
 
 ```txt
 anyMatches: [
-  '[text*="跳过"][text.length<10][width<400 && height<200][visibleToUser=true]',
-  '@[name$="View" || name$="LinearLayout"][clickable=true][childCount<2][width<300 && height<150] - [text="互动广告"][visibleToUser=true]',
-  '[childCount=0][visibleToUser=true][width<400 && height<200][(text.length<10 && (text*="跳过" || text*="跳 过" || text*="跳過" || text~="(?is).*skip.*") && text!*="视频") || (vid~="(?is).*skip.*" && vid!~="(?is).*video.*" && !(text="帮助") && !(text="取消") && !(text*="退出")) || id$="tt_splash_skip_btn" || (desc.length<10 && (desc*="跳过" || desc*="跳過" || desc~="(?is).*skip.*"))]',
+  '[text*="跳过"][text.length<10][width<500 && height<300][visibleToUser=true]',
+  '@[name$="View" || name$="LinearLayout"][clickable=true][childCount<2][width<300 && height<200] - [text="互动广告"][visibleToUser=true]',
+  '[childCount=0][visibleToUser=true][width<500 && height<300][(text.length<10 && (text*="跳过" || text*="跳 过" || text*="跳過" || text~="(?is).*skip.*") && text!*="视频" && text!*="片头" && text!*="片尾") || (vid~="(?is).*skip.*" && vid!~="(?is).*video.*" && vid!~="(?is).*head.*" && vid!~="(?is).*tail.*" && !(text="帮助") && !(text="取消") && !(text*="退出")) || id$="tt_splash_skip_btn" || (desc.length<10 && (desc*="跳过" || desc*="跳過" || desc~="(?is).*skip.*"))]',
 ],
 ```
 
@@ -42,7 +42,7 @@ anyMatches: [
 - 选择器
 
 ```txt
-([text*="搜索" || text="历史记录" || text$="在搜"][text.length>3 && text.length<7][visibleToUser=true]) || ([text="Submit" || text*="阅读并同意" || text="书签" || text="NEXT"][visibleToUser=true]) || ([text$="设置" || text^="选择" || text*="登录" || text$="选好了" || text^="下一步" || text^="完成"][text.length<10][visibleToUser=true])
+([text*="搜索" || text="历史记录" || text$="在搜"][text.length>3 && text.length<7][visibleToUser=true]) || ([text="Submit" || text*="阅读并同意" || text="书签" || text="NEXT"][visibleToUser=true]) || ([text$="设置" || text$="选好了" || text^="下一步" || text^="完成" || text*="跳过片"][text.length<10][visibleToUser=true]) || ([text^="选择"][text*="偏好" || text*="兴趣" || text*="喜好"][text.length<10][visibleToUser=true])
 ```
 
 之所以限制文本长度 `[text.length>3 && text.length<6]` ，是因为有部分应用在加载开屏广告时会把首页的节点也加载出来，而大部分应用的首页顶部都会有一个搜索框，可能也会有“搜索”两个字，如果排除匹配内包含了 `vid*="search"` 和 `text="搜索"` ，那么这种情况下无法跳过开屏广告，并且 `vid*="search"` 不支持快速查询，所以去掉了 `vid*="search"` 和 `text="搜索"` ，使得排除匹配选择器只能匹配上大部分应用搜索页存在的文本：`搜索记录` 、`搜索历史` 、`搜索发现` 、`历史记录` 、`最近搜索` 、`最近在搜` 、`大家都在搜` 等等，这样就能实现仅排除匹配应用的搜索页，而不排除匹配应用的首页，避免出现上述无法跳过开屏广告的情况
@@ -94,9 +94,10 @@ matches: [
 
 [https://i.gkd.li/i/15400143](https://i.gkd.li/i/15400143?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVtwYXJlbnQuY2hpbGRDb3VudD4zXSArbiBGcmFtZUxheW91dCA-KDEsMikgW3RleHRePSLnq4vljbMiIHx8IHRleHQ9Iuafpeeci-ivpuaDhSIgfHwgdGV4dD0i5LqG6Kej5pu05aSaIiB8fCB0ZXh0PSLljrvlvq7kv6HnnIvnnIsiIHx8IHRleHQkPSLlupTnlKgiIHx8IHRleHQ9Iui_m-WFpeWwj-eoi-W6jyIgfHwgdGV4dD0i6aKG5Y-W5LyY5oOgIiB8fCB0ZXh0PSLot7Povazlvq7kv6EiXQ)
 
-```txt
+[https://i.gkd.li/i/24488993](https://i.gkd.li/i/24488993?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVtwYXJlbnQuY2hpbGRDb3VudD4zXSA8biBGcmFtZUxheW91dCA-KDIsMykgW3RleHRePSLnq4vljbMiIHx8IHRleHQkPSLor6bmg4UiIHx8IHRleHRePSLkuobop6MiIHx8IHRleHQ9IuWOu-W-ruS_oeeci-eciyIgfHwgdGV4dCQ9IuW6lOeUqCIgfHwgdGV4dD0i6L-b5YWl5bCP56iL5bqPIiB8fCB0ZXh0PSLpooblj5bkvJjmg6AiIHx8IHRleHQ9Iui3s-i9rOW-ruS_oSJd)
 
-@ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null][parent.childCount>3] +n FrameLayout >(1,2) [text^="立即" || text$="详情" || text^="了解" || text="去微信看看" || text$="应用" || text="进入小程序" || text="领取优惠" || text="跳转微信"]
+```txt
+@ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null][parent.childCount>3] <n FrameLayout >(2,3) [text^="立即" || text$="详情" || text^="了解" || text="去微信看看" || text$="应用" || text="进入小程序" || text="领取优惠" || text="跳转微信"]
 ```
 
 - 选择器-2 **（可快速查询！）**

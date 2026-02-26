@@ -89,6 +89,14 @@ export default defineGkdApp({
             '@UIView[text="不感兴趣"][clickable=true] +2 FlattenUIText[text="不感兴趣"]',
           snapshotUrls: 'https://i.gkd.li/i/24123937',
         },
+        {
+          key: 2,
+          fastQuery: true,
+          activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
+          matches:
+            '@ImageView[id=null][text=null][width<100][height<100] < ViewGroup[childCount=3] <2 LinearLayout < HorizontalScrollView < ScrollView <<7 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/25547227',
+        },
       ],
     },
     {

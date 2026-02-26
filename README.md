@@ -1,70 +1,96 @@
 # @YaChengMu/gkd_subscription_min
 
-此仓库由 YaChengMu 维护，提供 GKD 第三方订阅规则。
+<!-- [![SVG Banners](https://svg-banners.vercel.app/api?type=luminance&text1=GKD_subscription&width=800&height=300)](https://github.com/YaChengMu/gkd_subscription_min) -->
 
-✨避免臃肿冗余耗电，提供更**全面**的订阅体验✨
+[![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-## 使用方法 🚀
+[![Release](https://img.shields.io/badge/release-v114-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![已适配应用](https://img.shields.io/badge/已适配应用-64-brightgreen)](./dist/README.md#应用规则)
+[![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
+[![应用规则组](https://img.shields.io/badge/应用规则组-363-orange)](./dist/README.md#应用规则)
+[![Telegram Chat](https://img.shields.io/badge/Telegram-Chat-blue.svg?logo=telegram)](https://t.me/+8L4eHePgYEZmY2M9)
 
-⚠️ **使用本项目前，请务必仔细阅读并理解本项目的[LICENSE](./LICENSE)文件。继续使用即表示您已完全接受所有条款。**
+## 📢声明
 
-若您已阅读并同意[LICENSE](./LICENSE)，可将以下任意链接添加至 [GKD](https://github.com/gkd-kit/gkd) 内使用此规则：
+- **本仓库为原仓库停更后，由社区续更的Fork版**
+- **禁止在国内平台传播**
+- **本仓库仅供本人学习使用**
+- **精力有限，随缘更新**
 
-| GitHub 源（推荐）                                                                          | npmmirror 源                                                                                   | gitmirror 源                                                                       | jsDelivr 源                                                                          |
-| ------------------------------------------------------------------------------------------ | ---------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------ |
-| [复制](https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.json5) | [复制]() | [复制]() | [复制]() |
+## 📑说明
 
-**请注意：**
+- **致力于编写效率最高、误触最低、覆盖最全面的规则**
 
-- **本项目维护的规则仅默认启用 `开屏广告` 一类规则, 其它所有规则均需使用者手动打开**
+- **已适配的规则需要等待发布更新才能生效，北京时间每天凌晨3点会自动发布更新，如果规则没有改动则不会发布更新，在 `GKD订阅界面` 下拉就能检测是否有更新 -> [点击查看更新日志](https://github.com/YaChengMu/gkd_subscription_min/releases)**
 
-## 说明 📝
+- **仅启用 `开屏广告` 一类规则，其它所有规则均需用户手动打开，规则类别里可以批量开启某一类规则，建议按需开启规则，不要无脑开启规则，开启过多规则可能造成规则阻塞从而导致规则触发缓慢甚至不触发，并且规则开启越多耗电也越多 -> [点击查看耗电说明](https://gkd.li/guide/faq#power)**
 
-当前版本: v--VERSION--
+- **请求适配或报告问题 -> [点击反馈](https://github.com/YaChengMu/gkd_subscription_min/issues/new/choose)**
 
-当前订阅文件已适配 --APP_SIZE-- 个应用，共有 --GROUP_SIZE-- 应用规则组，--GLOBALGROUP_SIZE-- 全局规则组。
+- **交流讨论（不要在这里反馈） -> [点击查看或开启讨论](https://github.com/YaChengMu/gkd_subscription_min/discussions)**
 
-**🔍 查看详细[适配规则列表](./dist/README.md)**
+- **欢迎贡献规则，提交pr前请确认您已仔细阅读 [贡献指南](./CONTRIBUTING.md) 和 [API文档](https://gkd.li/api/)，规则编写可参考 [个人收集的通用规则以及适用场景](./docs/Selectors.md)**
 
-**❗️ 此仓库仅接受[适配规则列表](./dist/README.md)内存在的 APP 与全局规则相关的维护或改进的 issues 或 PR 提交。**
+## 🚀订阅
 
-如果您需要任何额外的 APP 规则，您可以参考[官方语法介绍](https://gkd.li/guide/selector)并将其添加到**本地规则**中或执行搭建 [GKD 订阅模板](https://github.com/gkd-kit/subscription-template) 使用。
+复制以下任意一个链接到 GKD 即可使用本订阅规则
 
-如果您希望参与贡献此项目，请参阅 [CONTRIBUTING.md](./CONTRIBUTING.md)。
+- CloudFlare源 (国内推荐)
 
-## 相关 ⭐️
+```txt
+https://gkd-subscription-667.pages.dev/gkd.json5
+```
 
-此仓库 基于 [GKD 默认订阅规则](https://github.com/gkd-kit/subscription) 与 [GKD 订阅模板](https://github.com/gkd-kit/subscription-template) 构建，感谢原开发者们的贡献。
+- GitHub源
 
-### Wiki
+```txt
+https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
+```
 
-欲了解更多信息？请访问 [Wiki](https://github.com/YaChengMu/gkd_subscription_min/wiki)，包括使用说明、相关教程和相关项目。
+<details>
+<summary>☢️ 备用源</summary>
 
-## License 说明
+- jsdelivr源 (国内可用但可能不稳定,更新滞后24h)
 
-**[@yachengmu/subscription](https://github.com/YaChengMu/gkd_subscription_min) 遵循 [Modified MIT License with Additional Terms](./LICENSE)。**
+```txt
+https://cdn.jsdelivr.net/gh/YaChengMu/gkd_subscription_min@main/dist/gkd.json5
+```
 
-此许可证基于 MIT License 修改而来。
+- bgithub源 (国内可用,同步及时30min内,但可能随时挂掉！)
 
-**根据此许可证**，该项目的开发者无法保证项目能够达到特定的质量标准或功能。此外，许可证还包含以下附加条款：
+```txt
+https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
+```
 
-- **推广限制**：明确禁止在任何平台或媒体上推广、宣传或公开推荐本软件
-- **使用限制**：使用者必须基于个人决定和意愿使用本软件，不得诱导他人使用
-- **再分发说明**：再分发或再许可的版本将仅受原始MIT许可证管辖，不受附加条款约束
-- **免责声明**：作者不对软件中规则的可用性、准确性和时效性做任何保证
+</details>
 
-完整的许可条款请查看 [LICENSE](./LICENSE) 文件。以 [LICENSE](./LICENSE) 文件为准。
+- 当前版本: v114
 
-## 使用须知
+- 当前订阅文件已适配 64 个应用，共有 363 应用规则组，3 全局规则组
 
-使用本项目前，请您务必仔细阅读并充分理解本使用须知以及项目的 [LICENSE](./LICENSE) 文件。您在使用本项目时，即表示您已经仔细阅读并完全接受本使用须知及许可证的所有条款。
+- 查看 [适配 APP 列表](./dist/README.md)
 
-## Star History
+## 🌈其他
 
-<a href="https://star-history.com/#yachengmu/gkd_subscription_min&Timeline">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=yachengmu/gkd_subscription_min&type=Timeline&theme=dark" />
-    <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=yachengmu/gkd_subscription_min&type=Timeline" />
-    <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=yachengmu/gkd_subscription_min&type=Timeline" />
-  </picture>
-</a>
+- 在 [GKD官网](https://gkd.li/) 查看 [GKD基础使用教程](https://gkd.li/guide/) 、[常见问题](https://gkd.li/guide/faq) 以及 [API文档](https://gkd.li/api/)
+
+- 查看 [规则编写教程](https://github.com/Snoopy1866/notebook/blob/main/04%20Others/GKD%20%E8%A7%84%E5%88%99%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/gkd-rule-tutorial.md) By [@Snoopy1866](https://github.com/Snoopy1866)
+
+- 使用 [GKD网页审查工具增强脚本](https://github.com/adproqwq/MakeGKDInspectBetter) 可以高度自定义从网页复制出来的规则，提高规则编写效率
+
+- 使用 [GKD订阅模板](https://github.com/gkd-kit/subscription-template) 快速构建自己的订阅
+
+- 如何编写订阅/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
+
+## 🎉感谢以下项目
+
+- [gkd-kit/subscription](https://github.com/gkd-kit/subscription)
+- [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)
+
+## 🥇感谢以下开发者的贡献
+
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&_v=114)
+
+## 📈Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=Date)](https://star-history.com/#YaChengMu/gkd_subscription_min&Date)

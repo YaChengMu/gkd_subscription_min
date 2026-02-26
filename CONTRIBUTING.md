@@ -1,50 +1,40 @@
 # 贡献指南
 
-首先感谢您考虑为我们的项目做出贡献！
+很高兴能有更多人参与到本项目的开发中
 
-秉持 “如无必要，勿增实体” 的原则，**此仓库仅接受仅接受[适配规则列表](./dist/README.md)内存在的 APP 与全局规则相关的维护或改进 issues 或 PR 提交。**
+[快速入门](./docs/quick-start.md)
 
-同时本项目的目标是编写尽量精简通用的规则，所以部分针对APP的规则可能已存在全局规则中，希望您多留意
+> 目录
+> 
+> - 环境搭建
+> - 获取快照
+> - 审查快照
+> - 编写订阅
+> - 提交代码
 
-**同时我们十分欢迎您贡献精简通用的规则, 全局规则, 优化已存在规则。这是我们当前最需要的**
+[@Snoopy1866 编写的快速入门](https://github.com/Snoopy1866/notebook/blob/main/04%20Others/GKD%20%E8%A7%84%E5%88%99%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/gkd-rule-tutorial.md)
 
-如果您需要任何额外的 APP 规则，您需要自行编写规则并将其添加到本地规则中使用。
+> 目录
+> 
+> - 获取快照
+> - 审查快照
+> - 选择器语法介绍
+> - GKD 文件的字段介绍
 
-## 提交规则需知
+[@adproqwq 编写的教程（更加偏向理论和概念）](https://blog.adproqwq.top/categories?category=%E6%95%99%E7%A8%8B/GKD)
 
-我们希望您在提交规则之前应该做到以下几点：
+[官方使用文档](https://gkd.li/guide/what-is-gkd)
 
-- 只维护或改进提交全局规则或优化已存在规则。
-- **非必须勿添加新规则组**，而是考虑将其添加到已存在的规则组 `rules` 中。
+[官方 API 文档](https://gkd.li/api/)
 
-同时，我们的最新规则是基于 [dev](https://github.com/yachengmu/gkd_subscription_min/tree/dev) 分支的，当你打算贡献规则时应该基于 [dev](https://github.com/yachengmu/gkd_subscription_min/tree/dev) 分支 fork 开发，并提交到 [dev](https://github.com/yachengmu/gkd_subscription_min/tree/dev) 分支。
+[一些比较通用的规则以及适用场景](./docs/Selectors.md)
 
-## Pull Request 指南
+## 一些规范和技巧
 
-为了使贡献过程更加顺畅和高效，您应该遵循以下指南。
+[key 值规范](./docs/key-usage.md)
 
-该规范有助于保持清晰和信息丰富的提交历史，使每个人更容易理解变更。
+[优先选择 clickable=true 的节点](./docs/preferred-clickable-node.md)
 
-在提交 Pull Request 之前，请确保您的更改遵循以下约定：
+[复选框的勾选状态](./docs/checkbox-state.md)
 
-- 您的 Pull Request 标题应该遵循以下模式：
-  ```plaintext
-    <type>(APP name): <subject>
-  ```
-- **type**：提交类型，应该是以下之一：
-  - **feat:** 新功能
-  - **fix:** 修复 bug
-- 您的代码更改应该有良好的文档并保持清晰的提交历史。
-
-- 以下类型的 Pull Request 将不会被接受：
-  - 未经测试的代码更改
-  - 未经文档化的代码更改
-  - 未经测试的文档更改
-
-### 为什么规范提交消息？
-
-在日常开发工作中，使用 Git 管理代码变更很常见。然而，如果不关注提交消息的质量，可能会导致不清晰和无效的历史记录。提交消息的规范增强了可读性和实用性。
-
-## 行为准则
-
-请在所有交互和贡献中遵守我们的[行为准则](CODE_OF_CONDUCT.md)。
+[快速查询优化](./docs/fast-query.md)
