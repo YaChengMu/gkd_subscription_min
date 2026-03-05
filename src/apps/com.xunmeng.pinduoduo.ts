@@ -65,7 +65,7 @@ export default defineGkdApp({
         {
           key: 4,
           fastQuery: true,
-          activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+          activityIds: '.ui.activity.HomeActivity',
           matches:
             '@ViewGroup[clickable=true] - ViewGroup[childCount=3] >2 [text="其他"]',
           snapshotUrls: 'https://i.gkd.li/i/15103543',
@@ -73,7 +73,7 @@ export default defineGkdApp({
         {
           key: 5,
           fastQuery: true,
-          activityIds: 'com.xunmeng.pinduoduo.activity.NewPageMaskActivity',
+          activityIds: '.activity.NewPageMaskActivity',
           matches: [
             '[text="继续拼单"]',
             '@[clickable=true] > [text="先去逛逛"]',
@@ -127,13 +127,21 @@ export default defineGkdApp({
           matches: '[desc="关闭按钮"]',
           snapshotUrls: 'https://i.gkd.li/i/23383792',
         },
+        {
+          key: 11,
+          fastQuery: true,
+          activityIds: '.ui.activity.HomeActivity',
+          matches:
+            '@ViewGroup[width<86 && height<86][clickable=true][focusable=true][clickable=true] + ViewGroup [text="元"]',
+          snapshotUrls: 'https://i.gkd.li/i/25572172',
+        },
       ],
     },
     {
       key: 6,
       name: '局部广告-悬浮广告',
       desc: '点击关闭',
-      activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+      activityIds: '.ui.activity.HomeActivity',
       rules: [
         {
           key: 0,
@@ -150,7 +158,6 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
           matches:
             'RelativeLayout[childCount=2] > RelativeLayout[vid="pdd"] + @FrameLayout[childCount=1][clickable=true][visibleToUser=true][text=null][vid="pdd"] > ImageView[childCount=0][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/0f850878-2b6a-46c7-86aa-28329df0993c',
@@ -159,7 +166,6 @@ export default defineGkdApp({
         {
           key: 3,
           name: '多多视频金币提示',
-          activityIds: '.ui.activity.HomeActivity',
           matches: '[text^="看5分钟视频"] -2 Image',
           snapshotUrls: 'https://i.gkd.li/i/25088623',
         },
@@ -172,7 +178,7 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: 'com.xunmeng.pinduoduo.activity.NewPageActivity',
+          activityIds: '.activity.NewPageActivity',
           matches: '[vid="iv_float_window_close"]',
           exampleUrls: 'https://e.gkd.li/f81a45e4-09b4-498f-be72-ca84cdd0db83',
           snapshotUrls: 'https://i.gkd.li/i/14549415',
@@ -185,7 +191,7 @@ export default defineGkdApp({
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
-      activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+      activityIds: '.ui.activity.HomeActivity',
       rules: [
         {
           key: 0,
@@ -212,7 +218,7 @@ export default defineGkdApp({
       name: '全屏广告-多多视频划到广告自动跳过',
       desc: '点击返回自动刷新，从而跳过广告',
       fastQuery: true,
-      activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+      activityIds: '.ui.activity.HomeActivity',
       rules: [
         {
           key: 0,
@@ -238,8 +244,7 @@ export default defineGkdApp({
       fastQuery: true,
       rules: [
         {
-          activityIds:
-            'com.xunmeng.pinduoduo.app_album.album.MultiImageSelectorActivity',
+          activityIds: '.app_album.album.MultiImageSelectorActivity',
           matches: '@[text="原图"][checked=false] + [text="发送"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13925378', // checked=false
@@ -256,8 +261,8 @@ export default defineGkdApp({
         {
           key: 0,
           activityIds: [
-            'com.xunmeng.pinduoduo.activity.NewPageMaskActivity',
-            'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+            '.activity.NewPageMaskActivity',
+            '.ui.activity.HomeActivity',
           ],
           action: 'clickCenter',
           matches: 'Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true]',
@@ -333,7 +338,7 @@ export default defineGkdApp({
       resetMatch: 'app',
       rules: [
         {
-          activityIds: 'com.xunmeng.pinduoduo.ui.activity.HomeActivity',
+          activityIds: '.ui.activity.HomeActivity',
           matches: ['[text="个性化推荐未开启"]', '[text="取消"]'],
           exampleUrls: 'https://e.gkd.li/816070f2-035d-4702-87e3-441cca8b5430',
           snapshotUrls: 'https://i.gkd.li/i/14964851',
@@ -363,6 +368,51 @@ export default defineGkdApp({
           activityIds: '.activity.NewPageActivity',
           matches: '[text="搜索图片同款商品"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/19340768',
+        },
+      ],
+    },
+    {
+      key: 22,
+      name: '功能类-自动处方流程',
+      desc: '自动点击处方流程到支付',
+      fastQuery: true,
+      activityIds: '.activity.NewPageActivity',
+      rules: [
+        {
+          key: 0,
+          name: '点击已确诊的疾病', // 否则无法继续
+          actionMaximum: 1,
+          matches: '[text="选择已确诊的疾病"] + View > * > TextView[index=0]',
+          snapshotUrls: 'https://i.gkd.li/i/25639924',
+          excludeMatches: 'RelativeLayout > [text="请选择已确诊的疾病"]', // 排除匹配
+          excludeSnapshotUrls: 'https://i.gkd.li/i/25639813', // 无法点击继续
+          exampleUrls: 'https://e.gkd.li/f92b5d13-da8a-4eb2-b981-66bdc12b9c1c',
+        },
+        {
+          key: 1,
+          name: '点击提交并开药',
+          preKeys: [0],
+          matches:
+            '@[text="提交并开药"][clickable=true][visibleToUser=true] -n [index=0] < [id="main"] < [text^="购买处方药"] <<n [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/25639924',
+        },
+        {
+          key: 2,
+          name: '点击无需补充，立即开方',
+          preKeys: [1],
+          matchDelay: 2600, // 等待界面稳定后再匹配
+          matches:
+            '@[clickable=true] >2 [text="无需补充，立即开方"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25639993',
+          exampleUrls: 'https://e.gkd.li/5a9c65aa-8b3f-4076-a7d1-20b537526f5b',
+        },
+        {
+          name: '点击立即支付',
+          preKeys: [2],
+          matchDelay: 2600, // 等待处方下来
+          matches: '@[clickable=true] >2 [text="立即支付"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25640017',
+          exampleUrls: 'https://e.gkd.li/31396caf-8a11-484e-9ece-c273a05939ab',
         },
       ],
     },

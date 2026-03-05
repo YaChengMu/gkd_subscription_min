@@ -58,8 +58,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
-          activityIds:
-            'com.taobao.idlefish.maincontainer.activity.MainActivity',
+          activityIds: '.maincontainer.activity.MainActivity',
           matches:
             'WebView[text="Rax App"] > [id="root"] >(3,6) View[index=parent.childCount.minus(1)][clickable=true]',
           snapshotUrls: [
@@ -70,8 +69,7 @@ export default defineGkdApp({
         {
           key: 1,
           fastQuery: true,
-          activityIds:
-            'com.taobao.idlefish.search_implement.SearchResultActivity',
+          activityIds: '.search_implement.SearchResultActivity',
           matches:
             '@TextView[width<250 && height<250] - [childCount=0][text="收下红包"] <<n [vid="fish_layer_container_id"]',
           snapshotUrls: 'https://i.gkd.li/i/23125419',
@@ -164,6 +162,45 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23455398', // 关闭前
             'https://i.gkd.li/i/23455378', // 关闭后
           ],
+        },
+      ],
+    },
+    {
+      key: 8,
+      name: '功能类-Web登录自动授权',
+      desc: '登录确认-打勾-确认登录',
+      fastQuery: true,
+      activityIds: 'com.taobao.login4android.scan.QrScanActivity',
+      rules: [
+        {
+          key: 0,
+          actionMaximum: 1,
+          resetMatch: 'match',
+          matches: '@[clickable=true] > [vid="confirm"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/25619592', // 未打勾_纯手拍快照
+            'https://i.gkd.li/i/25620240', // 未打勾
+          ],
+        },
+        {
+          key: 1, // 目的跟key0一样，只不过以弹窗的形式出现
+          matches: [
+            '[text="服务协议及隐私保护"]',
+            '[text="同意"][clickable=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/25620304',
+        },
+        {
+          key: 2,
+          matches: [
+            '[text="扫码登录"]',
+            '[text="确认登录"][clickable=true][visibleToUser=true]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/25619659', // 旧版,无需打勾
+            'https://i.gkd.li/i/25620267', // 已打勾(节点状态无变化)
+          ],
+          exampleUrls: 'https://e.gkd.li/9394183f-855c-4bd3-b089-272f6e9807ff',
         },
       ],
     },

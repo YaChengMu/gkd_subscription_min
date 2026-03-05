@@ -105,12 +105,16 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
+          fastQuery: true,
           activityIds: 'com.autonavi.map.activity.NewMapActivity',
-          matches:
-            'ViewGroup > ViewGroup > [desc="关闭"][clickable=true][visibleToUser=true]',
+          matches: [
+            '[vid="btn_qrscan"][desc="扫一扫"]',
+            'ViewGroup[desc.length>0] < ViewGroup + @[desc="关闭"][clickable=true][visibleToUser=true] <<n [vid="quickservice"]',
+          ],
           exampleUrls:
             'https://m.gkd.li/57941037/071a07d2-c760-4f15-9359-f54bf51b6205',
           snapshotUrls: 'https://i.gkd.li/i/14715295',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/25660170',
         },
         {
           key: 1,

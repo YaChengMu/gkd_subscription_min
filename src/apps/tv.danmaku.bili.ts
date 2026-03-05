@@ -137,12 +137,13 @@ export default defineGkdApp({
         {
           key: 0,
           matches:
-            '[id="tv.danmaku.bili:id/shopping_close" || vid="live_game_card_close" || vid="match_close" || vid="iv_pop_rank_guide_card_close"][visibleToUser=true]',
+            '[vid="shopping_close" || vid="live_game_card_close" || vid="match_close" || vid="iv_pop_rank_guide_card_close" || vid="card_close"][clickable=true]',
           snapshotUrls: [
-            'https://i.gkd.li/i/13200549',
-            'https://i.gkd.li/i/22990081',
-            'https://i.gkd.li/i/23098023',
-            'https://i.gkd.li/i/25238734',
+            'https://i.gkd.li/i/13200549', // (旧快照无vid,但能用) shopping_close
+            'https://i.gkd.li/i/22990081', // live_game_card_close
+            'https://i.gkd.li/i/23098023', // match_close
+            'https://i.gkd.li/i/25238734', // iv_pop_rank_guide_card_close
+            'https://i.gkd.li/i/25569011', // card_close
           ],
         },
         {
@@ -160,11 +161,12 @@ export default defineGkdApp({
           matchTime: 10000,
           actionMaximum: 1, //防止循环展开关闭
           matches:
-            'View[visibleToUser=true] <<2 @[clickable=true] < [vid="pager"]',
+            '@[clickable=true][visibleToUser=true] < [vid="pager"] < FrameLayout[index=parent.childCount.minus(1)] <(2,3,4) [vid="vertical_container"]',
           snapshotUrls: [
             'https://i.gkd.li/i/24985920',
             'https://i.gkd.li/i/25240029',
-            'https://i.gkd.li/i/25369451', //误触快照
+            'https://i.gkd.li/i/25369451', // 误触快照
+            'https://i.gkd.li/i/25569011', // 误触快照2
           ],
         },
       ],
@@ -436,9 +438,15 @@ export default defineGkdApp({
         {
           preKeys: [1],
           key: 2,
-          matches: '[vid="close_dislike"][visibleToUser=true]',
+          anyMatches: [
+            '[vid="close_dislike"][visibleToUser=true]',
+            '@[text="关闭"][clickable=true] -n * <<(2,4) [name$="ComposeView" || name$="FrameLayout"] <n [vid="recycler"]',
+          ],
           exampleUrls: 'https://e.gkd.li/80514576-3656-4dcc-89f5-5992803c8e77',
-          snapshotUrls: 'https://i.gkd.li/i/18587456',
+          snapshotUrls: [
+            'https://i.gkd.li/i/18587456',
+            'https://i.gkd.li/i/25739074',
+          ],
         },
       ],
     },
@@ -713,6 +721,46 @@ export default defineGkdApp({
             '[text="暂不开启"][clickable=true]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/25470098',
+        },
+      ],
+    },
+    {
+      key: 29,
+      name: '局部广告-黄色横幅提示',
+      desc: '点击横幅右边x掉',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'tv.danmaku.bili.ui.webview.MWebActivity',
+          matches:
+            '@Image[text^="yellow-tip-close"][visibleToUser=true] - View[childCount=1] - Image < View[childCount=3] <<n [vid="webview"]',
+          snapshotUrls: 'https://i.gkd.li/i/25563755',
+        },
+      ],
+    },
+    {
+      key: 30,
+      name: '功能类-创作中心自动展开更多',
+      desc: '自动点击展开',
+      rules: [
+        {
+          key: 0,
+          fastQuery: true,
+          activityIds:
+            'com.bilibili.upper.module.uppercenter.activity.UpperCenterMainActivityV4',
+          matches:
+            '[vid="tv_expand"][text!="收起"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/25563935',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/25563937', // 已展开状态
+        },
+        {
+          key: 1,
+          fastQuery: true,
+          activityIds: 'tv.danmaku.bili.ui.webview.MWebActivity',
+          matches:
+            'Image - @TextView[text="展开更多" || text!="收起"] < View[childCount=2][visibleToUser=true] <<n View[id="app"] <<3 [vid="webview"]',
+          snapshotUrls: 'https://i.gkd.li/i/25564200',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/25564199', // 已展开状态
         },
       ],
     },
