@@ -1,6 +1,6 @@
 ## key 值规范
 
-规则组的 `key` 属性是规则组在列表中的唯一标识，也是客户端禁用/启用此规则组的依据。
+规则组的 `key` 属性是规则组在列表中的唯一标识，也是客户端禁用/启用此规则组的依据。[^1]
 
 > [!TIP]
 > 规则类别是通过 `name` 的前几个字符判断的，而不是 `key` 值。
@@ -109,4 +109,4 @@ groups: [
 - https://github.com/orgs/gkd-kit/discussions/950
 - https://github.com/AIsouler/GKD_subscription/discussions/1528
 
-[相关 API](https://gkd.li/api/interfaces/RawGroupProps#key)
+[^1]: https://gkd.li/api/interfaces/RawGroupProps#key

@@ -8,7 +8,7 @@
 
 - 选择器
 
-```txt
+```ts
 anyMatches: [
   '[text*="跳过"][text.length<10][width<500 && height<300][visibleToUser=true]',
   '@[name$="View" || name$="LinearLayout"][clickable=true][childCount<2][width<300 && height<200] - [text="互动广告"][visibleToUser=true]',
@@ -22,7 +22,7 @@ anyMatches: [
 
 - 选择器
 
-```txt
+```ts
 anyMatches: [
   '@View[text=null][clickable=true][childCount=0][visibleToUser=true][width<200&&height<200] +(1,2) TextView[index=parent.childCount.minus(1)][childCount=0] <n FrameLayout[childCount>2][text=null][desc=null] >(n+6) [text*="第三方应用" || text*="扭动手机" || text*="点击或上滑" || text*="省钱好物" || text*="扭一扭"][visibleToUser=true]',
   'FrameLayout > FrameLayout[childCount>2][text=null][desc=null] > @View[text=null][clickable=true][childCount=0][visibleToUser=true][width<200&&height<200] +(1,2) TextView[index=parent.childCount.minus(1)][childCount=0][visibleToUser=true]',
@@ -41,7 +41,7 @@ anyMatches: [
 
 - 选择器
 
-```txt
+```ts
 ([text*="搜索" || text="历史记录" || text$="在搜"][text.length>3 && text.length<7][visibleToUser=true]) || ([text="Submit" || text*="阅读并同意" || text="书签" || text="NEXT"][visibleToUser=true]) || ([text$="设置" || text$="选好了" || text^="下一步" || text^="完成" || text*="跳过片"][text.length<10][visibleToUser=true]) || ([text^="选择"][text*="偏好" || text*="兴趣" || text*="喜好"][text.length<10][visibleToUser=true])
 ```
 
@@ -51,7 +51,7 @@ anyMatches: [
 
 - matches数组 **（可快速查询！）**
 
-```txt
+```ts
 matches: [
   '[text*="内测" || text*="测试版" || text*="新版" || text*="更新" || text*="升级" || text*="体验" || text*="內測" || text*="測試版" || text*="升級" || text*="體驗" || text*="Update" || text*="Upgrade" || text*="Experience"][text!*="自动" && text!*="自動" && text!*="成功" && text!*="失败" && text!*="失敗" && text!*="检查更新" && text!*="检测更新" && text!*="卸载"][childCount=0][visibleToUser=true]',
   '[text*="更新" || text*="下载" || text*="安装" || text*="升级" || text*="查看" || text*="体验" || text*="确定" || text*="确认"][text.length<6][childCount=0][visibleToUser=true]',
@@ -61,7 +61,7 @@ matches: [
 
 - 排除匹配，防止在一些安装页面误触 **（可快速查询！）**
 
-```txt
+```ts
 ([text*="全部"][text*="更新" || text*="忽略"][text.length<7][visibleToUser=true]) || ([text^="继续" || text^="仍然" || text*="权限"][text.length<6][visibleToUser=true]) || ([text*="来源"][visibleToUser=true])
 ```
 
@@ -69,7 +69,7 @@ matches: [
 
 - matches数组 **（可快速查询！）**
 
-```txt
+```ts
 matches: [
   '[text*="青少年" || text*="未成年" || text*="儿童"][text*="模式" || text*="守护"][text.length<15][childCount=0][visibleToUser=true]',
   '[text*="知道了" || text*="我已知晓" || text*="已满" || text*="不再提醒"][text.length<8][childCount=0][visibleToUser=true]',
@@ -96,7 +96,7 @@ matches: [
 
 [https://i.gkd.li/i/24488993](https://i.gkd.li/i/24488993?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVtwYXJlbnQuY2hpbGRDb3VudD4zXSA8biBGcmFtZUxheW91dCA-KDIsMykgW3RleHRePSLnq4vljbMiIHx8IHRleHQkPSLor6bmg4UiIHx8IHRleHRePSLkuobop6MiIHx8IHRleHQ9IuWOu-W-ruS_oeeci-eciyIgfHwgdGV4dCQ9IuW6lOeUqCIgfHwgdGV4dD0i6L-b5YWl5bCP56iL5bqPIiB8fCB0ZXh0PSLpooblj5bkvJjmg6AiIHx8IHRleHQ9Iui3s-i9rOW-ruS_oSJd)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null][parent.childCount>3] <n FrameLayout >(2,3) [text^="立即" || text$="详情" || text^="了解" || text="去微信看看" || text$="应用" || text="进入小程序" || text="领取优惠" || text="跳转微信"]
 ```
 
@@ -112,7 +112,7 @@ matches: [
 
 [https://i.gkd.li/i/17689929](https://i.gkd.li/i/17689929?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXSA8MiBGcmFtZUxheW91dFtjaGlsZENvdW50PTVdICsgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD0yXSA-IFt0ZXh0Xj0i56uL5Y2zIiB8fCB0ZXh0PSLmn6XnnIvor6bmg4UiIHx8IHRleHQ9IuS6huino-abtOWkmiIgfHwgdGV4dD0i5Y676YCb6YCbIiB8fCB0ZXh0PSLljrvlvq7kv6HnnIvnnIsiIHx8IHRleHQkPSLlupTnlKgiIHx8IHRleHQ9Iui_m-WFpeWwj-eoi-W6jyIgfHwgdGV4dD0i6aKG5Y-W5LyY5oOgIiB8fCB0ZXh0PSLot7Povazlvq7kv6EiXQ)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null] <2 FrameLayout[childCount=5] + FrameLayout[childCount=2] > [text^="立即" || text$="详情" || text^="了解" || text="去逛逛" || text="去微信看看" || text$="应用" || text="进入小程序" || text="领取优惠" || text="跳转微信"]
 ```
 
@@ -122,7 +122,7 @@ matches: [
 
 [https://i.gkd.li/i/14345580](https://i.gkd.li/i/14345580?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXSA8KDIsMykgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD00XSArKDEsMikgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD0yXSA-MiBbdGV4dF49Iueri-WNsyIgfHwgdGV4dD0i5Y676YCb6YCbIl0)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null] <(2,3) FrameLayout[childCount=4] +(1,2) FrameLayout[childCount=2] >2 [text^="立即" || text="去逛逛"]
 ```
 
@@ -136,7 +136,7 @@ matches: [
 
 [https://i.gkd.li/i/15173845](https://i.gkd.li/i/15173845?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXVt2aXNpYmxlVG9Vc2VyPXRydWVdW3dpZHRoPDkwICYmIGhlaWdodDw5MF0gPCBGcmFtZUxheW91dFtjaGlsZENvdW50PTFdW3RleHQ9bnVsbF1bZGVzYz1udWxsXVtpZD1udWxsXSAtIEZyYW1lTGF5b3V0W2NoaWxkQ291bnQ-Ml0gPjMgW3RleHRePSLnq4vljbMiIHx8IHRleHQkPSLlupTnlKgiIHx8IHRleHQ9IuS6huino-abtOWkmiIgfHwgdGV4dD0i5p-l55yL6K-m5oOFIl0)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][desc=null][id=null][visibleToUser=true][width<90 && height<90] < FrameLayout[childCount=1][text=null][desc=null][id=null] - FrameLayout[childCount>2] >3 [text^="立即" || text$="应用" || text="了解更多" || text="查看详情"]
 ```
 
@@ -157,7 +157,7 @@ matches: [
 
 [https://i.gkd.li/i/17689928](https://i.gkd.li/i/17689928?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bdmlzaWJsZVRvVXNlcj10cnVlXSA8IEZyYW1lTGF5b3V0W2NoaWxkQ291bnQ9MV0gPDIgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD0yXSA8MiBGcmFtZUxheW91dFtjaGlsZENvdW50PTJdIDwyIEZyYW1lTGF5b3V0W2NoaWxkQ291bnQ9Ml0gLSBGcmFtZUxheW91dCA-IFt0ZXh0Xj0i5omt5Yqo5oiW54K55Ye7Il0)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][visibleToUser=true] < FrameLayout[childCount=1] <2 FrameLayout[childCount=2] <2 FrameLayout[childCount=2] <2 FrameLayout[childCount=2] - FrameLayout > [text^="扭动或点击"]
 ```
 
@@ -167,7 +167,7 @@ matches: [
 
 [https://i.gkd.li/i/13328126](https://i.gkd.li/i/13328126?gkd=QEltYWdlVmlld1tjaGlsZENvdW50PTBdW3RleHQ9bnVsbF1bdmlzaWJsZVRvVXNlcj10cnVlXSA8IEZyYW1lTGF5b3V0W2NoaWxkQ291bnQ9MV0gPDMgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD0zXSA8IEZyYW1lTGF5b3V0W2NoaWxkQ291bnQ9Ml0gKzUgRnJhbWVMYXlvdXRbY2hpbGRDb3VudD00XSA-IFt0ZXh0Xj0i5omt5Yqo5oiW54K55Ye7Il0)
 
-```txt
+```ts
 @ImageView[childCount=0][text=null][visibleToUser=true] < FrameLayout[childCount=1] <3 FrameLayout[childCount=3] < FrameLayout[childCount=2] +5 FrameLayout[childCount=4] > [text^="扭动或点击"]
 ```
 
@@ -185,7 +185,7 @@ matches: [
 
 [https://i.gkd.li/i/15362927](https://i.gkd.li/i/15362927?gkd=SW1hZ2VWaWV3W2NoaWxkQ291bnQ9MF1bdGV4dD1udWxsXSA8IEBWaWV3R3JvdXBbY2hpbGRDb3VudD0xXVtjbGlja2FibGU9dHJ1ZV1bdmlzaWJsZVRvVXNlcj10cnVlXSA8IFZpZXdHcm91cCArbiBWaWV3R3JvdXBbY2hpbGRDb3VudD0yXSA-IFt0ZXh0PSLlub_lkYoiXQ)
 
-```txt
+```ts
 ImageView[childCount=0][text=null] < @ViewGroup[childCount=1][clickable=true][visibleToUser=true] < ViewGroup +n ViewGroup[childCount=2] > [text="广告"]
 ```
 
@@ -195,7 +195,7 @@ ImageView[childCount=0][text=null] < @ViewGroup[childCount=1][clickable=true][vi
 
 [https://i.gkd.li/i/13625303](https://i.gkd.li/i/13625303?gkd=QEltYWdlVmlld1tjbGlja2FibGU9dHJ1ZV0gLSBbdGV4dD0ifCJdIC0gW3RleHQkPSJzIl0)
 
-```txt
+```ts
 matches: [
   '[text="广告"]',
   '@ImageView[clickable=true] - [text="|"] - [text$="s"]',
@@ -218,25 +218,25 @@ matches: [
 
 [https://i.gkd.li/i/13632639](https://i.gkd.li/i/13632639?gkd=QEltYWdlW2NoaWxkQ291bnQ9MF1bdGV4dD0iIl1bd2lkdGg8NjAgJiYgaGVpZ2h0PDYwXSA8IFZpZXdbY2hpbGRDb3VudD0xXSArIFZpZXcgK24gVmlldyA-IFZpZXdbY2hpbGRDb3VudD0xXSA-IFRleHRWaWV3W3RleHQkPSLlub_lkYoiXQ)
 
-```txt
+```ts
 @Image[childCount=0][text=""][width<60 && height<60] < View[childCount=1] + View +n View > View[childCount=1] > TextView[text$="广告"]
 ```
 
 - 选择器-2 **（不可快速查询！）**
 
-```txt
+```ts
 @Image[childCount=0][text=""][width<60 && height<60] < View[childCount=1] + View > [text="反馈"]
 ```
 
 - 选择器-3 **（不可快速查询！）**
 
-```txt
+```ts
 [text="反馈"] +(1,2) View[childCount=1] > Image[childCount=0][text=""][width<60 && height<60]
 ```
 
 - 选择器-4 **（不可快速查询！）**
 
-```txt
+```ts
 [text="反馈"] - View[childCount=1] > Image[childCount=0][text=""][width<60 && height<60]
 ```
 
@@ -250,7 +250,7 @@ matches: [
 
 - 选择器-1 **（可快速查询！）**
 
-```txt
+```ts
 @ImageView[childCount=0][visibleToUser=true] < FrameLayout[childCount=1] - LinearLayout[childCount=2] > [text="下载应用" || text="立即下载" || text="查看详情" || text="领取优惠" || text="进入小程序" || text="了解更多"][visibleToUser=true]
 ```
 
@@ -272,7 +272,7 @@ matches: [
 
 - 选择器-2 **（可快速查询！）**
 
-```txt
+```ts
 @View[clickable=true][childCount=0][visibleToUser=true] < FrameLayout[desc^="dislike"] + FrameLayout >2 [text="广告"]
 ```
 

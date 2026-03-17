@@ -4,17 +4,17 @@
 
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-[![Release](https://img.shields.io/badge/release-v116-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v117-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-65-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
-[![应用规则组](https://img.shields.io/badge/应用规则组-371-orange)](./dist/README.md#应用规则)
-[![Telegram Chat](https://img.shields.io/badge/Telegram-Chat-blue.svg?logo=telegram)](https://t.me/+8L4eHePgYEZmY2M9)
+[![应用规则组](https://img.shields.io/badge/应用规则组-375-orange)](./dist/README.md#应用规则)
+[![Telegram Chat](https://img.shields.io/badge/Telegram-交流群-blue.svg?logo=telegram)](https://t.me/+8L4eHePgYEZmY2M9)
 
 ## 📢声明
 
 - **本仓库为原仓库停更后，由社区续更的Fork版**
 - **禁止在国内平台传播**
-- **本仓库仅供本人学习使用**
+- **本仓库仅供学习交流使用**
 - **精力有限，随缘更新**
 
 ## 📑说明
@@ -64,11 +64,11 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 </details>
 
-- 当前版本: v116
-
-- 当前订阅文件已适配 65 个应用，共有 371 应用规则组，3 全局规则组
-
-- 查看 [适配 APP 列表](./dist/README.md)
+> 当前版本: v117
+> 
+> 当前订阅文件已适配 65 个应用，共有 375 应用规则组，3 全局规则组
+> 
+> 查看 [适配 APP 列表](./dist/README.md)
 
 ## 🌈其他
 
@@ -77,6 +77,10 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 - 查看 [规则编写教程](https://github.com/Snoopy1866/notebook/blob/main/04%20Others/GKD%20%E8%A7%84%E5%88%99%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/gkd-rule-tutorial.md) By [@Snoopy1866](https://github.com/Snoopy1866)
 
 - 使用 [GKD网页审查工具增强脚本](https://github.com/adproqwq/MakeGKDInspectBetter) 可以高度自定义从网页复制出来的规则，提高规则编写效率
+
+- 安装 VS Code 插件 [GKD Toolkit](https://github.com/tianfangyetan1/vscode-gkd-toolkit) ，可以更方便的一次性打开多个快照
+
+- 体验 Plus 版的快照审查工具 [inspect-plus](https://github.com/cjy0812/inspect-plus)
 
 - 使用 [GKD订阅模板](https://github.com/gkd-kit/subscription-template) 快速构建自己的订阅
 
@@ -89,8 +93,14 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 ## 🥇感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&_v=116)
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=117)
 
 ## 📈Star History
 
-[![Star History Chart](https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=Date)](https://star-history.com/#YaChengMu/gkd_subscription_min&Date)
+<a href="https://www.star-history.com/#YaChengMu/gkd_subscription_min&type=timeline&legend=top-left">
+ <picture>
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
+ </picture>
+</a>

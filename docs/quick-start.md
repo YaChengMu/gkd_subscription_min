@@ -7,7 +7,7 @@
 本项目基于 nodejs + typescript
 
 - 安装 [nodejs](https://nodejs.org/) 或者 [volta](https://volta.sh/)
-- 安装 [pnpm](https://pnpm.io/zh/installation)
+- 安装 [pnpm](https://pnpm.io/zh/installation) (推荐使用 [Corepack](https://pnpm.io/zh/installation#使用-corepack) 或者 [npm](https://pnpm.io/zh/installation#使用-npm) 方式安装)
 - 建议安装 [Visual Studio Code](https://code.visualstudio.com/)
 - Fork 本项目, 然后 Clone 至本地, 切换到项目根目录，安装依赖 `pnpm install`
 
@@ -151,7 +151,7 @@ Android>=11 的无障碍可以自己截屏, 所以如果你的设备不满足 An
 
 打开浏览器设备连接页面-点击修改内存订阅, 输入如下内容, 然后点击确认
 
-```text
+```ts
 // 订阅使用 JSON5 语法, 根节点可以是数组也可以是对象
 {
   id: 'cn.wps.moffice_eng',
@@ -159,12 +159,15 @@ Android>=11 的无障碍可以自己截屏, 所以如果你的设备不满足 An
   groups: [
     {
       key: 1,
-      name: '首页-文档列表广告',
-      activityIds: ['cn.wps.moffice.main.StartPublicActivity', 'cn.wps.moffice.main.local.HomeRootActivity'],
+      name: '分段广告-文档列表广告',
+      activityIds: [
+        'cn.wps.moffice.main.StartPublicActivity',
+        'cn.wps.moffice.main.local.HomeRootActivity',
+      ],
       rules: [
         {
           matches: '[text="关闭当前广告"]',
-          snapshotUrls: 'https://i.gkd.li/i/12505365',//获取链接的方法在上一步有说明
+          snapshotUrls: 'https://i.gkd.li/i/12505365', // 获取链接的方法在上一步有说明
         },
         {
           matches: '[id$="/nativeclose"]',
@@ -178,6 +181,9 @@ Android>=11 的无障碍可以自己截屏, 所以如果你的设备不满足 An
   ],
 }
 ```
+
+> [!IMPORTANT]
+> 规则组的 `name` 属性必须以 [src\categories.ts](../src/categories.ts) 中列出的类别开头, 例如 `分段广告-首页文档列表广告`
 
 此时回到APP首页-订阅, 会发现多了一条**内存订阅**
 
@@ -221,7 +227,7 @@ export default defineGkdApp({
   groups: [
     {
       key: 1,
-      name: '首页-文档列表广告',
+      name: '分段广告-首页文档列表广告',
       exampleUrls: [
         'https://github.com/gkd-kit/subscription/assets/38517192/57787554-0443-4bc0-9f29-1759aae07b9b',
       ],

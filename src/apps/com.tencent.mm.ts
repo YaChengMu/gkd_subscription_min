@@ -118,6 +118,7 @@ export default defineGkdApp({
     {
       key: 1,
       name: '功能类-电脑微信快捷自动登录',
+      desc: '点击[登录]',
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
@@ -128,15 +129,17 @@ export default defineGkdApp({
             '.ui.LauncherUI',
           ],
           matches: [
-            '[text="登录 Windows 微信" || text^="登入 WeChat" || text^="Log in to Weixin for"][visibleToUser=true]',
+            '[text^="登录 Win" || text^="登录桌面" || text^="登入 WeChat" || text^="Log in to Weixin for"][visibleToUser=true]',
             '[text="登录" || text="登入" || text="Log In"][visibleToUser=true]',
           ],
           snapshotUrls: [
-            'https://i.gkd.li/i/13522625',
+            'https://i.gkd.li/i/13522625', // zh_CN
             'https://i.gkd.li/i/13522577',
-            'https://i.gkd.li/i/22356438',
-            'https://i.gkd.li/i/25315046', //zh_TW
+            'https://i.gkd.li/i/22356438', // En_US
+            'https://i.gkd.li/i/25315046', // zh_TW
+            'https://i.gkd.li/i/25815630', // Linux_zh_CN
           ],
+          exampleUrls: 'https://e.gkd.li/4434dd75-1c9c-4c4a-a6fb-47490b751ec4',
         },
       ],
     },
@@ -230,10 +233,11 @@ export default defineGkdApp({
           matchRoot: true,
           activityIds: '.plugin.luckymoney.ui.LuckyMoney',
           matches:
-            '@Button[desc="开" || desc="開"] -3 LinearLayout >2 [text$="红包" || text$="紅包"]',
+            '@Button[desc="开" || desc="開"] -(2,3) LinearLayout >2 [text$="红包" || text$="紅包"]',
           snapshotUrls: [
             'https://i.gkd.li/i/18134828',
             'https://i.gkd.li/i/21177180',
+            'https://i.gkd.li/i/25901145',
             'https://i.gkd.li/i/25315061', //zh_TW
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/12567698', // 金币动画的快照
@@ -869,12 +873,56 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds: '.plugin.webview.ui.tools.MMWebViewUI',
+          activityIds: [
+            '.plugin.webview.ui.tools.MMWebViewUI',
+            '.ui.chatting.AppAttachNewDownloadUI',
+          ],
           matches: [
             '[text^="即将离开微信"][visibleToUser=true]',
             '[text="允许"][visibleToUser=true]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/24161524',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24161524',
+            'https://i.gkd.li/i/26024460',
+          ],
+          exampleUrls: 'https://e.gkd.li/e48afed5-a42b-4167-b2f3-e0e89eb57645',
+        },
+      ],
+    },
+    {
+      key: 45,
+      name: '功能类-文件自动预览',
+      desc: '未下载文件-点击预览',
+      fastQuery: true,
+      actionMaximum: 1,
+      rules: [
+        {
+          activityIds: '.ui.container.MMCommonActivity',
+          matches:
+            '[text^="14天内可以预览"] - [text="下载"] - [text="预览"][clickable=true][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/25832752', // 点击预览
+            'https://i.gkd.li/i/25832868', // 点击后的预览窗口
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/51a4f07b-ca93-46f4-b301-9ed197862d96',
+            'https://e.gkd.li/c4e42c3b-a071-427b-9a4c-a1035421836c',
+          ],
+        },
+      ],
+    },
+    {
+      key: 46,
+      name: '功能类-文件自动app打开',
+      desc: '办公文档点下面第一个(默认)app打开',
+      fastQuery: true,
+      rules: [
+        {
+          activityIds: '.ui.chatting.AppAttachNewDownloadUI',
+          matches:
+            '@LinearLayout[clickable=true][index=0][childCount=2] < RecyclerView - [text="用QQ浏览器打开"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26024073',
+          exampleUrls: 'https://e.gkd.li/13608598-f371-467a-8162-354110b8c79f',
         },
       ],
     },

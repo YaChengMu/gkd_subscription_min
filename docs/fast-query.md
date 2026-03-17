@@ -11,13 +11,13 @@
 
 在快照中，有一部分节点可以直接通过 `id` / `vid` / `name` 定位，不需要遍历就能获取。这部分节点在树形图中是加粗显示的。
 
-![可以快速查询的节点在树形图中加粗显示](images/fast-queryable-bold-style.png)
+![可以快速查询的节点在树形图中加粗显示](images/fast-query/fast-queryable-node-bold-text.png)
 
 选中这些节点，查看属性面板，可以快速查询的属性在名称右侧有一个勾。
 
-![id和vid属性可以快速查询的示例](images/attribute-id-vid-fast-queryable.png)
+![id和vid属性可以快速查询的示例](images/fast-query/attribute-id-vid-fast-queryable.png)
 
-![text属性可以快速查询的示例](images/attribute-text-fast-queryable.png)
+![text属性可以快速查询的示例](images/fast-query/attribute-text-fast-queryable.png)
 
 由于选择器是从右往左查询的，所以满足快速查询的选择器 **末尾属性选择器** 的 **第一个属性选择表达式** 应该符合下面的结构之一：[^2]
 
@@ -29,6 +29,10 @@
 [text*='abc']
 [text$='abc']
 ```
+
+> [!TIP]
+> 
+> 只有 `text` 属性支持使用运算符 `^=` 、 `$=` 、 `*=` 快速查询，`id` 和 `vid` 不支持。因为调用相关接口通过 `id` 快速查询时必须传入完整的 `id`。[^3]
 
 或者使用 `||` 将它们连接形成的逻辑表达式也符合条件，即如下格式：
 
@@ -46,7 +50,7 @@ A > B + C[id='x' || text='manbaout' || text*='ikun'][childCount=2] ✅
 A > B + C[childCount=2][id='x' || text='manbaout' || text*='ikun'] ❎
 ```
 
-最后，还需要对规则（推荐）或规则组设置 `fastQuery: true` 才会启用快速查询。不符合快速查询格式的规则设置此属性也不会影响查询速度。
+最后，还需要对规则或规则组设置 `fastQuery: true` 才会启用快速查询。不符合快速查询格式的规则设置此属性也不会影响查询速度。
 
 如果节点无法快速查询，即使选择器符合快速查询格式，也不要设置 `fastQuery: true`，会查询不到。
 
@@ -56,7 +60,7 @@ A > B + C[childCount=2][id='x' || text='manbaout' || text*='ikun'] ❎
 
 我们需要点击的节点如图所示：
 
-![需要点击的节点](images/fast-query-example-target-node.png)
+![需要点击的节点](images/fast-query/example-target-node.png)
 
 在学习快速查询之前，我们可能会写出这样的选择器：
 
@@ -66,7 +70,7 @@ A > B + C[childCount=2][id='x' || text='manbaout' || text*='ikun'] ❎
 
 注意到该节点附近有一个可以快速查询的节点，如图所示：
 
-![中转节点](images/fast-query-example-transit-node.png)
+![中转节点](images/fast-query/example-transit-node.png)
 
 可以先获取 `[vid="browser_fragment_layout"]` 节点，然后查找目标节点。
 
@@ -78,9 +82,9 @@ A > B + C[childCount=2][id='x' || text='manbaout' || text*='ikun'] ❎
 
 > [!TIP]
 > 
-> 点击属性面板中的 **快速复制规则按钮**，即可复制最近的可以快速查询的节点或者根节点到当前节点的表达式
+> 点击属性面板中的 **复制规则按钮**，即可复制最近的可以快速查询的节点或者根节点到当前节点的表达式
 > 
-> ![快速复制规则按钮](images/fast-copy-button.png)
+> ![复制规则按钮](images/fast-query/copy-selector-button.png)
 
 ### 局部快速查询
 
@@ -99,7 +103,7 @@ A > B + C[childCount=2][id='x'] <<n D ❎
 
 局部快速查询也需要在规则或规则组中设置 `fastQuery: true`。
 
-### 避免快速查询
+### 避免局部快速查询
 
 如果一条规则需要使用快速查询，但是其中存在 **符合快速查询格式** 却 **无法快速查询** 的选择器，例如：
 
@@ -124,3 +128,5 @@ A + B[childCount!=null][id='x'] <<n C[id='y']
 [^1]: https://gkd.li/guide/selector#match-order
 
 [^2]: https://gkd.li/guide/optimize#fast-query
+
+[^3]: https://developer.android.google.cn/reference/android/view/accessibility/AccessibilityNodeInfo#findAccessibilityNodeInfosByViewId(java.lang.String)

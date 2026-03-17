@@ -149,6 +149,15 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23786789',
           ],
         },
+        {
+          key: 2,
+          fastQuery: true,
+          activityIds: 'cn.wps.moffice.writer.multiactivity.Writer1',
+          matches:
+            '[vid="public_login"] <2 LinearLayout[childCount=2] + [vid="public_close"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26026279',
+          exampleUrls: 'https://e.gkd.li/a17eca15-c7bd-4ea6-ba84-0d3242641697',
+        },
       ],
     },
     {
@@ -186,6 +195,29 @@ export default defineGkdApp({
             '[text="以后再说"][clickable=true]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/23714159',
+        },
+      ],
+    },
+    {
+      key: 11,
+      name: '其他-x掉添加至主屏幕',
+      desc: '不再提示-取消',
+      fastQuery: true,
+      activityIds: 'cn.wps.moffice.writer.multiactivity.Writer2',
+      rules: [
+        {
+          key: 0,
+          matches:
+            '[vid="dlg_add_home_cancel"] < FrameLayout - LinearLayout > [vid="dlg_add_home_checkbox"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26026325',
+          exampleUrls: 'https://e.gkd.li/72ec7310-ce0d-4c43-b8ad-7d2966d6e902',
+        },
+        {
+          preKeys: [0],
+          matches:
+            '@[vid="dlg_add_home_cancel"] < FrameLayout - LinearLayout > [vid="dlg_add_home_checkbox"][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26026328',
+          exampleUrls: 'https://e.gkd.li/e40f22fa-a74a-4a92-b816-11c1f2f2c901',
         },
       ],
     },
