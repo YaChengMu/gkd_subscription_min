@@ -43,11 +43,18 @@ export default defineGkdApp({
       matchTime: 10000,
       actionMaximum: 1,
       resetMatch: 'app',
+      activityIds: '.maincontainer.activity.MainActivity',
       rules: [
         {
-          activityIds: '.maincontainer.activity.MainActivity',
+          key: 0,
           matches: '[text="立即升级"] -2 [text="暂不升级"]',
           snapshotUrls: 'https://i.gkd.li/i/13832272',
+        },
+        {
+          key: 1,
+          matches:
+            '@ImageView[text=null][desc=null][clickable=true][width>84 && width<124] - View[height<158] <2 [childCount=3] < RelativeLayout - [vid="fish_layer_js_native_window_background_view"]',
+          snapshotUrls: 'https://i.gkd.li/i/26053923',
         },
       ],
     },
