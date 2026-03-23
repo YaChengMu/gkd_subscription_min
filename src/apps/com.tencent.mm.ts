@@ -926,5 +926,67 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 47,
+      name: '功能类-自动清缓存',
+      desc: '存储空间页-清理x2-完成⚠️小程序重要数据慎用',
+      actionMaximum: 1,
+      resetMatch: 'app',
+      fastQuery: true,
+      activityIds: [
+        '.ui.vas.VASCommonActivity',
+        '.plugin.clean.ui.fileindexui.', //通配
+      ],
+      rules: [
+        {
+          key: 0,
+          name: '清理',
+          matches:
+            '@Button[text^="清" || text="Clear"][clickable=true][visibleToUser=true] -n [text="缓存" || text="快取" || text="Cache"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/26159733',
+            'https://i.gkd.li/i/26162844',
+          ],
+          exampleUrls: 'https://e.gkd.li/0e5e1dfa-f0c2-4823-bb3c-33d23ac2d122',
+        },
+        {
+          key: 1,
+          preKeys: [0],
+          name: '确认清理',
+          matches:
+            '@Button[clickable=true] < FrameLayout -2 [text*="估" || text="Estimated"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26159823',
+          exampleUrls: 'https://e.gkd.li/ac107188-5b53-4d25-9e81-0f5266470300',
+        },
+        {
+          preKeys: [1],
+          name: '完成',
+          matches:
+            'LinearLayout[childCount=5] > [text="我知道了" || text="Got It"][clickable=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/26159824',
+            'https://i.gkd.li/i/26162845',
+          ],
+          exampleUrls: 'https://e.gkd.li/a83a2fb8-19ac-4a2f-aa08-03d5921d9328',
+        },
+      ],
+    },
+    {
+      key: 48,
+      name: '功能类-快速切换账号',
+      desc: '点击当前使用下面第一个账号',
+      actionMaximum: 2,
+      resetMatch: 'app',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.plugin.setting.ui.setting.SettingsSwitchAccountUI',
+          matches:
+            '@FrameLayout[clickable=true][visibleToUser=true] - * > * >2 [text="当前使用"]',
+          snapshotUrls: 'https://i.gkd.li/i/26159956',
+          exampleUrls: 'https://e.gkd.li/0ee723f0-e6e5-4018-9cfa-7a8de22b91e1',
+        },
+      ],
+    },
   ],
 });
