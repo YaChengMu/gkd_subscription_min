@@ -221,8 +221,11 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.maincontainer.activity.MainActivity',
           matches:
-            'TextView + @ImageView[clickable=true][width<100] <5 FrameLayout <<4 [vid="fish_layer_container_id"]',
-          snapshotUrls: 'https://i.gkd.li/i/25796897',
+            '@ImageView[clickable=true][width<100] <(2,5) FrameLayout <<(3,4) [vid="fish_layer_container_id"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/25796897',
+            'https://i.gkd.li/i/26184285',
+          ],
         },
       ],
     },

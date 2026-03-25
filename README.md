@@ -4,7 +4,7 @@
 
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-[![Release](https://img.shields.io/badge/发行版-v119-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v120-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-65-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
 [![应用规则组](https://img.shields.io/badge/应用规则组-377-orange)](./dist/README.md#应用规则)
@@ -64,7 +64,7 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 </details>
 
-> 当前版本: v119
+> 当前版本: v120
 > 
 > 当前订阅文件已适配 65 个应用，共有 377 应用规则组，3 全局规则组
 > 
@@ -73,8 +73,6 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 ## 🌈其他
 
 - 在 [GKD官网](https://gkd.li/) 查看 [GKD基础使用教程](https://gkd.li/guide/) 、[常见问题](https://gkd.li/guide/faq) 以及 [API文档](https://gkd.li/api/)
-
-- 查看 [规则编写教程](https://github.com/Snoopy1866/notebook/blob/main/04%20Others/GKD%20%E8%A7%84%E5%88%99%E7%BC%96%E5%86%99%E6%95%99%E7%A8%8B/gkd-rule-tutorial.md) By [@Snoopy1866](https://github.com/Snoopy1866)
 
 - 使用 [GKD网页审查工具增强脚本](https://github.com/adproqwq/MakeGKDInspectBetter) 可以高度自定义从网页复制出来的规则，提高规则编写效率
 
@@ -93,7 +91,9 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 ## 🥇感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=119)
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=120)
+
+![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图")
 
 ## 📈Star History
 
