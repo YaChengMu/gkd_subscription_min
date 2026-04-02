@@ -676,17 +676,23 @@ export default defineGkdApp({
     },
     {
       key: 33,
-      name: '青少年模式',
+      name: '局部广告-底部横幅广告',
+      fastQuery: true,
+      activityIds: '.AlipayLogin',
       rules: [
         {
           key: 0,
-          name: '底部悬浮卡片-启用未成年人保护模式"',
-          fastQuery: true,
-          activityIds: '.AlipayLogin',
-          matches: [
-            '@[id="com.alipay.android.phone.wallet.manufacturebiz:id/teenager_cancel"] - RelativeLayout[childCount=4] > [text="启用未成年人保护模式"]',
-          ],
+          name: '青少年模式',
+          matches:
+            '@[id$="teenager_cancel"] - RelativeLayout[childCount=4] > [text="启用未成年人保护模式"]',
           snapshotUrls: 'https://i.gkd.li/i/24992663',
+        },
+        {
+          key: 1,
+          name: '邀请参加调研',
+          matches:
+            '@ImageView[clickable=true][width<68] <2 [desc="底部广告"] - [vid="alipaylogin_layout"]',
+          snapshotUrls: 'https://i.gkd.li/i/26330637',
         },
       ],
     },

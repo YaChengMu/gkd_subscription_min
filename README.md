@@ -4,10 +4,10 @@
 
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-[![Release](https://img.shields.io/badge/发行版-v120-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v121-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-65-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
-[![应用规则组](https://img.shields.io/badge/应用规则组-377-orange)](./dist/README.md#应用规则)
+[![应用规则组](https://img.shields.io/badge/应用规则组-381-orange)](./dist/README.md#应用规则)
 [![Telegram Chat](https://img.shields.io/badge/Telegram-交流群-blue.svg?logo=telegram)](https://t.me/+8L4eHePgYEZmY2M9)
 
 ## 📢声明
@@ -64,9 +64,9 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 </details>
 
-> 当前版本: v120
+> 当前版本: v121
 > 
-> 当前订阅文件已适配 65 个应用，共有 377 应用规则组，3 全局规则组
+> 当前订阅文件已适配 65 个应用，共有 381 应用规则组，3 全局规则组
 > 
 > 查看 [适配 APP 列表](./dist/README.md)
 
@@ -82,7 +82,7 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 - 使用 [GKD订阅模板](https://github.com/gkd-kit/subscription-template) 快速构建自己的订阅
 
-- 如何编写订阅/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
+- 相关教程/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
 
 ## 🎉感谢以下项目
 
@@ -91,7 +91,7 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 ## 🥇感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=120)
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=121)
 
 ![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图")
 

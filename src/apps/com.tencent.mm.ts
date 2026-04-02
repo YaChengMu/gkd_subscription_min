@@ -917,6 +917,7 @@ export default defineGkdApp({
       name: '功能类-文件自动app打开',
       desc: '办公文档点下面第一个(默认)app打开',
       fastQuery: true,
+      actionCd: 2000, // 防止点击跳转太快，控制速率
       rules: [
         {
           activityIds: '.ui.chatting.AppAttachNewDownloadUI',
@@ -995,6 +996,21 @@ export default defineGkdApp({
             '@FrameLayout[clickable=true][visibleToUser=true] - * > * >2 [text="当前使用"]',
           snapshotUrls: 'https://i.gkd.li/i/26159956',
           exampleUrls: 'https://e.gkd.li/0ee723f0-e6e5-4018-9cfa-7a8de22b91e1',
+        },
+      ],
+    },
+    {
+      key: 49,
+      name: '功能类-直接定位到聊天位置',
+      desc: '点引用消息-定位到聊天位置(左下角)',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.ui.chatting.TextPreviewUI',
+          matches:
+            'TextView[visibleToUser=true] < * < ScrollView + @LinearLayout[clickable=true] <<n [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/26310231',
+          exampleUrls: 'https://e.gkd.li/9b2b5ed6-bf1d-4b13-aba5-b51e978df562',
         },
       ],
     },

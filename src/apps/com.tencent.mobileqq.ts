@@ -10,6 +10,8 @@ export default defineGkdApp({
       fastQuery: true,
       matchTime: 10000,
       actionMaximum: 1,
+      scopeKeys: [13], // 规则组key13也是开屏广告
+      actionMaximumKey: 0, // key13-0
       resetMatch: 'app',
       priorityTime: 10000,
       rules: [
@@ -77,14 +79,14 @@ export default defineGkdApp({
         },
         {
           key: 3,
-          activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
+          activityIds: '.activity.SplashActivity',
           matches:
             '@ImageView[desc="关闭"][clickable=true] <n RelativeLayout - RelativeLayout >3 ImageView[desc="快捷入口"]',
           snapshotUrls: 'https://i.gkd.li/i/24230528',
         },
         {
           key: 4,
-          activityIds: 'com.tencent.mobileqq.activity.SplashActivity',
+          activityIds: '.activity.SplashActivity',
           matches:
             '@ImageView[width<100 && height<100][clickable=true] - TextView[text!=null] <n * + * >3 ImageView[desc="快捷入口"]',
           snapshotUrls: 'https://i.gkd.li/i/25235782',
@@ -212,6 +214,7 @@ export default defineGkdApp({
       priorityTime: 10000,
       rules: [
         {
+          key: 0,
           activityIds: [
             '.mini.appbrand.ui.AppBrandUI',
             '.activity.miniaio.MiniChatActivity',
@@ -460,6 +463,37 @@ export default defineGkdApp({
             '[text="允许"][clickable=true][visibleToUser=true]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/25142977',
+        },
+      ],
+    },
+    {
+      key: 36,
+      name: '功能类-QQ空间不看[官方Qzone]的动态',
+      desc: '点击动态右上角三个点-不看此条动态-确定',
+      rules: [
+        {
+          key: 0,
+          fastQuery: true,
+          activityIds:
+            'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
+          matches:
+            '@ImageView[clickable=true][width<160 && height<160] - * >2 [desc="官方Qzone"] <<n ViewGroup +n * >2 [text^="说点什么吧"]',
+          snapshotUrls: 'https://i.gkd.li/i/26308400',
+        },
+        {
+          key: 1,
+          preKeys: 0,
+          fastQuery: true,
+          activityIds:
+            'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
+          matches: '@[clickable=true] > [text^="不看此条"][text$="动态"]',
+          snapshotUrls: 'https://i.gkd.li/i/26308405',
+        },
+        {
+          key: 2,
+          activityIds: '.activity.QPublicTransFragmentActivity',
+          matches: '[desc="确认不看此条动态吗？"] +n [desc="确定"]',
+          snapshotUrls: 'https://i.gkd.li/i/26308417',
         },
       ],
     },

@@ -44,7 +44,7 @@ export default defineGkdApp({
             'cn.wps.moffice.main.AfterLoginActivity',
             'com.android.packageinstaller.permission.ui.GrantPermissionsActivity',
           ],
-          matches: '[id="cn.wps.moffice_eng:id/afterlogin_cancel"]',
+          matches: '[vid="afterlogin_cancel"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13259097',
             'https://i.gkd.li/i/12882712',
@@ -55,7 +55,7 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: 'cn.wps.moffice.main.local.HomeRootActivity',
           matches:
-            'View[childCount=3] > Image[text!=null] +2 @TextView[clickable=true] <<n [vid="push_tips_ptr_super_webview"]',
+            '@TextView[clickable=true] -2 Image[text!=null] <<2 View - [id="app"] <<5 [vid="push_tips_ptr_super_webview"]',
           snapshotUrls: 'https://i.gkd.li/i/13945835',
         },
         {
@@ -77,8 +77,7 @@ export default defineGkdApp({
       resetMatch: 'app',
       rules: [
         {
-          matches:
-            '[id="cn.wps.moffice_eng:id/close_new_func_guide_dialog_imageView"]',
+          matches: '[vid="close_new_func_guide_dialog_imageView"]',
           snapshotUrls: 'https://i.gkd.li/i/12882371',
         },
       ],
@@ -96,8 +95,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches:
-            '[id="cn.wps.moffice_eng:id/cloud_protocol_dialog_not_start_btn"]',
+          matches: '[vid="cloud_protocol_dialog_not_start_btn"]',
           snapshotUrls: [
             'https://i.gkd.li/i/12882536',
             'https://i.gkd.li/i/12882610',
@@ -106,7 +104,7 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          matches: '[id="cn.wps.moffice_eng:id/dialog_button_positive"]',
+          matches: '[vid="dialog_button_positive"]',
           snapshotUrls: 'https://i.gkd.li/i/12882554',
         },
       ],
@@ -119,8 +117,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches:
-            '[id="cn.wps.moffice_eng:id/doc_end_ad_container_main"] >2 [id="cn.wps.moffice_eng:id/btn_close"]',
+          matches: '[vid="doc_end_ad_container_main"] >2 [vid="btn_close"]',
           snapshotUrls: 'https://i.gkd.li/i/13513911',
         },
         {
@@ -140,7 +137,7 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: 'cn.wps.moffice.main.local.HomeRootActivity',
           matches:
-            '[id="cn.wps.moffice_eng:id/home_banner_ad_spread_close" || vid="phone_message_close_button" || vid="close_home_ad_banner_iv" || vid="iv_item_close" || vid="iv_cloud_sync_close"][visibleToUser=true]',
+            '[vid="home_banner_ad_spread_close" || vid="phone_message_close_button" || vid="close_home_ad_banner_iv" || vid="iv_item_close" || vid="iv_cloud_sync_close"][visibleToUser=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/13804525',
             'https://i.gkd.li/i/17893252',
@@ -177,7 +174,7 @@ export default defineGkdApp({
           preKeys: [0],
           key: 1,
           matches:
-            '[text="签到成功"] -2 View[childCount=1] > @Image[text!=null][childCount=0] <<n [vid="push_tips_ptr_super_webview"]',
+            '[text="签到成功"] -2 * > @Image[text!=null] <<4 [index=parent.childCount.minus(2)] <n View <<2 WebView <<4 [vid="push_tips_ptr_super_webview"]',
           exampleUrls: 'https://e.gkd.li/c8c2f3cb-9bde-4a01-8eb6-145cf668993f',
           snapshotUrls: 'https://i.gkd.li/i/16382075',
         },

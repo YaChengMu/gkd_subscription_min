@@ -82,7 +82,7 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 - 使用 [GKD订阅模板](https://github.com/gkd-kit/subscription-template) 快速构建自己的订阅
 
-- 如何编写订阅/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
+- 相关教程/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
 
 ## 🎉感谢以下项目
 

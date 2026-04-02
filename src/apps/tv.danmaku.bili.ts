@@ -35,7 +35,7 @@ export default defineGkdApp({
             '.MainActivityV2',
           ],
           matches:
-            'LinearLayout[id="tv.danmaku.bili:id/ad_tint_frame"] > ImageView[id="tv.danmaku.bili:id/close"][desc="关闭"]',
+            'LinearLayout[vid="ad_tint_frame"] > ImageView[vid="close"][desc="关闭"]',
           snapshotUrls: [
             'https://i.gkd.li/i/12785461',
             'https://i.gkd.li/i/12775156',
@@ -52,7 +52,7 @@ export default defineGkdApp({
       rules: [
         {
           key: 1,
-          matches: '[id="tv.danmaku.bili:id/ad_goods_mark_big"]',
+          matches: '[vid="ad_goods_mark_big"]',
           snapshotUrls: 'https://i.gkd.li/i/12700222',
         },
         {
@@ -85,7 +85,7 @@ export default defineGkdApp({
         },
         {
           preKeys: [1],
-          matches: '[id="tv.danmaku.bili:id/update_btn_cancel"]',
+          matches: '[vid="update_btn_cancel"]',
           snapshotUrls: [
             'https://i.gkd.li/i/12649689',
             'https://i.gkd.li/i/13212209',
@@ -108,7 +108,7 @@ export default defineGkdApp({
             'com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity',
             'com.bilibili.video.videodetail.VideoDetailsActivity',
           ],
-          matches: '[id="tv.danmaku.bili:id/toast_x"]',
+          matches: '[vid="toast_x"]',
           snapshotUrls: [
             'https://i.gkd.li/i/12892611',
             'https://i.gkd.li/i/13308344',
@@ -185,7 +185,7 @@ export default defineGkdApp({
             'com.bilibili.video.story.StoryTransparentActivity',
             'com.bilibili.teenagersmode.ui.TeenagersModeDialogActivity',
           ],
-          matches: '[text$="通知"] +2 * > [id="tv.danmaku.bili:id/close"]',
+          matches: '[text$="通知"] +2 * > [vid="close"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13229159',
             'https://i.gkd.li/i/13614090',
@@ -272,8 +272,7 @@ export default defineGkdApp({
       rules: [
         {
           activityIds: '.MainActivityV2',
-          matches:
-            '[text="开启个性化内容推荐"] +3 [id="tv.danmaku.bili:id/close_button"]',
+          matches: '[text="开启个性化内容推荐"] +3 [vid="close_button"]',
           snapshotUrls: 'https://i.gkd.li/i/13448905',
         },
       ],
@@ -503,12 +502,12 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: 'com.bilibili.vip.web.VipWebActivity',
           matches:
-            'TextView[childCount=0][text!=null][index=parent.childCount.minus(1)] -2 View >3 [text^="专属等级加速包"] +2 @TextView[childCount=0][text="领取"] <<n [vid="webview"]',
+            '@TextView[index=parent.childCount.minus(1)][text="领取"] -n [text="领经验"] < View <(2,3) View <3 View < [id="app"][getChild(childCount.minus(1)).text$="隐私政策"] <<(5,6) [vid="webview"]',
           snapshotUrls: [
             'https://i.gkd.li/i/22886723', // 领取前
             'https://i.gkd.li/i/22886739', // 领取后
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/23385023',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/23385023', // [getChild(childCount.minus(1)).text$="隐私政策"] 排除弹窗
         },
       ],
     },
@@ -690,7 +689,7 @@ export default defineGkdApp({
           activityIds:
             'com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity',
           matches:
-            '[vid="comment_message"][clickable=true][visibleToUser=true][text$="\\n展开"]',
+            '[vid="comment_message"][text$="展开"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/25314489',
         },
       ],
@@ -726,14 +725,14 @@ export default defineGkdApp({
     },
     {
       key: 29,
-      name: '局部广告-黄色横幅提示',
+      name: '局部广告-顶部黄色横幅提示',
       desc: '点击横幅右边x掉',
       rules: [
         {
           fastQuery: true,
-          activityIds: 'tv.danmaku.bili.ui.webview.MWebActivity',
+          activityIds: '.ui.webview.MWebActivity',
           matches:
-            '@Image[text^="yellow-tip-close"][visibleToUser=true] - View[childCount=1] - Image < View[childCount=3] <<n [vid="webview"]',
+            '@Image[text^="yellow-tip-close"] <3 [childCount=3] <2 [id="app"] <<3 [vid="webview"]',
           snapshotUrls: 'https://i.gkd.li/i/25563755',
         },
       ],
@@ -741,26 +740,39 @@ export default defineGkdApp({
     {
       key: 30,
       name: '功能类-创作中心自动展开更多',
-      desc: '自动点击展开',
+      desc: '点击[展开更多]',
+      fastQuery: true,
       rules: [
         {
           key: 0,
-          fastQuery: true,
           activityIds:
-            'com.bilibili.upper.module.uppercenter.activity.UpperCenterMainActivityV4',
+            'com.bilibili.upper.module.uppercenter.activity.UpperCenterMainActivity', //通配
           matches:
-            '[vid="tv_expand"][text!="收起"][clickable=true][visibleToUser=true]',
+            '[vid="tv_expand"][text*="展开"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/25563935',
           excludeSnapshotUrls: 'https://i.gkd.li/i/25563937', // 已展开状态
         },
         {
           key: 1,
-          fastQuery: true,
-          activityIds: 'tv.danmaku.bili.ui.webview.MWebActivity',
+          activityIds: '.ui.webview.MWebActivity',
           matches:
-            'Image - @TextView[text="展开更多" || text!="收起"] < View[childCount=2][visibleToUser=true] <<n View[id="app"] <<3 [vid="webview"]',
+            'Image - @TextView[text="展开更多"] < View[childCount=2][visibleToUser=true] <n [id="app"] <<3 [vid="webview"]',
           snapshotUrls: 'https://i.gkd.li/i/25564200',
-          excludeSnapshotUrls: 'https://i.gkd.li/i/25564199', // 已展开状态
+          // excludeSnapshotUrls: 'https://i.gkd.li/i/25564199', // 已展开状态
+        },
+      ],
+    },
+    {
+      key: 31,
+      name: '局部广告-会员购',
+      desc: '底部横幅Ad',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.MainActivityV2',
+          matches: '[vid="mall_home_newuser_coupon_close"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/26240948',
+          exampleUrls: 'https://e.gkd.li/027bbea9-3479-4c8c-a0b2-88fee8f03a85',
         },
       ],
     },

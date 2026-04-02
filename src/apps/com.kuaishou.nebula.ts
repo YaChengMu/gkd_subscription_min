@@ -93,6 +93,19 @@ export default defineGkdApp({
     },
     {
       key: 6,
+      name: '评价提示',
+      desc: 'x掉',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+          matches: '@[vid="close"][clickable=true] +2 * > [text*="给个好评吧"]',
+          snapshotUrls: 'https://i.gkd.li/i/22851896',
+        },
+      ],
+    },
+    {
+      key: 7,
       name: '全屏广告-视频广告',
       rules: [
         {
