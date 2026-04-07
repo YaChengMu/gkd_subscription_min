@@ -468,32 +468,55 @@ export default defineGkdApp({
     },
     {
       key: 36,
-      name: '功能类-QQ空间不看[官方Qzone]的动态',
+      name: '功能类-不看或隐藏[官方Qzone]的动态',
       desc: '点击动态右上角三个点-不看此条动态-确定',
       rules: [
         {
           key: 0,
+          name: '①点击右边三个点',
           fastQuery: true,
-          activityIds:
+          activityIds: [
+            '.activity.SplashActivity',
             'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
+          ],
           matches:
-            '@ImageView[clickable=true][width<160 && height<160] - * >2 [desc="官方Qzone"] <<n ViewGroup +n * >2 [text^="说点什么吧"]',
-          snapshotUrls: 'https://i.gkd.li/i/26308400',
+            '@ImageView[clickable=true][width<160 && height<160] - * >2 [desc="官方Qzone"] <<(-n+8) ViewGroup +n * >(2,3) [text^="说点什么吧"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/26308400',
+            'https://i.gkd.li/i/26489612',
+          ],
         },
         {
           key: 1,
           preKeys: 0,
+          name: '②不看or隐藏此条动态',
           fastQuery: true,
-          activityIds:
+          activityIds: [
+            '.activity.SplashActivity',
             'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
-          matches: '@[clickable=true] > [text^="不看此条"][text$="动态"]',
-          snapshotUrls: 'https://i.gkd.li/i/26308405',
+          ],
+          matches:
+            '@[clickable=true] >(1,2) [text^="不看" || text^="隐藏"][text$="动态"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/26308405', // 不看此条\n动态
+            'https://i.gkd.li/i/26489660', // 隐藏此条动态
+          ],
         },
         {
           key: 2,
+          name: '③确定',
           activityIds: '.activity.QPublicTransFragmentActivity',
           matches: '[desc="确认不看此条动态吗？"] +n [desc="确定"]',
           snapshotUrls: 'https://i.gkd.li/i/26308417',
+        },
+        {
+          key: 3,
+          preKeys: [1],
+          name: '④确定',
+          fastQuery: true,
+          activityIds: '.activity.SplashActivity',
+          matches: '[childCount=2] > [text="确定"]',
+          snapshotUrls: 'https://i.gkd.li/i/26489750', // 确认隐藏...吗
         },
       ],
     },

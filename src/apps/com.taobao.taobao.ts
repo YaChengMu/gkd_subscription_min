@@ -419,5 +419,22 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 23,
+      name: '功能类-付款前邀开通先用后付',
+      desc: '点击[不感兴趣]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
+          matches: [
+            '[text*="先用后付服务协议"]',
+            '@[clickable=true] > [text="不感兴趣"]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/26426385',
+          exampleUrls: 'https://e.gkd.li/535839e5-4912-4c7e-96a4-d9b39a420a32',
+        },
+      ],
+    },
   ],
 });
