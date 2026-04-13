@@ -7,7 +7,8 @@ export const blackListAppIDs: string[] = [
   'com.tencent.wetype', // 微信输入法
   'com.tmri.app.main', // 交管12123
   'com.github.android', // GitHub
-  'org.telegram.messenger', // Telegram
+  'org.telegram.messenger', // Telegram (Google Play版)
+  'org.telegram.messenger.web', // Telegram
   'org.telegram.plus', // Plus Messenger
   'com.twitter.android', // X(推特)
   'com.aistra.hail', // 雹
@@ -231,6 +232,7 @@ export const blackListAppIDs: string[] = [
   'com.binance.dev', // 币安
   'com.superproductivity.superproductivity', // Super Productivity
   'org.isoron.uhabits', // Loop Habits 开屏广告误触 https://i.gkd.li/i/25312905
+  'com.aurora.store', // Aurora Store 更新提示误触 https://i.gkd.li/i/26601169
 
   'com.canghai.haoka',
   'com.xy.td',
@@ -361,6 +363,8 @@ export const openAdBlackListAppIDs = new Set([
   'com.sankuai.meituan', // 美团 误触 https://i.gkd.li/i/17827264
   'xyz.nextalone.nagram', // Nagram (单独禁用[开屏]和[青少年],需解开[更新提示] https://i.gkd.li/i/25640114 )
   'eu.smartpatient.mytherapy', // MyTherapy_误触 https://i.gkd.li/i/26222977
+  'app.revanced.manager.flutter', // ReVanced Manager 为开源app且误触 https://i.gkd.li/i/26644042
+  'com.chaoxing.mobile', // 学习通 开屏广告_误触-添加组织邀请码 https://i.gkd.li/i/26644056
 ]);
 
 // 更新提示黑名单

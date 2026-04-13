@@ -17,6 +17,40 @@
 - **本仓库仅供学习交流使用**
 - **精力有限，随缘更新**
 
+## 🚀订阅
+
+复制以下任一链接到 GKD 订阅的右下角 **+** 号那里导入，即可使用
+
+
+- GitHub源 (国内需要魔法)
+
+  ```txt
+https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
+  ```
+
+<details>
+<summary>点击展开备用源</summary>
+
+- jsdelivr源 (国内可用但可能不稳定,更新滞后24h)
+
+  ```txt
+https://cdn.jsdelivr.net/gh/YaChengMu/gkd_subscription_min@main/dist/gkd.json5
+  ```
+
+- bgithub源 (国内可用,同步及时30min内,但可能随时挂掉！)
+
+  ```txt
+https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
+  ```
+
+</details>
+
+<!-- > 当前版本: v{{VERSION}}
+> 
+> 当前订阅文件已适配 {{APP_SIZE}} 个应用，共有 {{GROUP_SIZE}} 应用规则组，{{GLOBALGROUP_SIZE}} 全局规则组
+> 
+> 查看 [适配 APP 列表](./dist/README.md) -->
+
 ## 📑说明
 
 - **致力于编写效率最高、误触最低、覆盖最全面的规则**
@@ -30,45 +64,6 @@
 - **交流讨论（不要在这里反馈） -> [点击查看或开启讨论](https://github.com/YaChengMu/gkd_subscription_min/discussions)**
 
 - **欢迎贡献规则，提交pr前请确认您已仔细阅读 [贡献指南](./CONTRIBUTING.md) 和 [API文档](https://gkd.li/api/)，规则编写可参考 [个人收集的通用规则以及适用场景](./docs/Selectors.md)**
-
-## 🚀订阅
-
-复制以下任意一个链接到 GKD 即可使用本订阅规则
-
-- CloudFlare源 (国内推荐)
-
-```txt
-https://gkd-subscription-667.pages.dev/gkd.json5
-```
-
-- GitHub源
-
-```txt
-https://raw.githubusercontent.com/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
-```
-
-<details>
-<summary>☢️ 备用源</summary>
-
-- jsdelivr源 (国内可用但可能不稳定,更新滞后24h)
-
-```txt
-https://cdn.jsdelivr.net/gh/YaChengMu/gkd_subscription_min@main/dist/gkd.json5
-```
-
-- bgithub源 (国内可用,同步及时30min内,但可能随时挂掉！)
-
-```txt
-https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
-```
-
-</details>
-
-> 当前版本: v{{VERSION}}
-> 
-> 当前订阅文件已适配 {{APP_SIZE}} 个应用，共有 {{GROUP_SIZE}} 应用规则组，{{GLOBALGROUP_SIZE}} 全局规则组
-> 
-> 查看 [适配 APP 列表](./dist/README.md)
 
 ## 🌈其他
 
@@ -99,8 +94,8 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 <a href="https://www.star-history.com/#YaChengMu/gkd_subscription_min&type=timeline&legend=top-left">
  <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/svg?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
+   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&theme=dark&legend=top-left" />
+   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
+   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
  </picture>
 </a>
