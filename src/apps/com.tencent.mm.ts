@@ -336,6 +336,7 @@ export default defineGkdApp({
       ],
       rules: [
         {
+          key: 0,
           actionDelay: 800, // 过早点击首次大概率跳不过
           matches: [
             '[text="广告" || text="廣告"][visibleToUser=true]',
@@ -347,6 +348,15 @@ export default defineGkdApp({
             'https://i.gkd.li/i/13407275',
             'https://i.gkd.li/i/15108441',
           ],
+        },
+        {
+          key: 1,
+          matchRoot: true,
+          actionCd: 500,
+          matches:
+            '@TextView[text*="跳过"] < View < * < WebView < * < * < * < * < * < * < * < * < * <2 FrameLayout[childCount=2] < * < [id="android:id/content"]',
+          // matches: '@TextView[text*="跳过"][text.length<10][height<150] <<12 * <2 FrameLayout[childCount=2] < * < [id="android:id/content"]',  // 用 << 会被GKD判为缓慢查询,等类似的多了再用吧
+          snapshotUrls: 'https://i.gkd.li/i/26677309',
         },
       ],
     },
