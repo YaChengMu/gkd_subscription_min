@@ -1,8 +1,11 @@
 // 全局规则黑名单
 // 在一些非系统应用中禁用所有全局规则
 export const blackListAppIDs: string[] = [
-  'com.tencent.mm', // 微信
   'li.songe.gkd', // GKD
+  'li.songe.gkd.debug', // GKD-debug
+  'hello.litiaotiao.app', // 李跳跳
+  'com.microfield.dingskip', // 叮小跳
+  'com.tencent.mm', // 微信
   'com.eg.android.AlipayGphone', //支付宝
   'com.tencent.wetype', // 微信输入法
   'com.tmri.app.main', // 交管12123
@@ -27,11 +30,19 @@ export const blackListAppIDs: string[] = [
   'me.zhanghai.android.files', // 质感文件
   'com.xjcheng.musictageditor', // 音乐标签
   'com.lalilu.lmusic', // LMusic
+  'com.fourchars.lmpfree', // LockMyPix
+  'com.rhmsoft.edit', // QuickEdit
   'com.ktls.fileinfo', // 存储空间清理
   'idm.internet.download.manager', // 1DM
   'idm.internet.download.manager.plus', // 1DM+
   'com.mxtech.videoplayer', // MX播放器
   'com.mxtech.videoplayer.pro', // MX播放器专业版
+  'be.mygod.vpnhotspot_foss', // VPN 热点
+  'com.bfr.app', // BFR
+  'com.box.app', // Box
+  'io.nekohasekai.sfa', // sing-box
+  'com.v2ray.ang', // v2rayNG
+  'com.v2ray.v2fly', // v2flyNG
   'com.github.kr328.clash', // Clash for Android
   'com.github.kr328.clash.foss', // Clash for Android
   'com.github.metacubex.clash.meta', // Clash Meta for Android
@@ -50,8 +61,6 @@ export const blackListAppIDs: string[] = [
   'com.legado.app.releaseA', // 阅读·A
   'com.getsurfboard', // Surfboard
   'moe.nb4a', // NekoBox
-  'com.v2ray.ang', // v2rayNG
-  'com.v2ray.v2fly', // v2flyNG
   'com.xiaoyv.bangumi', // Bangumi for Android
   'com.funny.translation', // 译站
   'com.looker.droidify', // Droid-ify
@@ -167,6 +176,7 @@ export const blackListAppIDs: string[] = [
   'org.fcitx.fcitx5.android.plugin.clipboard_filter', // 小企鹅输入法（剪贴板过滤器插件）
   'org.fcitx.fcitx5.android.plugin.rime', // 小企鹅输入法（中州韵插件）
   'org.fcitx.fcitx5.android.plugin.anthy', // 小企鹅输入法（Anthy 插件）
+  'com.iflytek.inputmethod.googleplay', // 讯飞输入法 Google Play版
   'org.fdroid.fdroid', // F-Droid
   'org.fdroid.fdroid.privileged', // F-Droid 特权扩展
   'com.digibites.accubattery', // AccuBattery
@@ -175,12 +185,12 @@ export const blackListAppIDs: string[] = [
   'net.osmand', // OsmAnd
   'net.osmand.plus', // OsmAnd+
   'com.google.android.apps.maps', // Google 地图
+  'com.google.android.inputmethod.pinyin', // 谷歌拼音输入法
   'com.jiaohua_browser', // JMComic2
   'com.picacomic.fregata', // PicACG
   'com.rosan.installer.x.revived', // installerX Revived
   'com.modosa.apkinstaller', // 安装狮
   'com.coderstory.toolkit', // 核心破解
-  'com.microfield.dingskip', // 叮小跳
   'com.close.hook.ads', // AdClose
   'leo.xposed.sesameX', // 芝麻糊SSVIP
   'fansirsqi.xposed.sesame', // 芝麻粒-TK
@@ -205,6 +215,7 @@ export const blackListAppIDs: string[] = [
   'com.cz.GJ2X', // 搞机工具箱
   'com.x1y9.probe', // 隐秘参数
   'moe.haruue.wadb', // 无线 adb
+  'com.smoothie.wirelessDebuggingSwitch', // WADBS
   'in.hridayan.ashell', // aShell You
   'org.autojs.autojs6', // AutoJs6
   'org.lsposed.lspatch', // LSPatch
@@ -227,79 +238,77 @@ export const blackListAppIDs: string[] = [
   'proton.android.authenticator', // Proton Authenticator
   'io.safepal.wallet', // SafePal
   'org.documentfoundation.libreoffice', // LibreOffice Viewer
-  'be.mygod.vpnhotspot_foss', // VPN 热点
-  'io.nekohasekai.sfa', // sing-box
   'com.binance.dev', // 币安
   'com.superproductivity.superproductivity', // Super Productivity
   'org.isoron.uhabits', // Loop Habits 开屏广告误触 https://i.gkd.li/i/25312905
   'com.aurora.store', // Aurora Store 更新提示误触 https://i.gkd.li/i/26601169
 
-  'com.canghai.haoka',
-  'com.xy.td',
-  'one.yufz.hmspush',
-  'io.github.huskydg.magisk',
-  'xzr.konabess',
-  'org.lsposed.manager',
-  'org.lsposed.daemon',
-  'tw.nekomimi.nekogram',
-  'io.github.qauxv',
-  'com.rezvorck.tiktokplugin',
-  'com.zhiliaoapp.musically',
-  'com.github.tianma8023.xposed.smscode',
-  'Han.GJZS',
-  'org.adblockplus.adblockplussbrowser',
-  'com.viewblocker.jrsen',
-  'com.tsng.hidemyapplist',
-  'com.pittvandewitt.wavelet',
-  'one.yufz.onebox',
-  'com.Wecrane.Scar.pubg',
-  'me.bmax.apatch',
-  'com.tubevpn.client',
-  'com.litebyte.samhelper',
-  'com.nurke.perfectone',
-  'qlenlen.OneDesign',
-  'icu.nullptr.nativetest',
-  'icu.nullptr.applistdetector',
-  'com.samsung.android.memoryguardian',
-  'com.music.khkj',
-  'me.weishu.kernelsu',
-  'com.franco.kernel',
-  'com.samsung.android.themedesigner',
-  'com.samsung.android.game.gamehome',
-  'com.tencent.tmgp.sgame',
-  'com.yangyanghuzhou.heijuan',
-  'com.sec.android.app.sbrowser',
-  'com.samsung.android.game.gamelab',
-  'com.Twilight.tools',
-  'com.miui.securitymanager',
-  'com.google.android.documentsui',
-  'com.android.settings',
-  'com.miui.creation',
-  'com.xiaomi.scanner',
-  'com.miui.gallery',
-  'com.yozo.office',
-  'com.miui.video',
-  'com.xiaomi.wpslauncher',
-  'com.sevtinge.hyperceiler',
-  'com.dna.tools',
-  'flar2.devcheck',
-  'com.github.capntrips.kernelflasher',
-  'com.google.android.googlequicksearchbox',
-  'qyz.onedesign',
-  'com.samsung.android.app.repaircal',
-  'com.yhchat.app',
-  'be.mygod.vpnhotspot',
-  'com.samsung.android.bixby.agent',
-  'com.reveny.vbmetafix.service',
-  'com.google.android.gms',
-  'com.android.vending',
-  'com.android.camera',
-  'com.android.traceur',
-  'com.android.mms',
-  'com.google.android.accessibility.switchaccess',
-  'com.miui.voiceassist',
-  'com.android.fileexplorer',
-  'com.miui.miservice',
+  'com.canghai.haoka', // 172 号卡
+  'com.xy.td', // 铁人调度
+  'one.yufz.hmspush', // HMSPush (lsp模块)
+  'io.github.huskydg.magisk', // Magisk (Delta/HuskyDG 版)
+  'xzr.konabess', // KonaBess
+  'org.lsposed.manager', // LSPosed
+  'org.lsposed.daemon', // LSPosed 守护进程
+  'tw.nekomimi.nekogram', // Nekogram
+  'io.github.qauxv', // QAuxv (QQ模块)
+  'com.rezvorck.tiktokplugin', // TikTok 插件
+  'com.zhiliaoapp.musically', // TikTok
+  'com.github.tianma8023.xposed.smscode', // 验证码自动填写
+  'Han.GJZS', // 搞机助手
+  'org.adblockplus.adblockplussbrowser', // Adblock Plus Browser
+  'com.viewblocker.jrsen', // 应用屏蔽器
+  'com.tsng.hidemyapplist', // Hide My Applist (应用隐藏)
+  'com.pittvandewitt.wavelet', // Wavelet (音效增强)
+  'one.yufz.onebox', // OneBox (系统工具箱/模块)
+  'com.Wecrane.Scar.pubg', // Scar (PUBG工具/插件)
+  'me.bmax.apatch', // APatch (root/内核补丁框架)
+  'com.tubevpn.client', // Tube VPN
+  'com.litebyte.samhelper', // Sam Helper (三星工具箱)
+  'com.nurke.perfectone', // Perfect One (系统优化/美化)
+  'qlenlen.OneDesign', // One Design (图标包/UI美化)
+  'qyz.onedesign', // One Design
+  'icu.nullptr.nativetest', // Native Test (原生层测试工具)
+  'icu.nullptr.applistdetector', // App List Detector (应用列表检测器)
+  'com.samsung.android.memoryguardian', // 三星内存守护者
+  'com.music.khkj', // 酷嗨音乐
+  'me.weishu.kernelsu', // KernelSU (内核级root框架)
+  'com.franco.kernel', // Franco Kernel Manager
+  'com.samsung.android.themedesigner', // 三星主题设计师
+  'com.samsung.android.game.gamehome', // 三星游戏中心
+  'com.tencent.tmgp.sgame', // 王者荣耀
+  'com.yangyanghuzhou.heijuan', // 黑卷
+  'com.sec.android.app.sbrowser', // 三星浏览器
+  'com.samsung.android.game.gamelab', // 三星游戏实验室
+  'com.Twilight.tools', // Twilight Tools (系统优化、搞机类工具箱)
+  'com.miui.securitymanager', // 小米手机管家/安全中心
+  'com.google.android.documentsui', // 文件管理器
+  'com.android.settings', // 设置
+  'com.miui.creation', // 小米创作
+  'com.xiaomi.scanner', // 小米扫一扫
+  'com.miui.gallery', // 小米相册
+  'com.yozo.office', // 永中 Office
+  'com.miui.video', // 小米视频
+  'com.xiaomi.wpslauncher', // 小米WPS快捷入口
+  'com.sevtinge.hyperceiler', // HyperCeiler
+  'com.dna.tools', // DNA Tools
+  'flar2.devcheck', // DevCheck
+  'com.github.capntrips.kernelflasher', // Kernel Flasher (内核刷入、模块管理工具)
+  'com.google.android.googlequicksearchbox', // 谷歌搜索
+  'com.samsung.android.app.repaircal', // 三星屏幕校准
+  'com.yhchat.app', // 易禾聊天
+  'be.mygod.vpnhotspot', // VPNHotspot (VPN 共享热点工具)
+  'com.samsung.android.bixby.agent', // Bixby 语音助手 (三星)
+  'com.reveny.vbmetafix.service', // VBMeta Fix 服务
+  'com.google.android.gms', // Google Play 服务
+  'com.android.vending', // Google Play 商店
+  'com.android.camera', // 相机
+  'com.android.traceur', // 系统跟踪
+  'com.android.mms', // 短信
+  'com.google.android.accessibility.switchaccess', // 开关访问 (谷歌无障碍辅助工具)
+  'com.miui.voiceassist', // 小米语音助手 / 小爱同学
+  'com.android.fileexplorer', // 文件管理器
+  'com.miui.miservice', // 小米服务与云服务组件
 
   // 系统自带非系统应用
   // 小米
@@ -343,6 +352,17 @@ export const blackListAppIDs: string[] = [
   'com.sec.android.app.voicenote',
   'com.futuremark.dmandroid.application',
   'com.sec.android.app.clockpackage',
+
+  // 其他机型
+  'com.coloros.calculator', // 计算器
+  'com.coloros.soundrecorder', // 录音
+  'com.coloros.weather2', // 天气
+  'com.coloros.compass2', // 指南针
+
+  // 游戏类
+  'com.cnvcs.junqi', // 军旗
+  'com.prineside.tdi2', // 无限塔防2
+  'com.hippojiao.games.memorymaster', // 记忆大师
 
   // https://github.com/gkd-kit/gkd/issues/451
   'mark.via', // via浏览器
@@ -415,6 +435,9 @@ export const yongBlackListAppIDs = new Set([
   'me.ele', // 饿了么
   'com.tencent.qqmusic', // QQ音乐
   'xyz.nextalone.nagram', // Nagram
+  'com.zdanjian.zdanjian', // 自动精灵
+  'com.One.WoodenLetter', // 一个木函
+  'small.wore', // 一句
 ]);
 
 // 全局规则白名单（由于系统应用默认禁用全局规则，所以对系统应用启用白名单模式）
