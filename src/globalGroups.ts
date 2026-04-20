@@ -43,28 +43,30 @@ export default defineGkdGlobalGroups([
           'https://i.gkd.li/i/24766641', // height<300
 
           // 避免被excludeMatches匹配
-          'https://i.gkd.li/i/24330969',
-          'https://i.gkd.li/i/24541384',
-          'https://i.gkd.li/i/24588777',
+          'https://i.gkd.li/i/24330969', // [text="搜索运单或服务"] 加 text.length<7 后被排除
+          'https://i.gkd.li/i/24541384', // [text="设置"] 加 [visibleToUser=true] 后被排除
+          'https://i.gkd.li/i/24588777', // 原先 [text*="隐私协议"] 会匹配,已删除
         ],
         excludeSnapshotUrls: [
           // 避免误触
-          'https://i.gkd.li/i/15079224', // !(text*="退出")
-          'https://i.gkd.li/i/17108010', // !(text="帮助")
-          'https://i.gkd.li/i/18265000', // !(text="取消")
           'https://i.gkd.li/i/19952277', // text="Submit"
-          'https://i.gkd.li/i/20946730', // text$="设置"
-          'https://i.gkd.li/i/20949002', // vid!~="(?is).*video.*"
-          'https://i.gkd.li/i/21617520', // text!*="视频"
-          'https://i.gkd.li/i/22634992', // text$="登录" text*="阅读并同意"
+          'https://i.gkd.li/i/22634992', // text*="阅读并同意"
+          'https://i.gkd.li/i/23122415', // text="书签"
+          'https://i.gkd.li/i/23225609', // text="NEXT"
+          'https://i.gkd.li/i/20946730', // text$="设置" text*="跳过片"
+          'https://i.gkd.li/i/23052289', // text="选好了"
+          'https://i.gkd.li/i/23741801', // text^="下一步" text$="设置"
+          'https://i.gkd.li/i/23741779', // text^="完成" text$="设置"
           'https://i.gkd.li/i/23051921', // [text^="选择"]
           'https://i.gkd.li/i/23742770', // [text^="选择"]
           'https://i.gkd.li/i/23743049', // [text^="选择"]
-          'https://i.gkd.li/i/23052289', // text="选好了"
-          'https://i.gkd.li/i/23122415', // text="书签"
-          'https://i.gkd.li/i/23225609', // text="NEXT"
-          'https://i.gkd.li/i/23741801', // text^="下一步" text$="设置"
-          'https://i.gkd.li/i/23741779', // text^="完成" text$="设置"
+
+          // anyMatches 中的排除
+          'https://i.gkd.li/i/15079224', // !(text*="退出")
+          'https://i.gkd.li/i/17108010', // !(text="帮助")
+          'https://i.gkd.li/i/18265000', // !(text="取消")
+          'https://i.gkd.li/i/20949002', // vid!~="(?is).*video.*"
+          'https://i.gkd.li/i/21617520', // text!*="视频"
           'https://i.gkd.li/i/25039297', // text*="跳过片"、text!*="片头"、text!*="片尾"、vid!~="(?is).*head.*"、vid!~="(?is).*tail.*"
         ],
       },
