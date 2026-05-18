@@ -197,29 +197,31 @@ export default defineGkdApp({
     {
       key: 10,
       name: '分段广告-首页推荐视频卡片广告',
+      desc: '广告/创作推广/直播/会员购 等',
       fastQuery: true,
       activityIds: '.MainActivityV2',
       rules: [
         {
           key: 0,
           matches:
-            '@[vid="more" || id="tv.danmaku.bili.adbiz:id/more"] <<n [vid="tool_container" || vid="ad_tint_frame" || id="tv.danmaku.bili.adbiz:id/ad_tint_frame" || id="tv.danmaku.bili.adbiz:id/root_container" || id="tv.danmaku.bili.adbiz:id/constraintLayout"][visibleToUser=true]',
+            '[id$="ad_tint_frame" || id$="root_container" || id$="constraintLayout"][visibleToUser=true] >(1,2,3) [vid="more" || id="tv.danmaku.bili.adbiz:id/more"]',
           snapshotUrls: [
-            'https://i.gkd.li/i/14083540',
-            'https://i.gkd.li/i/14588315',
-            'https://i.gkd.li/i/14729855',
-            'https://i.gkd.li/i/18274379',
-            'https://i.gkd.li/i/18306851',
-            'https://i.gkd.li/i/19537979',
-            'https://i.gkd.li/i/23012670',
-            'https://i.gkd.li/i/23123800',
-            'https://i.gkd.li/i/23687196',
+            'https://i.gkd.li/i/14083540', // 广告 [vid="ad_tint_frame"] >2 [vid="more"]
+            'https://i.gkd.li/i/14588315', // 广告 [vid="ad_tint_frame"] >2 [vid="more"]
+            'https://i.gkd.li/i/18274379', // 广告 [vid="root_container"] >3 [vid="more"]
+            'https://i.gkd.li/i/18306851', // 创作推广 [vid="ad_tint_frame"] >2 [vid="more"]
+            'https://i.gkd.li/i/19537979', // 去淘宝 [vid="root_container"] >3 [vid="more"]
+            'https://i.gkd.li/i/23012670', // 去淘宝 [id$="ad_tint_frame"]
+            'https://i.gkd.li/i/23123800', // 直播ad [id$="root_container"]
+            'https://i.gkd.li/i/23687196', // 直播ad [id$="constraintLayout"]
+            'https://i.gkd.li/i/27153803', // 会员购 [vid="ad_tint_frame"] >2 [vid="more"]
+            'https://i.gkd.li/i/27686976', // 上淘宝 [vid="root_container"] > [vid="more"]
           ],
         },
         {
           key: 1,
           matches:
-            '@[vid="inline_more"] <<n [vid="card_content"][visibleToUser=true][getChild(1).getChild(1).vid="corner_hint_container"]',
+            '[vid="card_content"][getChild(1).getChild(1).vid="corner_hint_container"][visibleToUser=true] >n [vid="inline_more"]',
           exampleUrls: 'https://e.gkd.li/d3d37b4e-cda3-4ba6-8af3-7b45ac8efc10',
           snapshotUrls: 'https://i.gkd.li/i/17428126',
           excludeSnapshotUrls: 'https://i.gkd.li/i/17848536',
@@ -713,13 +715,18 @@ export default defineGkdApp({
       rules: [
         {
           fastQuery: true,
-          activityIds:
+          activityIds: [
             'com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity',
+            'com.bilibili.video.story.StoryVideoActivity',
+          ],
           matches: [
             '[text^="开启悬浮窗"]',
             '[text="暂不开启"][clickable=true]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/25470098',
+          snapshotUrls: [
+            'https://i.gkd.li/i/25470098',
+            'https://i.gkd.li/i/27551046',
+          ],
         },
       ],
     },

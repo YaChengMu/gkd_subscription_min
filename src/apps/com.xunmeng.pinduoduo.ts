@@ -196,7 +196,7 @@ export default defineGkdApp({
     {
       key: 8,
       name: '局部广告-商品详情页视频讲解窗口',
-      desc: '点击关闭',
+      desc: '点击关闭⚠️需禁止pdd悬浮窗权限,否则无焦点导致失效',
       rules: [
         {
           fastQuery: true,
@@ -435,6 +435,39 @@ export default defineGkdApp({
           matches: '@[clickable=true] >2 [text="立即支付"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/25640017',
           exampleUrls: 'https://e.gkd.li/31396caf-8a11-484e-9ece-c273a05939ab',
+        },
+      ],
+    },
+    {
+      key: 23,
+      name: '功能类-订单详页-展开更多',
+      desc: '自动展开更多信息',
+      activityIds: '.activity.NewPageActivity',
+      rules: [
+        {
+          action: 'clickCenter',
+          anyMatches: [
+            'Button[text="查看更多订单信息"]', // 不响应无障碍事件
+            'View[text^="收货人信息"] > [text="展开"][visibleToUser=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/27208567',
+          exampleUrls: 'https://e.gkd.li/fb06904f-b996-49a8-8db3-3e44059d704d',
+        },
+      ],
+    },
+    {
+      key: 24,
+      name: '功能类-仅看此规格评价',
+      desc: '快速点击[仅看当前商品规格的评价]',
+      actionCd: 5000, // 防止想点举报点不了
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '[text^="发表时间"] +2 [text="仅看当前规格的评价"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/27209280',
+          exampleUrls: 'https://e.gkd.li/5e17d2de-bca9-4462-8276-7269b0ea5f49',
         },
       ],
     },
