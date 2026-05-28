@@ -296,6 +296,17 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23256823',
           ],
         },
+        {
+          preKeys: [0],
+          name: '二级全屏推荐',
+          matchTime: 10000,
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '@LinearLayout[clickable=true][width<105 && height<99] + * > [text$="下单成功"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28313219',
+          exampleUrls: 'https://e.gkd.li/a6d0caff-1785-4ff2-b2fb-e7bffa13502f',
+        },
       ],
     },
     {
@@ -468,6 +479,38 @@ export default defineGkdApp({
             '[text^="发表时间"] +2 [text="仅看当前规格的评价"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/27209280',
           exampleUrls: 'https://e.gkd.li/5e17d2de-bca9-4462-8276-7269b0ea5f49',
+        },
+      ],
+    },
+    {
+      key: 25,
+      name: '功能类-视频评论进入自动静音',
+      desc: '评论=>视频=>点击[静音]按钮',
+      actionMaximum: 1,
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageMaskActivity',
+          matches:
+            '[desc="静音"][visibleToUser=true] < @[vid="pdd"][clickable=true] + [text^="@"]',
+          snapshotUrls: 'https://i.gkd.li/i/28312056',
+          exampleUrls: 'https://e.gkd.li/d584e0b4-6cf5-47a0-859a-7699da89ec39',
+        },
+      ],
+    },
+    {
+      key: 26,
+      name: '功能类-商品页视频自动静音',
+      desc: '商品详情=>点击播放视频=>点击[静音]',
+      actionMaximum: 1,
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '@[desc="静音"][clickable=true] <2 [childCount=3] < FrameLayout <2 ViewPager + [text^="1/"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28312697',
+          exampleUrls: 'https://e.gkd.li/9bd17b81-9afe-4e59-98d8-2024abf760e5',
         },
       ],
     },
