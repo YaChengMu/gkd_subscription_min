@@ -1061,5 +1061,35 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 52,
+      name: '通知提示-其他应用打开使用功能须知',
+      desc: '直接确认不墨迹',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.ui.chatting.AppAttachNewDownloadUI',
+          matches:
+            '@[text="确认" || text="確定" || text="OK"] <2 [childCount=2] - ScrollView >2 [visibleToUser=true][text*="《其他应用打开"] - [text="功能使用须知"]',
+          snapshotUrls: 'https://i.gkd.li/i/28420481',
+          exampleUrls: 'https://e.gkd.li/ad334a60-8a62-41f2-b123-e4a137daa89e',
+        },
+      ],
+    },
+    {
+      key: 53,
+      name: '通知提示-暂不开启指纹支付',
+      desc: '支付后出现全屏弹窗=> 点击[暂不开启]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
+          matches:
+            '@Button[desc="暂不开启"][visibleToUser=true] - * -> [desc="开启指纹支付"] <<2 * <n [childCount>3] <<6 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/28420693',
+          exampleUrls: 'https://e.gkd.li/95edbe33-86d4-4075-99e1-cec1a6609595',
+        },
+      ],
+    },
   ],
 });

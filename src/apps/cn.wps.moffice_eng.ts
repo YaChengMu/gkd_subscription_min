@@ -2,7 +2,7 @@ import { defineGkdApp } from '@gkd-kit/define';
 
 export default defineGkdApp({
   id: 'cn.wps.moffice_eng',
-  name: 'WPS',
+  name: 'WPS Office',
   groups: [
     {
       key: 1,
@@ -215,6 +215,35 @@ export default defineGkdApp({
             '@[vid="dlg_add_home_cancel"] < FrameLayout - LinearLayout > [vid="dlg_add_home_checkbox"][clickable=true][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/26026328',
           exampleUrls: 'https://e.gkd.li/e40f22fa-a74a-4a92-b816-11c1f2f2c901',
+        },
+      ],
+    },
+    {
+      key: 12,
+      name: '功能类-关闭[登录WPS]弹窗',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'cn.wps.moffice.main.local.HomeRootActivity',
+          matches:
+            '[vid="login_viewpager"] > [vid="public_login_cancel"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28419420',
+          exampleUrls: 'https://e.gkd.li/73900c79-8d76-47ba-9dd2-853a9a30d533',
+        },
+      ],
+    },
+    {
+      key: 13,
+      name: '局部广告-会员功能试用提示',
+      desc: '主页顶部功能试用=> x掉',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'cn.wps.moffice.main.local.HomeRootActivity',
+          matches:
+            '[vid="home_page_list_view"] [vid="card_v"] >2 LinearLayout + * > [vid="close_iv"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28419645',
+          exampleUrls: 'https://e.gkd.li/c033f70a-c2a9-43a5-83fd-519d7894d8c7',
         },
       ],
     },
