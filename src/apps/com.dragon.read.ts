@@ -23,41 +23,6 @@ export default defineGkdApp({
       ],
     },
     {
-      key: 0,
-      name: '局部广告-阅读页面广告',
-      fastQuery: true,
-      activityIds: '.reader.ui.ReaderActivity',
-      rules: [
-        {
-          key: 1,
-          name: '点击[x]掉',
-          matches:
-            '@[name$="ImageView" || getChild(0).name$="ImageView"][clickable=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*="查看" || text$="优惠" || text^="立即" || text^="马上" || text*="参与" || text*="免费" || (text*="领" && text*="券") || (text*="返" && text*="金币")][text.length<10]',
-          snapshotUrls: [
-            'https://i.gkd.li/i/12908734', // 查看详情
-            'https://i.gkd.li/i/18138903', // 立享优惠
-            'https://i.gkd.li/i/21623147', // 立即前往
-            'https://i.gkd.li/i/14622531', // 立即玩
-            'https://i.gkd.li/i/25174203', // 马上参与
-            'https://i.gkd.li/i/26347335', // 参与讨论
-            'https://i.gkd.li/i/13520314', // 领60元券
-            'https://i.gkd.li/i/24706223', // 免费观看
-            'https://i.gkd.li/i/14548657', // 返1098金币
-            'https://i.gkd.li/i/14810480', // 返780金币
-          ],
-          exampleUrls: 'https://e.gkd.li/3de0d5d9-0c02-4fe7-b5e8-b9fdb6688f8e',
-        },
-        {
-          key: 3,
-          name: '点击[关闭此条广告]',
-          matches: '@[clickable=true] > [text="关闭此条广告"]',
-          exampleUrls:
-            'https://m.gkd.li/57941037/cf9d0574-dc89-4f03-ba01-eb9bcc97925f',
-          snapshotUrls: 'https://i.gkd.li/i/14540281', // 分段广告-第二段?
-        },
-      ],
-    },
-    {
       key: 1,
       name: '更新提示',
       fastQuery: true,
@@ -78,9 +43,10 @@ export default defineGkdApp({
     {
       key: 2,
       name: '局部广告-首页右侧悬浮广告',
+      fastQuery: true,
       rules: [
         {
-          fastQuery: true,
+          key: 0,
           activityIds: [
             '.pages.main.MainFragmentActivity',
             '.ad.openingscreenad.OpeningScreenADActivity',
@@ -91,6 +57,13 @@ export default defineGkdApp({
             'https://i.gkd.li/i/12716506',
             'https://i.gkd.li/i/13318796',
           ],
+        },
+        {
+          key: 1,
+          activityIds: '.pages.main.MainFragmentActivity',
+          matches:
+            '@ImageView[desc="Close Button"] <2 View < View < View < View < ComposeView < [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/28907537',
         },
       ],
     },
@@ -205,15 +178,65 @@ export default defineGkdApp({
       activityIds: '.reader.ui.ReaderActivity',
       rules: [
         {
-          /*
-           ** 目前新广告中该规则基本已无法匹配，优化匹配规则
-           ** 同时现阶段该规则与“局部广告-阅读页面广告”中的“key=5"规则相冲突，已在其中做删除
-           ** actionCd: 因同类型广告出现“当前可点击”与“3秒后可点击”两种状态，而在“3秒后可点击”状态下
-           **           按钮未被隐藏会被规则持续匹配，因此选择此属性降低“3秒后可点击”状态下的点击频率
-           */
           key: 0,
-          name: '点击[反馈]按钮',
-          actionCd: 3500,
+          matches:
+            '@[name$="ImageView" || getChild(0).name$="ImageView"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*="查看" || text$="优惠" || text^="立即" || text^="马上" || text*="参与" || text*="免费" || (text*="领" && text*="券") || (text*="返" && text*="金币")][text.length<10]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/12908734', // 查看详情
+            'https://i.gkd.li/i/18138903', // 立享优惠
+            'https://i.gkd.li/i/21623147', // 立即前往
+            'https://i.gkd.li/i/14622531', // 立即玩
+            'https://i.gkd.li/i/25174203', // 马上参与
+            'https://i.gkd.li/i/26347335', // 参与讨论
+            'https://i.gkd.li/i/13520314', // 领60元券
+            'https://i.gkd.li/i/24706223', // 免费观看
+            'https://i.gkd.li/i/14548657', // 返1098金币
+            'https://i.gkd.li/i/14810480', // 返780金币
+          ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/28821485', // 用 [name$="ImageView" || getChild(0).name$="ImageView"][visibleToUser=false] 排除
+          exampleUrls: 'https://e.gkd.li/3de0d5d9-0c02-4fe7-b5e8-b9fdb6688f8e',
+        },
+        {
+          key: 1,
+          matches:
+            '@ImageView[clickable=true][childCount=0][visibleToUser=true] < FrameLayout - LinearLayout >2 [text="广告"]',
+          exampleUrls: 'https://e.gkd.li/c172db67-a489-488b-a5f5-35aa9657c444',
+          snapshotUrls: 'https://i.gkd.li/i/18724040',
+        },
+        {
+          key: 2,
+          matches:
+            '@[id=null][visibleToUser=true][width<121 && height<121][childCount<2][left>prev.width.div(10).times(9)][top>prev.height.div(8).times(7)] <<n [vid="root_view"]',
+          /*
+           ** 从选择器右侧 [vid="root_view"] 节点获取屏幕宽高, 要求目标节点位于屏幕右下角
+           ** [left>prev.width.div(10).times(9)] 表示目标节点的 left 要大于屏幕宽度的 9/10
+           ** [top>prev.height.div(8).times(7)] 表示目标节点的 top 要大于屏幕高度的 7/8
+           */
+          snapshotUrls: [
+            'https://i.gkd.li/i/28781063',
+            'https://i.gkd.li/i/28781061',
+            'https://i.gkd.li/i/24189900',
+            'https://i.gkd.li/i/24205810',
+            'https://i.gkd.li/i/28800387', // 目标节点 [clickable=false]
+          ],
+          exampleUrls: 'https://e.gkd.li/1f431aef-3464-4f53-90e4-3f1bd9cca922', // 限制范围示意图
+        },
+        {
+          key: 3,
+          name: '坐标点击[反馈]',
+          position: {
+            top: 'width * 0.0617',
+            left: 'width * 0.7885',
+          },
+          matches:
+            '@ViewGroup[visibleToUser=true][height<150][width=prev.width] < [childCount=2] <3 FrameLayout[childCount=3] >7 [vid="ttlive_player_render_view"]',
+          snapshotUrls: 'https://i.gkd.li/i/28834344',
+          exampleUrls: 'https://e.gkd.li/aef38288-d84b-4e13-8161-ebebc27b822b',
+        },
+        {
+          key: 4,
+          name: '点击[反馈]',
+          actionCd: 3500, // 同类型广告有“当前可点击”与“3秒后可点击”两种状态
           actionDelay: 200,
           matches:
             '[text="反馈" || desc="反馈"][visibleToUser=true][name$="UIText" || name$="ViewGroup"]',
@@ -226,43 +249,24 @@ export default defineGkdApp({
             'https://i.gkd.li/i/24128141',
           ],
         },
+
+        // 第二段
         {
-          key: 1,
-          matches:
-            '@ImageView[clickable=true][childCount=0][visibleToUser=true] < FrameLayout - LinearLayout >2 [text="广告"]',
-          exampleUrls: 'https://e.gkd.li/c172db67-a489-488b-a5f5-35aa9657c444',
-          snapshotUrls: 'https://i.gkd.li/i/18724040',
-        },
-        //key: 2广告多发于夜间模式
-        {
-          key: 2,
-          name: '底部横幅广告-点击[x]',
-          matches:
-            'ViewGroup[childCount>4] > @ViewGroup[childCount=1][clickable=true][focusable=true][visibleToUser=true][width<50 && height<50] +n [desc!=null]',
-          exampleUrls: 'https://e.gkd.li/ab2021a9-8e5c-4d2a-8df1-8c6aff4e38f6',
-          snapshotUrls: [
-            'https://i.gkd.li/i/24189866',
-            'https://i.gkd.li/i/24189900',
-            'https://i.gkd.li/i/24189911',
-            'https://i.gkd.li/i/24189915',
-            'https://i.gkd.li/i/24205796',
-            'https://i.gkd.li/i/24205810',
+          key: 50,
+          preKeys: [0, 1, 2, 3, 4],
+          name: '②点击[不感兴趣/关闭此广告]',
+          anyMatches: [
+            '@[clickable=true] > [text="不感兴趣" || text^="关闭此"]',
+            '[text="不感兴趣" || text^="关闭此"][clickable=true]',
           ],
-        },
-        {
-          preKeys: [0, 1, 2],
-          name: '点击[不感兴趣]/[关闭此广告]',
-          matches: '[text="不感兴趣" || text="关闭此广告"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13816454', //不感兴趣
+            'https://i.gkd.li/i/14913207', //不感兴趣
+            'https://i.gkd.li/i/24128392', //不感兴趣
+            'https://i.gkd.li/i/24189605', //关闭此广告
+            'https://i.gkd.li/i/14540281', //关闭此条广告
+          ],
           exampleUrls: 'https://e.gkd.li/e04bcb90-ad61-43d9-97e9-b4f6e3873320',
-          snapshotUrls: [
-            'https://i.gkd.li/i/13520219',
-            'https://i.gkd.li/i/13674550',
-            'https://i.gkd.li/i/13816454',
-            'https://i.gkd.li/i/14913207',
-            'https://i.gkd.li/i/18724041',
-            'https://i.gkd.li/i/24128392',
-            'https://i.gkd.li/i/24189605',
-          ],
         },
       ],
     },
@@ -314,6 +318,30 @@ export default defineGkdApp({
             '[text="取消"][visibleToUser=true]',
           ],
           snapshotUrls: 'https://i.gkd.li/i/27190449',
+        },
+      ],
+    },
+    {
+      key: 15,
+      name: '功能类-误入直播后自动[退出]',
+      desc: '配合 看广告自动领奖励 使用',
+      fastQuery: true,
+      activityIds: 'com.bytedance.mira.stub.p0.StubSingleTaskActivity1',
+      rules: [
+        {
+          key: 1501, // key 在 功能类-观看广告自动静音 有关联
+          name: '①已进直播间-按[返回键]',
+          action: 'back',
+          actionDelay: 500,
+          matches:
+            '[id="com.dragon.read.live:id/swipe_refresh"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28906839',
+        },
+        {
+          key: 1502,
+          name: '②点击确认[退出]',
+          matches: '[text="退出"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28906845',
         },
       ],
     },
@@ -397,21 +425,60 @@ export default defineGkdApp({
     {
       key: 18,
       name: '功能类-观看广告自动静音',
+      desc: '点击1次, activity刷新后会重置',
+      fastQuery: true,
+      actionDelay: 300,
+      actionMaximum: 1,
+      actionMaximumKey: 0,
+      scopeKeys: [15], // 关联规则 功能类-误入直播后自动[退出]
+      activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
       rules: [
         {
           key: 0,
-          fastQuery: true,
-          activityIds: 'com.ss.android.excitingvideo.ExcitingVideoActivity',
+          preKeys: [1501, 1502], // 关联规则 key15 的两条 子key
+          name: '刚退出直播间-不点击[静音]',
+          action: 'none', // 无操作,仅作消耗 actionMaximum 次数用
+          matches: '[parent=null]',
+        },
+        {
+          key: 1,
+          name: '①点击[静音]',
           matches:
-            '@ImageView[childCount=0][width<100] <<2 ViewGroup[childCount=1] + ViewGroup >2 [desc*="关闭"]',
-          actionMaximum: 1,
-          resetMatch: 'activity',
+            '@ImageView[visibleToUser=true][width>20 && width<93 && height>20 && height<108][right<prev.width.div(3)][bottom<prev.height.div(10)] <<n [id="android:id/content"]',
+          /*
+           ** 从选择器右侧 [id="android:id/content"] 节点获取屏幕宽高, 限制目标节点位于屏幕左上角
+           ** [right<prev.width.div(3)] 表示目标节点的 right 要小于屏幕宽度的 1/3
+           ** [bottom<prev.height.div(10)] 表示目标节点的 bottom 要小于屏幕高度的 1/10
+           */
+          snapshotUrls: 'https://i.gkd.li/i/28907595',
+        },
+        {
+          key: 2,
+          name: '②坐标点击[静音]',
           position: {
             left: 'width * 0.5',
-            top: 'width * 0.5',
+            top: 'width * 0.8730',
           },
+          matches:
+            '@ImageView[width>20 && width<93 && height<0][right<prev.width.div(3)][bottom<prev.height.div(10)] <<n [id="android:id/content"]',
           exampleUrls: 'https://e.gkd.li/d8949efa-e2f7-49d2-a8d7-4837ed349aef',
-          snapshotUrls: 'https://i.gkd.li/i/26528931',
+          snapshotUrls: 'https://i.gkd.li/i/26528931', // [height<0]
+        },
+      ],
+    },
+    {
+      key: 19,
+      name: '其他-添加桌面小组件',
+      desc: '点击[取消]',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            '.social.ugc.topic.topicdetail.NewUgcTopicDetailActivity',
+          matches:
+            '[text^="添加到"] +n [childCount=2] > [text="取消"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28784392',
+          exampleUrls: 'https://e.gkd.li/b4cb96bd-0ced-4228-bd4a-a1be162bb75a',
         },
       ],
     },

@@ -16,10 +16,10 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
+          name: '①点击[广告]',
           fastQuery: true,
-          matches: [
+          matches:
             '@LinearLayout[clickable=true] > [text="广告" || text="廣告" || text="Sponsored"][visibleToUser=true]',
-          ],
           snapshotUrls: [
             'https://i.gkd.li/i/13000395',
             'https://i.gkd.li/i/12905837',
@@ -29,6 +29,7 @@ export default defineGkdApp({
         },
         {
           key: 1,
+          name: '①坐标点击[广告]',
           fastQuery: true,
           actionDelay: 300,
           position: {
@@ -37,19 +38,23 @@ export default defineGkdApp({
           },
           anyMatches: [
             '@LinearLayout >2 [text="广告"][visibleToUser=false]',
-            'RecyclerView > FrameLayout[childCount=1] > RelativeLayout > FrameLayout > LinearLayout > LinearLayout > LinearLayout > @LinearLayout[childCount=2][getChild(0).getChild(0).text!=null] > LinearLayout[index=1][clickable=false][visibleToUser=false]',
+            '[index=parent.childCount.minus(1)] >5 [getChild(0).desc$="的头像"] >2 LinearLayout[childCount=2][getChild(0).getChild(0).text!=null][getChild(1).visibleToUser=false]',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/14783802',
             'https://i.gkd.li/i/15531539',
             'https://i.gkd.li/i/19665911',
           ],
-          excludeSnapshotUrls: 'https://i.gkd.li/i/19717709',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/19717709', // 加 [getChild(0).getChild(0).text!=null] 排除误触评论区
+            'https://i.gkd.li/i/27969204', // [index=parent.childCount.minus(1)] 排除误触评论区后还继续误触
+          ],
         },
         {
           key: 2,
+          name: '①单击[广告]',
           matches:
-            '[name$="RecyclerView"||name$="ListView"] >(1,2) RelativeLayout >3 LinearLayout > LinearLayout > LinearLayout[childCount=2] > LinearLayout[index=1][clickable=true][visibleToUser=true]',
+            '[getChild(0).desc$="的头像"] >2 [childCount=2] > LinearLayout[text=null][clickable=true][childCount=0][index=1]',
           snapshotUrls: [
             'https://i.gkd.li/i/14647413',
             'https://i.gkd.li/i/19633571',
@@ -61,7 +66,7 @@ export default defineGkdApp({
         {
           preKeys: [0, 1, 2],
           key: 25,
-          name: '点击[关闭]',
+          name: '②点击[关闭]',
           fastQuery: true,
           anyMatches: [
             '[text^="关闭" || text*="Close" || text="關閉此廣告"][clickable=true][visibleToUser=true]', //1
@@ -92,14 +97,16 @@ export default defineGkdApp({
         {
           preKeys: [25],
           key: 50,
-          name: '点击[关闭]',
-          matches: '[text*="关闭" || text="Close"][clickable=true]',
+          name: '③点击[关闭]',
+          matches:
+            '[text="直接关闭" || text="Close" || text="关闭广告"][clickable=true]',
           snapshotUrls: [
             'https://i.gkd.li/i/12663984',
             'https://i.gkd.li/i/12905846',
             'https://i.gkd.li/i/14647940',
             'https://i.gkd.li/i/14783534',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/28927197', // [text="关闭该广告"] , 这是第二段的,用[text*="关闭"]会点击错, https://github.com/Lin-arm/GKD_subscription/issues/194
         },
 
         // 预留key
@@ -107,11 +114,38 @@ export default defineGkdApp({
         {
           preKeys: [50],
           key: 75,
-          name: '点击[确认]',
+          name: '④点击[确认]',
           fastQuery: true,
           matches:
             '@[text="确认"][visibleToUser=true] -2 [text="不感兴趣原因"]',
           snapshotUrls: 'https://i.gkd.li/i/14647940',
+        },
+
+        // 第五段: 误触后的操作
+        {
+          key: 100,
+          preKeys: [1], // 子key1 用坐标点击容易误触
+          name: '⑤误触后-按[返回键]', // 进入其它界面时按下[返回键]
+          action: 'back',
+          fastQuery: true,
+          matchRoot: true,
+          actionDelay: 50,
+          excludeActivityIds: [
+            // 这是正常朋友圈的 ActivityId, 排除
+            '.plugin.sns.ui.SnsTimeLineUI',
+            '.plugin.sns.ui.improve.ImproveSnsTimelineUI',
+            '.plugin.profile.ui.ContactInfoUI',
+          ],
+          activityIds: [], // 匹配其它因误触而进入的界面
+          matches: '[parent=null]',
+        },
+        {
+          key: 101,
+          preKeys: [1],
+          name: '⑤误触右上角-点击[取消]',
+          fastQuery: true,
+          matches: '@LinearLayout[clickable=true] > [text="取消"]',
+          snapshotUrls: 'https://i.gkd.li/i/27366025', // 误触右上角发朋友圈
         },
       ],
     },
@@ -1088,6 +1122,22 @@ export default defineGkdApp({
             '@Button[desc="暂不开启"][visibleToUser=true] - * -> [desc="开启指纹支付"] <<2 * <n [childCount>3] <<6 [id="android:id/content"]',
           snapshotUrls: 'https://i.gkd.li/i/28420693',
           exampleUrls: 'https://e.gkd.li/95edbe33-86d4-4075-99e1-cec1a6609595',
+        },
+      ],
+    },
+    {
+      key: 54,
+      name: '功能类-撤回消息自动重新编辑',
+      desc: '只点击一次(切换界面重置次数),日常情况够用',
+      actionMaximum: 1,
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.ui.LauncherUI',
+          matches:
+            '@TextView[clickable=true][text$="重新编辑"][visibleToUser=true] <<2 LinearLayout <n RecyclerView <2 * <<2 * <4 * < * <2 * - FrameLayout >4 [vid="actionbar_up_indicator"]',
+          snapshotUrls: 'https://i.gkd.li/i/28559913',
+          exampleUrls: 'https://e.gkd.li/d1813063-6580-4adc-be28-93226969e63b',
         },
       ],
     },

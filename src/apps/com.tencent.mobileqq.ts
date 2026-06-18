@@ -82,13 +82,14 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.activity.SplashActivity',
           matches:
-            '@ImageView[clickable=true][width<100 && height<100][desc="关闭" || desc=null] <<n [vid="root"]',
+            '@ImageView[clickable=true][width<100 && height<100][desc="关闭" || desc=null][index!=0] <<n [vid="root"]',
           snapshotUrls: [
             'https://i.gkd.li/i/24230528',
             'https://i.gkd.li/i/28426083',
             'https://i.gkd.li/i/28425887',
             'https://i.gkd.li/i/28425944',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/29032927', // [index!=0]
         },
       ],
     },
@@ -537,23 +538,54 @@ export default defineGkdApp({
     {
       key: 37,
       name: '分段广告-QQ空间空友爱看',
+      desc: '①点击卡片右侧[推荐] ②点击[关闭推荐]',
+      fastQuery: true,
+      activityIds:
+        'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
       rules: [
         {
           key: 0,
-          fastQuery: true,
-          activityIds:
-            'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
-          matches: '[text="推荐"] <<n @[clickable=true] -2 [text="空友爱看"]',
+          matches: '[text="推荐"] < * < @[clickable=true] -2 [text="空友爱看"]',
           snapshotUrls: 'https://i.gkd.li/i/27521340',
         },
         {
           key: 1,
           preKeys: 0,
-          fastQuery: true,
-          activityIds:
-            'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
           matches: '@[clickable=true] >2 [text="关闭推荐"]',
           snapshotUrls: 'https://i.gkd.li/i/27521350',
+        },
+      ],
+    },
+    {
+      key: 38,
+      name: '分段广告-空友爱看内的广告',
+      desc: '①点击[广告] ②点击[关闭这条] ③点击[直接关闭]',
+      fastQuery: true,
+      activityIds: 'com.qzone.reborn.base.QZoneShellActivity',
+      rules: [
+        {
+          key: 0,
+          name: '①点击[广告]',
+          matches: '@[desc="更多"][clickable=true] > [text="广告"]',
+          snapshotUrls: 'https://i.gkd.li/i/28888622',
+        },
+        {
+          key: 20,
+          preKeys: [0],
+          name: '②点击[关闭这条]',
+          matches:
+            '@[clickable=true] > [text="关闭此条广告" || text="关闭这条"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/28888643',
+            'https://i.gkd.li/i/28942736',
+          ],
+        },
+        {
+          key: 50,
+          preKeys: [20],
+          name: '③点击[直接关闭]',
+          matches: '[text="直接关闭"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/28942737',
         },
       ],
     },
