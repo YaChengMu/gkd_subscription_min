@@ -202,9 +202,18 @@ export default defineGkdApp({
         {
           fastQuery: true,
           activityIds: '.activity.NewPageActivity',
-          matches: '[vid="iv_float_window_close"]',
-          exampleUrls: 'https://e.gkd.li/f81a45e4-09b4-498f-be72-ca84cdd0db83',
-          snapshotUrls: 'https://i.gkd.li/i/14549415',
+          anyMatches: [
+            '[vid="iv_float_window_close"]',
+            '@ImageView[desc="关闭"][clickable=true] - * ->n [desc="tronplayer_view"] <<2 [childCount=1] <<2 RelativeLayout[childCount=1] <n * < [id="android:id/content"]',
+          ],
+          snapshotUrls: [
+            'https://i.gkd.li/i/14549415',
+            'https://i.gkd.li/i/29378452', // 形式2
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/f81a45e4-09b4-498f-be72-ca84cdd0db83',
+            'https://e.gkd.li/2fca1602-25f2-4ca4-b3cf-9a6fa33396af',
+          ],
         },
       ],
     },
@@ -452,18 +461,33 @@ export default defineGkdApp({
     },
     {
       key: 23,
-      name: '功能类-订单详页-展开更多',
+      name: '功能类-展开更多',
       desc: '自动展开更多信息',
       activityIds: '.activity.NewPageActivity',
       rules: [
         {
-          action: 'clickCenter',
-          anyMatches: [
-            'Button[text="查看更多订单信息"]', // 不响应无障碍事件
-            'View[text^="收货人信息"] > [text="展开"][visibleToUser=true]',
-          ],
+          key: 0,
+          name: '通用[展开]_fastQ',
+          fastQuery: true,
+          action: 'clickCenter', // 不响应无障碍事件
+          matches: '[text="展开"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/29405868',
+        },
+        // 无快查
+        {
+          key: 1,
+          name: '[查看更多订单信息]',
+          matches: 'Button[text="查看更多订单信息"]',
+          action: 'clickCenter', // 不响应无障碍事件
           snapshotUrls: 'https://i.gkd.li/i/27208567',
           exampleUrls: 'https://e.gkd.li/fb06904f-b996-49a8-8db3-3e44059d704d',
+        },
+        {
+          key: 2,
+          name: '通用[展开]',
+          action: 'clickCenter', // 不响应无障碍事件
+          matches: '[text="展开"][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/27208567',
         },
       ],
     },
@@ -521,6 +545,69 @@ export default defineGkdApp({
             'LinearLayout[childCount=4] > @ImageView[clickable=true][width<66 && height<66][index=0] +2 SeekBar + [text^="00:"]',
           snapshotUrls: 'https://i.gkd.li/i/28420002', // 点进视频后UI
           exampleUrls: 'https://e.gkd.li/733ac4f0-7c2d-4a0e-80b3-6350ba229ddf',
+        },
+      ],
+    },
+    {
+      key: 27,
+      name: '功能类-隐藏[搜索发现]',
+      desc: '自动隐藏搜索页中[搜索发现]',
+      actionMaximum: 1,
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '@[desc="隐藏搜索发现"][clickable=true] - [text="搜索发现"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/29376727', // 隐藏前
+            'https://i.gkd.li/i/29376724', // 隐藏后
+          ],
+          exampleUrls: 'https://e.gkd.li/3f03d2c0-9c40-43fe-9568-9eee4471e806',
+        },
+      ],
+    },
+    {
+      key: 28,
+      name: '其他-跳过登录后绑定手机号',
+      desc: '登陆成功 ->请绑定手机号 ->跳过',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '[text="登录成功，请绑定手机号"] <<2 * <2 * -> @[text="跳过"] <<2 [id="bindingPage"] < [id="main"] <<4 [vid="pdd"] <2 ViewGroup <<2 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/29377418',
+          exampleUrls: 'https://e.gkd.li/5951f8ab-00e5-4e0d-9777-56b24a5a2dd1',
+        },
+      ],
+    },
+    {
+      key: 29,
+      name: '权限提示-相机权限',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            '.permission.scene_manager.ScenePermissionRequestActivity',
+          matches:
+            '[text$="允许拼多多访问你的相机"][visibleToUser=true] < LinearLayout +2 LinearLayout > [text="取消"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/29404575',
+          exampleUrls: 'https://e.gkd.li/40505e06-9e36-45b8-a9fc-14a1ca25fea5',
+        },
+      ],
+    },
+    {
+      key: 30,
+      name: '其他-退出评价跳过二次确认',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '[text^="此次评价未完成"][visibleToUser=true] < [childCount=1] +2 LinearLayout[childCount=3] > [text="退出"][clickable=true]',
+          snapshotUrls: 'https://i.gkd.li/i/29405754',
+          exampleUrls: 'https://e.gkd.li/1911b664-06cd-4594-8762-190bd4aa8eb1',
         },
       ],
     },
