@@ -306,24 +306,22 @@ export default defineGkdApp({
         {
           key: 1,
           fastQuery: true,
-          anyMatches: [
+          matches:
             '@[desc^="未选中" || desc^="未選定" || desc^="Unselected"][visibleToUser=true] + [text="原图" || text="原圖" || text="Full Image"]',
-            '@[desc^="未选中" || desc^="未選定" || desc^="Unselected"][visibleToUser=true]',
-          ],
           exampleUrls: [
             'https://e.gkd.li/32dc0943-e85f-416d-bb01-6ed610d4bdd8',
             'https://e.gkd.li/93d41161-ab69-4c2d-83bb-637d7292f5e6',
           ],
           snapshotUrls: [
             'https://i.gkd.li/i/16987145', // 未选中
-            'https://i.gkd.li/i/16987144', // 未选中
-            'https://i.gkd.li/i/27852612', // 未选中
+            'https://i.gkd.li/i/16987144',
+            'https://i.gkd.li/i/27852612', // En_无快查
             'https://i.gkd.li/i/19625049', // 无法快速查询
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/16987141', // 已选中
-            'https://i.gkd.li/i/16987147', // 已选中
-            'https://i.gkd.li/i/27852606', // 已选中
+            'https://i.gkd.li/i/16987147',
+            'https://i.gkd.li/i/27852606',
           ],
         },
       ],
@@ -512,18 +510,19 @@ export default defineGkdApp({
     {
       key: 26,
       name: '功能类-付款后自动点击完成/返回商家',
+      fastQuery: true,
       rules: [
         {
           key: 0,
-          fastQuery: true,
+          versionCode: { maximum: 2979 },
           activityIds: '.framework.app.UIPageFragmentActivity',
           matches:
             '[vid="kinda_button_impl_wrapper"][desc="完成" || desc="返回商家"]',
           exampleUrls:
             'https://m.gkd.li/57941037/a5177d9d-6745-443f-baf5-af57153430d8',
           snapshotUrls: [
-            'https://i.gkd.li/i/14399355',
-            'https://i.gkd.li/i/14662147',
+            'https://i.gkd.li/i/14662147', // 返回商家
+            'https://i.gkd.li/i/14399355', // 完成
             'https://i.gkd.li/i/24157874',
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/14532946',
@@ -532,9 +531,13 @@ export default defineGkdApp({
           key: 1,
           versionCode: { minimum: 2980 },
           activityIds: '.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
-          matches: 'Button[desc="返回商家"][visibleToUser=true]',
+          matches:
+            '@Button[desc="完成" || desc="返回商家" || desc="Done"][visibleToUser=true] -n [desc="支付成功"] < * <<6 FrameLayout <<3 [id="android:id/content"]',
           exampleUrls: 'https://e.gkd.li/e7acbb38-c602-4ea4-88ec-7604c3aeae06',
-          snapshotUrls: 'https://i.gkd.li/i/24141842',
+          snapshotUrls: [
+            'https://i.gkd.li/i/24141842', // 返回商家
+            'https://i.gkd.li/i/29681932', // 完成
+          ],
         },
       ],
     },

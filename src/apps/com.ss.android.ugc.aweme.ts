@@ -329,7 +329,7 @@ export default defineGkdApp({
           },
           activityIds: '.main.MainActivity',
           matches:
-            '([visibleToUser=true] > [text$="广告" || text$="（推广）"][vid="desc" || desc="广告"]) || ([text="应用" || text="购物" || text$="游戏" || text="咨询" || text="服务" || text="预约" || text="子薇剧场"][text.length<6][index=1][visibleToUser=true])', // (选择器A) || (选择器B)
+            '([visibleToUser=true] > [text$="广告" || text$="（推广）"][vid="desc" || desc="广告"]) || ([text="应用" || text="购物" || text$="游戏" || text="咨询" || text="服务" || text="预约" || text="子薇剧场"][text.length<6][index=1][visibleToUser=true]) || (ViewGroup[childCount=5] > ImageView +3 [text^="已售" || text^=" 已售"][text$="+"] - TextView - [text="讲解中 丨 "][index=1][visibleToUser=true])', // (选择器A) || (选择器B) || (选择器C)
           snapshotUrls: [
             // 选择器A
             'https://i.gkd.li/i/21142063', // [text$="广告"][vid="desc"]
@@ -346,6 +346,10 @@ export default defineGkdApp({
             'https://i.gkd.li/i/29403479', //服务
             'https://i.gkd.li/i/21765934', //预约
             'https://i.gkd.li/i/21523849', //子薇剧场
+            // 选择器C
+            'https://i.gkd.li/i/29605884', //[text^="已售"]
+            'https://i.gkd.li/i/29605791',
+            'https://i.gkd.li/i/29605901', //[text^=" 已售"]
           ],
         },
       ],
@@ -550,7 +554,7 @@ export default defineGkdApp({
       rules: [
         {
           anyMatches: [
-            '@[text="关闭,按钮"][clickable=true] - [text$="评论氛围是否满意？,匿名"][visibleToUser=true]', // 优先使用
+            '@[text="关闭,按钮"][clickable=true] - [text$="？,匿名"][text*="评论"][visibleToUser=true]', // 优先使用
             '@UIImage[clickable=true] - [text$="评论氛围是否满意？,匿名"][visibleToUser=true] < FrameLayout[childCount=7] <<4 FrameLayout[childCount=1][id=null][desc=null][text=null][clickable=false][visibleToUser=true][left=0][top!=0] + * > ViewGroup > [vid="avatar"]',
           ], // 兜底
           snapshotUrls: [
@@ -558,8 +562,9 @@ export default defineGkdApp({
             'https://i.gkd.li/i/25571238',
             'https://i.gkd.li/i/29388014',
             // 无快查 (后来版本似乎)
-            'https://i.gkd.li/i/29387403',
+            'https://i.gkd.li/i/29387403', // [text="你对该视频下的评论氛围是否满意？,匿名"]
             'https://i.gkd.li/i/29388032',
+            'https://i.gkd.li/i/29606115', // [text="这些评论是共同爱好者之间的真诚分享吗？,匿名"]
           ],
           exampleUrls: 'https://e.gkd.li/f4c54b34-7d3c-499d-9ea0-f865f4cf9375',
         },

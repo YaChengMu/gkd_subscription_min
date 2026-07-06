@@ -3,6 +3,7 @@ import { defineGkdApp } from '@gkd-kit/define';
 export default defineGkdApp({
   id: 'com.xunmeng.pinduoduo',
   name: '拼多多',
+  // 根选择器模板:'@View[id="main"] <<2 WebView[text="拼多多"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id="android:id/content"]'
   groups: [
     {
       key: 0,
@@ -289,6 +290,7 @@ export default defineGkdApp({
       key: 12,
       name: '全屏广告-下单后出现的弹窗',
       desc: '点击关闭',
+      fastQuery: true,
       rules: [
         {
           key: 0,
@@ -297,12 +299,13 @@ export default defineGkdApp({
             '.ui.activity.HomeActivity',
           ],
           action: 'clickCenter',
-          matches: 'Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true]',
+          matches:
+            '@Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true] <n View[childCount>1] <<(1,2) View[id="main"] <<2 WebView[text="拼多多"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id="android:id/content"]',
           snapshotUrls: [
+            'https://i.gkd.li/i/13308175', // 老快照无vid
             'https://i.gkd.li/i/13927594',
             'https://i.gkd.li/i/14434154',
             'https://i.gkd.li/i/14456017',
-            'https://i.gkd.li/i/13308175',
             'https://i.gkd.li/i/23256823',
           ],
         },
@@ -310,7 +313,6 @@ export default defineGkdApp({
           preKeys: [0],
           name: '二级全屏推荐',
           matchTime: 10000,
-          fastQuery: true,
           activityIds: '.activity.NewPageActivity',
           matches:
             '@LinearLayout[clickable=true][width<105 && height<99] + * > [text$="下单成功"][visibleToUser=true]',
@@ -419,24 +421,26 @@ export default defineGkdApp({
       name: '功能类-自动处方流程',
       desc: '自动点击处方流程到支付',
       fastQuery: true,
+      matchTime: 10000,
       activityIds: '.activity.NewPageActivity',
       rules: [
         {
           key: 0,
           name: '点击已确诊的疾病', // 否则无法继续
           actionMaximum: 1,
-          matches: '[text="选择已确诊的疾病"] + View > * > TextView[index=0]',
+          matches:
+            '@TextView[index=0] <<2 View - [text="选择已确诊的疾病"] <n [id="main"] < WebView[text!=null] <<3 FrameLayout <2 ViewGroup -2 FrameLayout >3 [text="购买处方药需填写用药信息"]',
           snapshotUrls: 'https://i.gkd.li/i/25639924',
-          excludeMatches: 'RelativeLayout > [text="请选择已确诊的疾病"]', // 排除匹配
-          excludeSnapshotUrls: 'https://i.gkd.li/i/25639813', // 无法点击继续
           exampleUrls: 'https://e.gkd.li/f92b5d13-da8a-4eb2-b981-66bdc12b9c1c',
         },
         {
           key: 1,
           name: '点击提交并开药',
           preKeys: [0],
+          actionCd: 800, // 等待信息加载完成
           matches:
-            '@[text="提交并开药"][clickable=true][visibleToUser=true] -n [index=0] < [id="main"] < [text^="购买处方药"] <<n [id="android:id/content"]',
+            '@Button[text="提交并开药"][clickable=true][visibleToUser=true] <n [id="main"] < WebView[text!=null] <<3 FrameLayout <2 ViewGroup -2 FrameLayout >3 [text="购买处方药需填写用药信息"]',
+          action: 'clickCenter', // 不响应无障碍事件
           snapshotUrls: 'https://i.gkd.li/i/25639924',
         },
         {
@@ -452,7 +456,7 @@ export default defineGkdApp({
         {
           name: '点击立即支付',
           preKeys: [2],
-          matchDelay: 2600, // 等待处方下来
+          matchDelay: 3000, // 等待处方下来(时间较长?)
           matches: '@[clickable=true] >2 [text="立即支付"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/25640017',
           exampleUrls: 'https://e.gkd.li/31396caf-8a11-484e-9ece-c273a05939ab',
@@ -473,7 +477,6 @@ export default defineGkdApp({
           matches: '[text="展开"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/29405868',
         },
-        // 无快查
         {
           key: 1,
           name: '[查看更多订单信息]',
@@ -484,10 +487,20 @@ export default defineGkdApp({
         },
         {
           key: 2,
-          name: '通用[展开]',
+          name: '订单页',
           action: 'clickCenter', // 不响应无障碍事件
-          matches: '[text="展开"][visibleToUser=true]',
-          snapshotUrls: 'https://i.gkd.li/i/27208567',
+          matches:
+            '@[text="展开"] <<3 View <n [id="main"] <<2 WebView[text!=null] <<3 FrameLayout <2 ViewGroup -2 FrameLayout >3 [text="交易成功"]',
+          snapshotUrls: 'https://i.gkd.li/i/27208567', // [text="展开"]
+        },
+        {
+          key: 3,
+          name: '商品评论',
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '@[desc="展开"][clickable=true] - FrameLayout > ViewGroup[vid="pdd"][childCount>5] >2 [text^="全部("]',
+          snapshotUrls: 'https://i.gkd.li/i/29604643',
         },
       ],
     },
@@ -608,6 +621,21 @@ export default defineGkdApp({
             '[text^="此次评价未完成"][visibleToUser=true] < [childCount=1] +2 LinearLayout[childCount=3] > [text="退出"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/29405754',
           exampleUrls: 'https://e.gkd.li/1911b664-06cd-4594-8762-190bd4aa8eb1',
+        },
+      ],
+    },
+    {
+      key: 31,
+      name: '功能类-下单后一键取消收藏',
+      desc: '一键取消收藏购刚买的商品',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageMaskActivity',
+          matches:
+            '@[text="一键取消收藏以上商品"][visibleToUser=true] < View[childCount=2] - View[childCount=5] <<(1,2) View[id="main"] <<2 WebView[text="拼多多"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/29681036',
+          exampleUrls: 'https://e.gkd.li/d2a316ea-24f1-4b0b-9768-294835cbe2c7',
         },
       ],
     },
