@@ -306,8 +306,10 @@ export default defineGkdApp({
         {
           key: 1,
           fastQuery: true,
-          matches:
+          anyMatches: [
             '@[desc^="未选中" || desc^="未選定" || desc^="Unselected"][visibleToUser=true] + [text="原图" || text="原圖" || text="Full Image"]',
+            '[desc^="未选中" || desc^="未選定" || desc^="Unselected"][!(desc*="选择")][text=null][visibleToUser=true]', //兜底,无快查的
+          ],
           exampleUrls: [
             'https://e.gkd.li/32dc0943-e85f-416d-bb01-6ed610d4bdd8',
             'https://e.gkd.li/93d41161-ab69-4c2d-83bb-637d7292f5e6',
@@ -315,13 +317,14 @@ export default defineGkdApp({
           snapshotUrls: [
             'https://i.gkd.li/i/16987145', // 未选中
             'https://i.gkd.li/i/16987144',
-            'https://i.gkd.li/i/27852612', // En_无快查
-            'https://i.gkd.li/i/19625049', // 无法快速查询
+            'https://i.gkd.li/i/27852612', // 无快查_En
+            'https://i.gkd.li/i/19625049', // 无快查
           ],
           excludeSnapshotUrls: [
-            'https://i.gkd.li/i/16987141', // 已选中
-            'https://i.gkd.li/i/16987147',
-            'https://i.gkd.li/i/27852606',
+            'https://i.gkd.li/i/16987141', // 用 [text=null] 排除误触
+            'https://i.gkd.li/i/16987147', // 已选中
+            'https://i.gkd.li/i/27852606', // Selected
+            'https://i.gkd.li/i/29746331', // 用 [!(desc*="选择")] 排除误触
           ],
         },
       ],
@@ -1037,7 +1040,7 @@ export default defineGkdApp({
     {
       key: 48,
       name: '功能类-快速切换账号',
-      desc: '点击当前使用下面第一个账号',
+      desc: '适合俩账号的使用再多无法确认是否可行',
       actionMaximum: 2,
       resetMatch: 'app',
       rules: [
@@ -1045,8 +1048,11 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.plugin.setting.ui.setting.SettingsSwitchAccountUI',
           matches:
-            '@FrameLayout[clickable=true][visibleToUser=true] - * > * >2 [text="当前使用"]',
-          snapshotUrls: 'https://i.gkd.li/i/26159956',
+            'RelativeLayout[childCount=2] < @FrameLayout[clickable=true] <n LinearLayout - RelativeLayout > [text$="以切换账号"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/26159956', // 第一个登录
+            'https://i.gkd.li/i/29710717', // 第二个登录
+          ],
           exampleUrls: 'https://e.gkd.li/0ee723f0-e6e5-4018-9cfa-7a8de22b91e1',
         },
       ],
@@ -1141,6 +1147,28 @@ export default defineGkdApp({
             '@TextView[clickable=true][text$="重新编辑"][visibleToUser=true] <<2 LinearLayout <n RecyclerView <2 * <<2 * <4 * < * <2 * - FrameLayout >4 [vid="actionbar_up_indicator"]',
           snapshotUrls: 'https://i.gkd.li/i/28559913',
           exampleUrls: 'https://e.gkd.li/d1813063-6580-4adc-be28-93226969e63b',
+        },
+      ],
+    },
+    {
+      key: 55,
+      name: '其他-支付前[取消]开通免密支付',
+      desc: '支付前,[关掉]默认开通免密支付的开关',
+      actionMaximum: 1, // 只点击一次,想要可以再打开
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.tencent.mm.plugin.lite.ui.WxaLiteAppTransparentLiteUI',
+          matches:
+            '@Button[desc^="开通"][desc*="免密支付"][desc$="打开"] <2 View[childCount=8] <<7 FrameLayout <<3 [id="android:id/content"]',
+          position: {
+            right: 'width * 0.1', //由节点右边往节点中心方向偏移 10% 的 width
+            top: 'height/2',
+          },
+          snapshotUrls: 'https://i.gkd.li/i/29682457',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/29682465',
+          exampleUrls: 'https://e.gkd.li/59fb8537-9721-459a-992d-1d1e58d9c29f',
         },
       ],
     },
