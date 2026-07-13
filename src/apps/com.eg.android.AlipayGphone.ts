@@ -53,21 +53,28 @@ export default defineGkdApp({
       rules: [
         {
           key: 0,
+          name: '全屏',
           activityIds: [
             '.AlipayLogin',
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity$App',
             'com.alipay.mobile.beehive.cityselect.ui.CeilingHomeCitySelectActivity',
           ],
-          matches: '@[desc="取消"] + [text*="位置权限"][visibleToUser=true]',
-          exampleUrls: 'https://e.gkd.li/caa96cc4-9943-40d8-8cb6-8c89aa60b20f',
+          matches:
+            '@[desc="取消"] + [text*="位置权限" || text="支付宝本地服务"][visibleToUser=true]',
+          exampleUrls: [
+            'https://e.gkd.li/caa96cc4-9943-40d8-8cb6-8c89aa60b20f',
+            'https://e.gkd.li/3d87f8db-acc0-417c-9815-ea6c347baf5d',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/18549931',
             'https://i.gkd.li/i/23415365',
             'https://i.gkd.li/i/23415366',
+            'https://i.gkd.li/i/29814624', // 支付宝本地服务
           ],
         },
         {
           key: 1,
+          name: 'Toast',
           activityIds: '.AlipayLogin',
           matches:
             '@[desc="关闭"] - LinearLayout >(2,4) [text^="定位到" || text^="开启定位权限"][visibleToUser=true]',
@@ -261,15 +268,23 @@ export default defineGkdApp({
         {
           key: 1,
           fastQuery: true,
-          activityIds:
+          activityIds: [
             'com.alipay.mobile.nebulax.integration.mpaas.activity.NebulaActivity$Main',
+            'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
+          ],
           matches:
-            '@TextView[id=desc][text=""][visibleToUser=true][width<110][height<110][top>getPrev(1).height.div(2)] <2 View[childCount=2] <<n [id="com.alipay.mobile.nebula:id/h5_pc_container"]',
+            '@TextView[id=desc][text=""][visibleToUser=true][width<110][height<110][top>getPrev(1).height.div(2)][left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] <2 View[childCount=2] <<n [id="com.alipay.mobile.nebula:id/h5_pc_container"]',
+          /**
+           * [top>getPrev(1).height.div(2)] ：top大于 1/2的屏幕高度，即限制目标节点在下半屏
+           * [left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] ：其内的 getPrev(1).width.div(2) 是屏幕的竖中线，即要求 屏幕的竖中线 像串烤串一样穿过目标节点
+           */
           exampleUrls: 'https://e.gkd.li/ebbd606a-0e21-4fc5-b0c3-49e4d87d065c',
           snapshotUrls: [
             'https://i.gkd.li/i/16812751',
             'https://i.gkd.li/i/29666442',
+            'https://i.gkd.li/i/29814861',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/29814461', // 用 [left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] 排除
         },
         {
           key: 2,
