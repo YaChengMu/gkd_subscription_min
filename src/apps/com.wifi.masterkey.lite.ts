@@ -25,5 +25,17 @@ export default defineGkdApp({
         },
       ],
     },
+    {
+      key: 2,
+      name: '全屏广告-弹窗广告',
+      fastQuery: true,
+      activityIds: 'com.octopus.ad.AdActivity',
+      rules: [
+        {
+          matches: 'TextView[text="反馈"] +1 ImageView',
+          snapshotUrls: 'https://i.gkd.li/i/30488457',
+        },
+      ],
+    },
   ],
 });

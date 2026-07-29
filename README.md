@@ -4,10 +4,10 @@
 
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-[![Release](https://img.shields.io/badge/发行版-v138-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v139-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-69-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
-[![应用规则组](https://img.shields.io/badge/应用规则组-445-orange)](./dist/README.md#应用规则)
+[![应用规则组](https://img.shields.io/badge/应用规则组-449-orange)](./dist/README.md#应用规则)
 [![Telegram Chat](https://img.shields.io/badge/Telegram-交流群-blue.svg?logo=telegram)](https://t.me/+8L4eHePgYEZmY2M9)
 
 ## 📢声明
@@ -45,9 +45,9 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 </details>
 
-<!-- > 当前版本: v138
+<!-- > 当前版本: v139
 > 
-> 当前订阅文件已适配 69 个应用，共有 445 应用规则组，3 全局规则组
+> 当前订阅文件已适配 69 个应用，共有 449 应用规则组，3 全局规则组
 > 
 > 查看 [适配 APP 列表](./dist/README.md) -->
 
@@ -86,16 +86,13 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 ## 🥇感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=138)
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=139)
 
-![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图")
+<!-- repobeats 已失效 -->
+<!-- ![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图") -->
 
 ## 📈Star History
 
-<a href="https://www.star-history.com/#YaChengMu/gkd_subscription_min&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
- </picture>
-</a>
+<!-- [![Star History Chart](https://api.star-history.com/chart?repos=YaChengMu/gkd_subscription_min&type=date&legend=top-left)](https://www.star-history.com/?repos=YaChengMu%2Fgkd_subscription_min&type=date&legend=top-left) -->
+
+[![Star History Chart](https://starhistory.link/YaChengMu/gkd_subscription_min.svg?theme=rose&style=glass)](https://starhistory.link/YaChengMu/gkd_subscription_min)

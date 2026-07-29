@@ -88,14 +88,11 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 ![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v={{VERSION}})
 
-![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图")
+<!-- repobeats 已失效 -->
+<!-- ![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图") -->
 
 ## 📈Star History
 
-<a href="https://www.star-history.com/#YaChengMu/gkd_subscription_min&type=timeline&legend=top-left">
- <picture>
-   <source media="(prefers-color-scheme: dark)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&theme=dark&legend=top-left" />
-   <source media="(prefers-color-scheme: light)" srcset="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
-   <img alt="Star History Chart" src="https://api.star-history.com/image?repos=YaChengMu/gkd_subscription_min&type=timeline&legend=top-left" />
- </picture>
-</a>
+<!-- [![Star History Chart](https://api.star-history.com/chart?repos=YaChengMu/gkd_subscription_min&type=date&legend=top-left)](https://www.star-history.com/?repos=YaChengMu%2Fgkd_subscription_min&type=date&legend=top-left) -->
+
+[![Star History Chart](https://starhistory.link/YaChengMu/gkd_subscription_min.svg?theme=rose&style=glass)](https://starhistory.link/YaChengMu/gkd_subscription_min)
