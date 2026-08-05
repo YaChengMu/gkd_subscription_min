@@ -3,7 +3,31 @@ import { defineGkdApp } from '@gkd-kit/define';
 export default defineGkdApp({
   id: 'com.ss.android.ugc.aweme.lite',
   name: '抖音极速版',
+  /**
+   *  示例快照: https://i.gkd.li/i/30647148  界面: 'com.ss.android.ugc.aweme.main.MainActivity'
+   *  一般此界面的节点较多,节点树加载很慢,截个快照都要等十几 二十秒
+   *  所以对于该界面,不支持快查的规则不要写,
+   *  也尽量别用 << 关系操作符,因为它会 get 所有节点 （ https://github.com/orgs/gkd-kit/discussions/299 ）
+   */
   groups: [
+    {
+      key: 1,
+      name: '更新提示',
+      // matchTime: 10000, //不确定是否在前10秒内出现弹窗
+      actionMaximum: 1,
+      resetMatch: 'app',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
+          matches: [
+            '[text*="更新" || text*="下载" || text*="安装" || text*="升级"][visibleToUser=true]',
+            '[text$="再说" || text^="忽略" || text^="取消"][clickable=true]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/30620547',
+        },
+      ],
+    },
     {
       key: 2,
       name: '功能类-功能体验邀请弹窗',
@@ -91,9 +115,10 @@ export default defineGkdApp({
         {
           key: 2,
           fastQuery: true,
+          matchRoot: true,
           activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
           matches:
-            '@ImageView[id=null][text=null][width<100][height<100] < ViewGroup[childCount>1] <2 LinearLayout < HorizontalScrollView < ScrollView <<7 [id="android:id/content"]',
+            '@ImageView[id=null][text=null][width<100][height<100] < ViewGroup[childCount>1] <2 LinearLayout < HorizontalScrollView < ScrollView < [childCount=1] < [childCount=1] < [childCount=1] < [childCount=1] < [childCount=1] < [childCount=1] < [childCount=1] < [vid="action_bar_root"]',
           snapshotUrls: [
             'https://i.gkd.li/i/25547227',
             'https://i.gkd.li/i/28449818',
@@ -171,6 +196,67 @@ export default defineGkdApp({
             '@ImageView[clickable=true] + [focusable=true] >4 [text="购买"][index=1][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/30344666',
           exampleUrls: 'https://e.gkd.li/b7f062ff-1bff-4990-bb67-72bd0818e5d8',
+        },
+      ],
+    },
+    {
+      key: 15,
+      name: '分段广告-搜索结果页广告',
+      desc: '①点击[反馈] ②选一个[理由]',
+      fastQuery: true,
+      activityIds:
+        'com.ss.android.ugc.aweme.search.activity.SearchResultActivity',
+      rules: [
+        {
+          key: 1,
+          name: '①点击[反馈]',
+          matches:
+            '@[desc="广告反馈"] <3 [childCount=3] + [visibleToUser=true] >5 [text="广告"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/30505021',
+            'https://i.gkd.li/i/30505027',
+          ],
+          exampleUrls: 'https://e.gkd.li/35d4bb61-f1d7-46cb-a7df-2a9fdf2136cd',
+        },
+        {
+          key: 20,
+          preKeys: [1],
+          name: '②选一个[理由]',
+          position: {
+            // 点击[该作者]
+            left: 'width * 0.2646',
+            top: 'width * 0.1972',
+          },
+          matches:
+            'ImageView[childCount=0] < @ViewGroup <<8 [id="android:id/content"]',
+          snapshotUrls: 'https://i.gkd.li/i/30505023',
+          exampleUrls: 'https://e.gkd.li/c1314e68-d89a-42e3-af74-c50303f5546a',
+        },
+      ],
+    },
+    {
+      key: 16,
+      name: '功能类-自动切换到[作品]列表',
+      desc: '在用户主页时,若存在[橱窗/商品/服务],则点击[作品]',
+      rules: [
+        {
+          fastQuery: true,
+          actionCd: 10000,
+          // actionMaximum: 1,
+          activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
+          matches:
+            '[visibleToUser=false] < ViewPager[childCount>1] - ViewGroup >3 @[desc^="作品"][clickable=true] +n [name$="ActionBar$Tab"] >3 [text="橱窗" || text="商品" || text="服务"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/30619207', // [橱窗]
+            'https://i.gkd.li/i/30619569',
+            'https://i.gkd.li/i/30621467', // [商品]
+            'https://i.gkd.li/i/30621712', // [服务]
+          ],
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/30619208', //已显示[作品]
+            'https://i.gkd.li/i/30619506', //视频页,存在[橱窗]、[作品]的节点,但未显示
+          ],
+          exampleUrls: 'https://e.gkd.li/966b01bd-3c89-4f19-83af-7e9429ab25ed',
         },
       ],
     },

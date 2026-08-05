@@ -273,7 +273,7 @@ export default defineGkdApp({
             'com.alipay.mobile.nebulax.xriver.activity.XRiverActivity',
           ],
           matches:
-            '@TextView[id=desc][text=""][visibleToUser=true][width<110][height<110][top>getPrev(1).height.div(2)][left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] <2 View[childCount=2] <<n [id="com.alipay.mobile.nebula:id/h5_pc_container"]',
+            '@TextView[id=desc][text=""][visibleToUser=true][width<110][height<110][top>getPrev(1).height.div(2)][left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] <(2,3) View[childCount>1] <<n [id="com.alipay.mobile.nebula:id/h5_pc_container"]',
           /**
            * [top>getPrev(1).height.div(2)] ：top大于 1/2的屏幕高度，即限制目标节点在下半屏
            * [left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] ：其内的 getPrev(1).width.div(2) 是屏幕的竖中线，即要求 屏幕的竖中线 像串烤串一样穿过目标节点
@@ -283,6 +283,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/16812751',
             'https://i.gkd.li/i/29666442',
             'https://i.gkd.li/i/29814861',
+            'https://i.gkd.li/i/30511870',
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/29814461', // 用 [left<getPrev(1).width.div(2)][right>getPrev(1).width.div(2)] 排除
         },
@@ -399,11 +400,14 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
           matches: [
-            '[text^="开通"][text$="免密支付"][visibleToUser=true]',
-            '@[clickable=true] > [text="关闭"][visibleToUser=true]',
+            '[text^="开通"][text$="免密支付" || text*="极速付款"][visibleToUser=true]',
+            '@[clickable=true] > [text="不感兴趣"][visibleToUser=true]',
           ],
           exampleUrls: 'https://e.gkd.li/c8388cd5-a97f-4683-9ef1-2caa0a24de91',
-          snapshotUrls: 'https://i.gkd.li/i/19449399',
+          snapshotUrls: [
+            'https://i.gkd.li/i/19449399',
+            'https://i.gkd.li/i/30699230',
+          ],
         },
       ],
     },
@@ -787,6 +791,23 @@ export default defineGkdApp({
           matches:
             '[text="发送以下消息"] +n * > [text$="不再询问"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/25199524',
+        },
+      ],
+    },
+    {
+      key: 35,
+      name: '功能类-进入阿宝AI助手自动点击退出',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.AlipayLogin',
+          actionDelay: 200,
+          actionCd: 200,
+          matches:
+            '[id="com.alipay.android.phone.product_jinni_assistant:id/fl_close"]',
+          snapshotUrls: 'https://i.gkd.li/i/30699639',
+          exampleUrls:
+            'https://github.com/user-attachments/assets/ef38deb5-dd80-4194-8206-38ffc06b9bbe',
         },
       ],
     },
