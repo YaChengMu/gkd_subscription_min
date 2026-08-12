@@ -35,6 +35,7 @@ export default defineGkdApp({
             'com.taobao.tao.TBMainActivity',
             'com.taobao.android.tbabilitykit.pop.StdPopContainerActivity',
             'com.taobao.android.detail.wrapper.activity.DetailActivity',
+            'com.alibaba.android.ultron.vfw.weex2.highPerformance.widget.UltronTradeHybridActivity',
           ],
           matches: '@[desc="关闭按钮"] - [vid="poplayer_native_state_id"]',
           snapshotUrls: [
@@ -42,6 +43,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/12648746',
             'https://i.gkd.li/i/14060521',
             'https://i.gkd.li/i/14905372',
+            'https://i.gkd.li/i/30856922',
           ],
         },
         {
@@ -199,15 +201,17 @@ export default defineGkdApp({
             'com.taobao.android.tbabilitykit.pop.StdPopContainerActivity',
             'com.taobao.tao.TBMainActivity',
             'com.taobao.tao.welcome.Welcome',
+            'com.alibaba.android.ultron.vfw.weex2.highPerformance.widget.UltronTradeHybridActivity',
           ],
           matches:
-            '@Image[childCount=0][visibleToUser=true][text!=null] <n View >(1,2) [visibleToUser=true][text*="消息通知" || text*="系统通知"] <<n [vid="poplayer_inner_view"]',
+            '@Image[childCount=0][visibleToUser=true][text!=null] <n View >(1,2) [visibleToUser=true][text^="开启" || text*="消息"][text*="通知"] <<n [vid="poplayer_inner_view"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13446901',
             'https://i.gkd.li/i/13455424',
             'https://i.gkd.li/i/15104645',
             'https://i.gkd.li/i/18407606',
             'https://i.gkd.li/i/21789921',
+            'https://i.gkd.li/i/30726795',
           ],
         },
       ],
@@ -387,15 +391,14 @@ export default defineGkdApp({
           key: 0,
           fastQuery: true,
           activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
-          matches: [
-            '[text$="推荐你"][visibleToUser=true]',
-            '@[clickable=true] > [text="关闭"][visibleToUser=true]',
-          ],
+          matches:
+            '[text="关闭" || text="跳过"] < @[clickable=true] -(1,2) [visibleToUser=true] >(1,2) [text$="推荐你" || text="开通指纹支付"]',
           exampleUrls: 'https://e.gkd.li/1646b159-a3ca-4cd8-9519-729e70acb72a',
           snapshotUrls: [
             'https://i.gkd.li/i/14155537',
             'https://i.gkd.li/i/18296345',
             'https://i.gkd.li/i/22113615',
+            'https://i.gkd.li/i/30726794', // 跳过 开通指纹支付
           ],
         },
         {
