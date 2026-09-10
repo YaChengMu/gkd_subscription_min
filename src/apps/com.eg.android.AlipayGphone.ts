@@ -328,11 +328,11 @@ export default defineGkdApp({
       key: 14,
       name: '全屏广告-支付后的推荐弹窗',
       desc: '点击关闭',
+      fastQuery: true,
+      activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
       rules: [
         {
           key: 0,
-          fastQuery: true,
-          activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
           matches: [
             '[text$="推荐你"][visibleToUser=true]',
             '@[clickable=true] > [text="关闭"]',
@@ -349,13 +349,14 @@ export default defineGkdApp({
         {
           key: 1,
           name: '花呗开通提示',
-          fastQuery: true,
-          activityIds: 'com.alipay.android.msp.ui.views.MspContainerActivity',
           matches: [
-            '[text^="开通"][text*="花呗"]',
+            '[text*="花呗"][text^="开通" || text^="下次支付"]',
             '@[clickable=true] > [text="关闭"]',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/27007114',
+          snapshotUrls: [
+            'https://i.gkd.li/i/27007114',
+            'https://i.gkd.li/i/31612291',
+          ],
         },
       ],
     },
@@ -803,23 +804,6 @@ export default defineGkdApp({
           matches:
             '[text="发送以下消息"] +n * > [text$="不再询问"][clickable=true]',
           snapshotUrls: 'https://i.gkd.li/i/25199524',
-        },
-      ],
-    },
-    {
-      key: 35,
-      name: '功能类-进入阿宝AI助手自动点击退出',
-      rules: [
-        {
-          fastQuery: true,
-          activityIds: '.AlipayLogin',
-          actionDelay: 200,
-          actionCd: 200,
-          matches:
-            '[id="com.alipay.android.phone.product_jinni_assistant:id/fl_close"]',
-          snapshotUrls: 'https://i.gkd.li/i/30699639',
-          exampleUrls:
-            'https://github.com/user-attachments/assets/ef38deb5-dd80-4194-8206-38ffc06b9bbe',
         },
       ],
     },

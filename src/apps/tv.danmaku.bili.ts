@@ -63,6 +63,27 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 3,
+      name: '功能类-自动[展开]视频简介',
+      desc: '点击横版视频标题右侧',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds:
+            'com.bilibili.ship.theseus.detail.UnitedBizDetailsActivity',
+          excludeMatches: '[vid="subscribe"][text="收藏"][visibleToUser=true]',
+          matches:
+            '@[vid="arrow"] <2 [childCount=2] + [visibleToUser=true] > [vid="desc"][visibleToUser=false]',
+          snapshotUrls: 'https://i.gkd.li/i/31691020',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/31691968', // 已展开, [vid="desc"][visibleToUser=true]
+            'https://i.gkd.li/i/31817499', // 被 [收藏] 遮挡
+          ],
+          exampleUrls: 'https://e.gkd.li/977a9ad8-63d6-4b7d-a5f8-78ba5632b91a',
+        },
+      ],
+    },
+    {
       key: 6,
       name: '更新提示',
       fastQuery: true,
