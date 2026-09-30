@@ -79,14 +79,28 @@ export default defineGkdApp({
       name: '权限提示-通知权限',
       desc: '点击暂不开启',
       fastQuery: true,
-      matchTime: 10000,
       actionMaximum: 1,
       resetMatch: 'app',
+      activityIds: [
+        '.main.MainActivity',
+        '.detail.ui.DetailActivity',
+        '.profile.ui.UserProfileActivity',
+        'com.ss.android.ugc.aweme.main.MainActivity',
+        '.setting.serverpush.ui.PushSettingManagerActivity',
+      ],
       rules: [
         {
-          activityIds: 'com.ss.android.ugc.aweme.main.MainActivity',
-          matches: '[text="及时获得消息提醒"] +2 [text="暂不开启"]',
-          snapshotUrls: 'https://i.gkd.li/i/13888485',
+          matches: [
+            'TextView[text$="提醒" || text$="通知"][text.length>5][visibleToUser=true]',
+            '[text="以后再说" || text="暂不开启" || text="禁止" || text="取消" || text="保持现状"][clickable=true]',
+          ],
+          snapshotUrls: [
+            //及时获得xx提醒
+            'https://i.gkd.li/i/13888485', //消息
+            'https://i.gkd.li/i/32760384',
+            'https://i.gkd.li/i/32754778', //评论回复(平板)
+          ],
+          exampleUrls: 'https://e.gkd.li/3916c33e-f0dc-45c3-8d81-db4bddf761ed',
         },
       ],
     },
@@ -179,11 +193,12 @@ export default defineGkdApp({
             'com.ss.android.ugc.aweme.detail.ui.DetailActivity',
           ],
           matches:
-            '([text$="广告 展开" || text$="广告 收起"][vid="desc"][visibleToUser=true]) || ([text="应用" || text="购物" || text$="游戏" || text="咨询" || text="子薇剧场" || text="预约"][text.length<6][index=1][visibleToUser=true])',
+            '([text$="广告 展开" || text$="广告 收起" || text$="广告 "][vid="desc"][visibleToUser=true]) || ([text="应用" || text="购物" || text$="游戏" || text="咨询" || text="子薇剧场" || text="预约"][text.length<6][index=1][visibleToUser=true])',
           snapshotUrls: [
             'https://i.gkd.li/i/29214101', // [text$="广告 展开"][vid="desc"]
             'https://i.gkd.li/i/29579093', // [text$="广告 展开"][vid="desc"]
             'https://i.gkd.li/i/29686900', // [text$="广告 收起"][vid="desc"]
+            'https://i.gkd.li/i/32619091', // [text$="广告 "][vid="desc"]
             'https://i.gkd.li/i/29214002', //游戏
 
             // 选择器参数大部分参考以下抖音快照:
@@ -242,8 +257,11 @@ export default defineGkdApp({
             top: 'width * 0.1972',
           },
           matches:
-            'ImageView[childCount=0] < @ViewGroup <<8 [id="android:id/content"]',
-          snapshotUrls: 'https://i.gkd.li/i/30505023',
+            'ImageView[childCount=0] < @ViewGroup <<(7,8) [id="android:id/content"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/30505023',
+            'https://i.gkd.li/i/32619430',
+          ],
           exampleUrls: 'https://e.gkd.li/c1314e68-d89a-42e3-af74-c50303f5546a',
         },
       ],
@@ -272,6 +290,68 @@ export default defineGkdApp({
           ],
           exampleUrls: 'https://e.gkd.li/966b01bd-3c89-4f19-83af-7e9429ab25ed',
         },
+      ],
+    },
+    {
+      key: 17,
+      name: '功能类-评论区-自动展开评论',
+      desc: '只展开一级评论，不点击展示更多',
+      fastQuery: true,
+      activityIds: [
+        '.detail.ui.DetailActivity',
+        '.main.MainActivity',
+        'com.bytedance.ies.ugc.aweme.photos.detail.flow.page.FlowPageActivity',
+        '.searcharticle.detail.ArticleDetailActivity',
+        '.search.activity.SearchResultActivity',
+        '.detail.ultra.ui.UltraDetailActivity',
+        '.playlet.videodetail.PlayletVideoPlayActivity',
+      ],
+      rules: [
+        {
+          key: 0,
+          matches: '@[clickable=true] > [text^="展开"][text$="回复"]',
+          snapshotUrls: 'https://i.gkd.li/i/32755488',
+          excludeSnapshotUrls: 'https://i.gkd.li/i/32755811', // 排除 [展开更多]
+          exampleUrls: [
+            'https://e.gkd.li/a2be5c9e-afe9-4992-8c83-bbe191d68d76',
+            'https://e.gkd.li/1609405d-5a20-445d-bb2f-5de5a9b1237d', // 排除 [展开更多]
+          ],
+        },
+        // {
+        //   key: 1,
+        //   matches:
+        //     '[text^="展开"][text$="回复"] <2 @[clickable=true][childCount=3] <<n ViewPager <(3,4) LinearLayout + [childCount=2] > [desc$="评论区"] + [vid="back_btn"]',
+        //   snapshotUrls: 'null', // 此情况勘查未遇到,碰上再说
+        // },
+      ],
+    },
+    {
+      key: 18,
+      name: '功能类-评论区-自动展开评论_全部',
+      desc: '基于上面追加点击展开更多',
+      fastQuery: true,
+      activityIds: [
+        '.detail.ui.DetailActivity',
+        '.main.MainActivity',
+        'com.bytedance.ies.ugc.aweme.photos.detail.flow.page.FlowPageActivity',
+        '.searcharticle.detail.ArticleDetailActivity',
+        '.search.activity.SearchResultActivity',
+        '.detail.ultra.ui.UltraDetailActivity',
+        '.playlet.videodetail.PlayletVideoPlayActivity',
+      ],
+      rules: [
+        {
+          key: 0,
+          matches: '@[clickable=true] > [text^="展开更多"]',
+          snapshotUrls: 'https://i.gkd.li/i/32755811',
+          exampleUrls: 'https://e.gkd.li/1609405d-5a20-445d-bb2f-5de5a9b1237d',
+        },
+        // {
+        //   key: 2,
+        //   matches:
+        //     '[text^="展开更多"] <2 @[clickable=true][childCount=3] <<n ViewPager <(3,4) LinearLayout + [childCount=2] > [desc$="评论区"] + [vid="back_btn"]',
+        //   snapshotUrls: 'null',
+        // },
       ],
     },
   ],

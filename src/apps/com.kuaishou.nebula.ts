@@ -159,11 +159,12 @@ export default defineGkdApp({
           },
           activityIds: 'com.yxcorp.gifshow.HomeActivity',
           matches:
-            '[vid="ad_detail_content_layout" || vid="plc_tv_biz_text" && (text="游戏" || text="购物" || text="购买" || text="汽车" || text="咨询" || text="应用" || text="品牌活动" || text="一键出片" || text="测一测")][visibleToUser=true]',
+            '([vid="ad_detail_content_layout"][visibleToUser=true]) || ([vid="plc_tv_biz_text"][text="游戏" || text="小游戏" || text="购物" || text="购买" || text="汽车" || text="咨询" || text="应用" || text="品牌活动" || text="一键出片" || text="测一测"][visibleToUser=true])',
           snapshotUrls: [
             'https://i.gkd.li/i/29213590', // 广告 i   [vid="ad_detail_content_layout"]
             'https://i.gkd.li/i/29029850', //购物
             'https://i.gkd.li/i/29029852', //游戏
+            'https://i.gkd.li/i/32701451', //小游戏
             'https://i.gkd.li/i/29029853', //购买
             'https://i.gkd.li/i/29030087', //汽车
             'https://i.gkd.li/i/29031982', //咨询
@@ -214,6 +215,38 @@ export default defineGkdApp({
           matches: '@[clickable=true] >2 [text="不喜欢该位置展示广告"]',
           snapshotUrls: 'https://i.gkd.li/i/30548235',
           exampleUrls: 'https://e.gkd.li/efe7800d-896d-4503-8b41-52c5d18775a6',
+        },
+      ],
+    },
+    {
+      key: 9,
+      name: '功能类-刷到直播时[上滑]',
+      desc: '不想看直播,划掉',
+      rules: [
+        {
+          fastQuery: true,
+          matchRoot: true,
+          actionCd: 300,
+          actionDelay: 200, //完整直播显示需要时间
+          swipeArg: {
+            start: {
+              x: 'screenWidth/2',
+              y: 'screenHeight * 0.6',
+            },
+            end: {
+              x: 'screenWidth/2',
+              y: 'screenHeight * 0.3',
+            },
+            duration: 200, //滑动时长
+          },
+          activityIds: 'com.yxcorp.gifshow.HomeActivity',
+          matches:
+            '[vid="layout_root_hot_live_play" || text="直播中" || text="直播卖货"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/29029433',
+            'https://i.gkd.li/i/29211656',
+            'https://i.gkd.li/i/30167631',
+          ],
         },
       ],
     },
