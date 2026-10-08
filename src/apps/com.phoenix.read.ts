@@ -53,7 +53,10 @@ export default defineGkdApp({
           },
           excludeMatches:
             '([text="选集"][visibleToUser=true]) || ([text*="网微剧备字"][height>0])',
-          matches: '[text="选集"][visibleToUser=false]',
+          matches: [
+            '[vid="axs"][visibleToUser=true]',
+            'ViewGroup[desc="广告"]',
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/32429827', //A [直播间]
             'https://i.gkd.li/i/32429877', //B 横屏

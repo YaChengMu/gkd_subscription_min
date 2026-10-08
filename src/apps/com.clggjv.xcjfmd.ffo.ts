@@ -16,7 +16,8 @@ export default defineGkdApp({
         {
           fastQuery: true,
           activityIds: '.MainActivity',
-          matches: '@Button[desc="已知晓"][clickable=true]',
+          matches:
+            '@Button[desc="已知晓"][clickable=true] <n View[visibleToUser=true] <<n FrameLayout < [id="android:id/content"]',
           snapshotUrls: 'https://i.gkd.li/i/29703051',
           exampleUrls: 'https://e.gkd.li/96567525-3f64-4e6e-af40-6e41a81fac96',
         },
@@ -32,7 +33,8 @@ export default defineGkdApp({
           matchRoot: true,
           // forcedTime: 14000, // 这个主动查询需要常驻,耗电情况未知
           activityIds: '.MainActivity',
-          matches: '@View[desc*="暂时跳过"]',
+          matches:
+            '@View[desc*="暂时跳过"][desc!=null] <<n FrameLayout < [id="android:id/content"]',
           snapshotUrls: 'https://i.gkd.li/i/29703246',
           excludeSnapshotUrls: 'https://i.gkd.li/i/29703192', // 倒计时ing...
           exampleUrls: 'https://e.gkd.li/93c04052-3d24-4684-83ec-ccaf13557f22',
