@@ -94,7 +94,7 @@ export default defineGkdApp({
             '([text="选集"][visibleToUser=true]) || ([text*="剧备字"][height>0])',
             '@TextView[visibleToUser=false][width>2000][height>40] <8 [childCount=8] <<n [vid="fragment_container"]',
           ],
-          matches: '[text="选集"][visibleToUser=false]',
+          matches: 'ViewGroup[desc="广告"]',
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/32683026', // v7.2.9.32 ,全屏时,还存在可快查的备案号节点 [text*="剧备字"][height>0]
             'https://i.gkd.li/i/33289353', // v7.3.9.32 ,全屏时,该备案号节点 [text=null]
