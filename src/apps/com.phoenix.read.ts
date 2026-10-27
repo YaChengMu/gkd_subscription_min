@@ -94,11 +94,30 @@ export default defineGkdApp({
             '([text="选集"][visibleToUser=true]) || ([text*="剧备字"][height>0])',
             '@TextView[visibleToUser=false][width>2000][height>40] <8 [childCount=8] <<n [vid="fragment_container"]',
           ],
-          matches: 'ViewGroup[desc="广告"]',
+          matches: '[desc*="广告"]',
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/32683026', // v7.2.9.32 ,全屏时,还存在可快查的备案号节点 [text*="剧备字"][height>0]
             'https://i.gkd.li/i/33289353', // v7.3.9.32 ,全屏时,该备案号节点 [text=null]
           ],
+        },
+      ],
+    },
+    {
+      key: 2,
+      name: '权限提示-通知权限',
+      desc: '点击[取消]',
+      matchTime: 10000,
+      actionMaximum: 1,
+      resetMatch: 'app',
+      rules: [
+        {
+          fastQuery: true,
+          // activityIds: null,
+          matches: [
+            '[text*="开启"][text*="提醒" || text*="通知"]',
+            '[text="取消"]',
+          ],
+          snapshotUrls: 'https://i.gkd.li/i/33926663',
         },
       ],
     },

@@ -92,16 +92,24 @@ export default defineGkdApp({
           ],
           excludeSnapshotUrls: 'https://i.gkd.li/i/29032927', // [index!=0]
         },
+        {
+          key: 4,
+          activityIds: '.activity.QPublicFragmentActivity',
+          matches:
+            'ImageView[width<62] < [visibleToUser=true][desc="关闭广告"]',
+          snapshotUrls: 'https://i.gkd.li/i/33948809',
+        },
       ],
     },
     {
       key: 2,
       name: '分段广告',
-      desc: '①点击[广告] ②点击[关闭这条] ③点击[直接关闭]',
+      desc: '①点击[广告/更多] ②点击[关闭这条] ③点击[直接关闭]',
       fastQuery: true,
       activityIds: [
         'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity', //空间动态页
         'com.qzone.reborn.layer.part.QzoneFeedProGalleryActivity', //好友空间相册页
+        'com.qzone.reborn.layer.part.QZoneFeedXGalleryActivity', //空间相册页2
         '.guild.base.QPublicFragmentActivityForMainWebActivity', //频道页
         'com.qzone.reborn.base.QZoneShellActivity', //空友爱看页
         '.activity.SplashActivity', //空间动态页
@@ -110,37 +118,40 @@ export default defineGkdApp({
         {
           key: 0,
           name: '①点击[广告]',
-          activityIds: [
-            'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
-            '.guild.base.QPublicFragmentActivityForMainWebActivity',
-            'com.qzone.reborn.base.QZoneShellActivity',
+          anyMatches: [
+            '[text="广告"][clickable=true]', //1️⃣
+            '@[clickable=true] > [text="广告"][visibleToUser=true]', //2️⃣
           ],
-          matches: '@[clickable=true] > [text="广告"][visibleToUser=true]',
           snapshotUrls: [
+            //选择器1️⃣
+            'https://i.gkd.li/i/30876372',
+            'https://i.gkd.li/i/33749525',
+
+            //选择器2️⃣
             'https://i.gkd.li/i/21947672',
             'https://i.gkd.li/i/24404962',
             'https://i.gkd.li/i/28888622',
           ],
+          exampleUrls: [
+            'https://e.gkd.li/ab1f2c2a-a565-42d4-ab24-49747ad558ec',
+            'https://e.gkd.li/b272a9a4-ba11-4bee-9608-123683475c68',
+            'https://e.gkd.li/76ce897a-7ff5-4edb-b3de-381187bcea1a',
+          ],
         },
         {
           key: 1,
+          name: '①点击[更多]',
           activityIds: '.activity.SplashActivity',
           matches:
             '@[desc="更多"][clickable=true] - [desc="广告"][visibleToUser=true] - LinearLayout > [text="今天"]',
-          snapshotUrls: 'https://i.gkd.li/i/24381585',
-        },
-        {
-          key: 2,
-          activityIds:
-            'com.qzone.reborn.layer.part.QzoneFeedProGalleryActivity',
-          matches: '[text="广告"][clickable=true]',
-          snapshotUrls: 'https://i.gkd.li/i/30876372',
+          snapshotUrls: 'https://i.gkd.li/i/33749900',
+          exampleUrls: 'https://e.gkd.li/4c4b12cf-777b-4e27-92ea-f764055025a2',
         },
 
         // 第二段
         {
           key: 50,
-          preKeys: [0, 1, 2],
+          preKeys: [0, 1],
           name: '②点击[关闭]此条广告',
           matches:
             '@[clickable=true] >(1,2) [text^="关闭"][text*="条"][text.length<10]',
@@ -152,6 +163,12 @@ export default defineGkdApp({
             'https://i.gkd.li/i/28888643',
             'https://i.gkd.li/i/28942736',
             'https://i.gkd.li/i/30876374',
+            'https://i.gkd.li/i/33749584',
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/62772b6a-f349-4701-8c1d-5bfa08a4f6c9',
+            'https://e.gkd.li/4ff2b91f-7a3a-4514-9c23-0310c499ff9e',
+            'https://e.gkd.li/c26339b2-8df9-4aed-a3ba-4ec77e519574',
           ],
         },
 
@@ -165,6 +182,11 @@ export default defineGkdApp({
             'https://i.gkd.li/i/26997174',
             'https://i.gkd.li/i/28942737',
             'https://i.gkd.li/i/30876376',
+            'https://i.gkd.li/i/33749791',
+          ],
+          exampleUrls: [
+            'https://e.gkd.li/a5da537d-d1cc-4420-a9a4-3329cf4a8fad',
+            'https://e.gkd.li/1fc58680-ecb3-4f8b-b204-b2d55fe20964',
           ],
         },
       ],
@@ -200,8 +222,24 @@ export default defineGkdApp({
       ],
     },
     {
+      key: 8,
+      name: '功能类-自动[勾选]同意协议',
+      desc: '✅已阅读并同意服务协议和隐私政策',
+      rules: [
+        {
+          fastQuery: true,
+          actionMaximum: 1,
+          activityIds: '.activity.LoginPublicFragmentActivity',
+          matches:
+            '@CheckBox[checked=false] + [text="已阅读并同意服务协议和隐私政策"]',
+          snapshotUrls: 'https://i.gkd.li/i/33854572',
+          exampleUrls: 'https://e.gkd.li/e38854d8-4cd5-41c0-9396-b2c95ef9a788',
+        },
+      ],
+    },
+    {
       key: 10,
-      name: '功能类-自动勾选原图',
+      name: '功能类-自动[勾选]原图',
       desc: '发送图片时自动勾选原图，可手动取消勾选',
       actionMaximum: 1,
       rules: [
@@ -565,24 +603,32 @@ export default defineGkdApp({
     {
       key: 37,
       name: '分段广告-QQ空间空友爱看',
-      desc: '①点击[更多操作] ②点击[不感兴趣] ③选择原因 ④点击[提交]',
+      desc: '①点击右侧折叠 ②[不感兴趣/关闭推荐] ③选择原因 ④点击[提交]',
       fastQuery: true,
       activityIds:
         'com.qzone.reborn.feedpro.activity.QzoneFriendFeedProActivity',
       rules: [
         {
           key: 0,
-          name: '①更多操作',
+          name: '①点击右侧折叠',
           matches:
-            '@[desc="更多操作"][clickable=true][visibleToUser=true] <3 * +4 * >5 [text="空友爱看"]',
-          snapshotUrls: 'https://i.gkd.li/i/32656065',
+            '@[clickable=true][index=parent.childCount.minus(1)] -2 [text="空友爱看"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/32656065',
+            'https://i.gkd.li/i/33508601', //推荐
+            'https://i.gkd.li/i/33665642',
+          ],
         },
         {
           key: 1,
           preKeys: [0],
-          name: '②不感兴趣',
-          matches: '@[clickable=true] >2 [text="不感兴趣"]',
-          snapshotUrls: 'https://i.gkd.li/i/32656067',
+          name: '②不感兴趣/关闭推荐',
+          matches: '@[clickable=true] >2 [text="不感兴趣" || text="关闭推荐"]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/32656067', //不感兴趣 (v9.3.60)
+            'https://i.gkd.li/i/33508604', //关闭推荐 (v9.2.90 旧版)
+            'https://i.gkd.li/i/33665763', //不感兴趣 (v9.3.75)
+          ],
         },
         {
           key: 2,
