@@ -1,10 +1,6 @@
-# @YaChengMu/gkd_subscription_min
-
-<!-- [![SVG Banners](https://svg-banners.vercel.app/api?type=luminance&text1=GKD_subscription&width=800&height=300)](https://github.com/YaChengMu/gkd_subscription_min) -->
-
 [![SVG Banners](https://svg-banners.vercel.app/api?type=origin&text1=GKD第三方订阅规则&text2=💖%20GKD_subscription&width=800&height=350)](https://github.com/YaChengMu/gkd_subscription_min)
 
-[![Release](https://img.shields.io/badge/发行版-v152-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
+[![Release](https://img.shields.io/badge/发行版-v153-blue)](https://github.com/YaChengMu/gkd_subscription_min/releases/latest)
 [![已适配应用](https://img.shields.io/badge/已适配应用-69-brightgreen)](./dist/README.md#应用规则)
 [![全局规则组](https://img.shields.io/badge/全局规则组-3-blueviolet)](./dist/README.md#全局规则)
 [![应用规则组](https://img.shields.io/badge/应用规则组-471-orange)](./dist/README.md#应用规则)
@@ -45,12 +41,6 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 </details>
 
-<!-- > 当前版本: v152
-> 
-> 当前订阅文件已适配 69 个应用，共有 471 应用规则组，3 全局规则组
-> 
-> 查看 [适配 APP 列表](./dist/README.md) -->
-
 ## 📑说明
 
 - **致力于编写效率最高、误触最低、覆盖最全面的规则**
@@ -73,20 +63,24 @@ https://raw.bgithub.xyz/YaChengMu/gkd_subscription_min/main/dist/gkd.json5
 
 - 安装 VS Code 插件 [GKD Toolkit](https://github.com/tianfangyetan1/vscode-gkd-toolkit) ，可以更方便的一次性打开多个快照
 
-- 体验 Plus 版的快照审查工具 [inspect-plus](https://github.com/cjy0812/inspect-plus)
-
 - 使用 [GKD订阅模板](https://github.com/gkd-kit/subscription-template) 快速构建自己的订阅
 
 - 相关教程/贡献此项目 -> 查看 [贡献指南](./CONTRIBUTING.md)
 
-## 🎉感谢以下项目
+## 📜 项目溯源
 
-- [gkd-kit/subscription](https://github.com/gkd-kit/subscription)
-- [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)
+1. [gkd-kit/subscription](https://github.com/gkd-kit/subscription)
+    原始官方订阅源，2023.7~2024.2，最后版本 `v185`
+
+2. [AIsouler/GKD_subscription](https://github.com/AIsouler/GKD_subscription)
+    Fork 自官方源，2024.2~2026.2，最后版本 `v406`
+
+3. [Lin-arm/GKD_subscription](https://github.com/Lin-arm/GKD_subscription)
+    Fork 自 AIsouler 版本，2026年2月从 `v406` 开始由社区续更至今
 
 ## 🥇感谢以下开发者的贡献
 
-![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=152)
+![img](https://contrib.rocks/image?repo=YaChengMu/gkd_subscription_min&max=200&_v=153)
 
 <!-- repobeats 已失效 -->
 <!-- ![Alt](https://repobeats.axiom.co/api/embed/db6f46a4bdc4e760fb51976db276f1febef5bdce.svg "报告分析图") -->
