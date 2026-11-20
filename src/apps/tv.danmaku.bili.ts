@@ -280,20 +280,19 @@ export default defineGkdApp({
         {
           preKeys: [0, 1],
           key: 50,
-          name: '点击[不感兴趣]/[相似内容过多]',
+          name: '②点击[不感兴趣/内容过多]等',
           matches:
-            '@[clickable=true] > [text="此类内容过多" || text="相似内容过多" || text="不感兴趣" || text="up主不感兴趣" || text="对该up的直播不感兴趣" || text="我不想看" || text="引人不适"]',
+            '@[clickable=true] > [text="此类内容过多" || text="相似内容过多" || text="不感兴趣" || text="up主不感兴趣" || text="对该up的直播不感兴趣" || text="我不想看" || text="引人不适" || text="不喜欢此商品"]',
           snapshotUrls: [
-            'https://i.gkd.li/i/13625309',
-            'https://i.gkd.li/i/13742257',
-            'https://i.gkd.li/i/14155801',
-            'https://i.gkd.li/i/14155272',
-            'https://i.gkd.li/i/17428471',
-            'https://i.gkd.li/i/18274380',
-            'https://i.gkd.li/i/18292926',
-            'https://i.gkd.li/i/20710223',
-            'https://i.gkd.li/i/23687208',
-            'https://i.gkd.li/i/24836772',
+            'https://i.gkd.li/i/13625309', //up主不感兴趣
+            'https://i.gkd.li/i/13742257', //不感兴趣
+            'https://i.gkd.li/i/14155801', //不感兴趣、相似内容过多
+            'https://i.gkd.li/i/18274380', //相似内容过多、up主不感兴趣
+            'https://i.gkd.li/i/18292926', //对该up的直播不感兴趣
+            'https://i.gkd.li/i/20710223', //我不想看
+            'https://i.gkd.li/i/23687208', //引人不适
+            'https://i.gkd.li/i/24836772', //此类内容过多
+            'https://i.gkd.li/i/34849877', //不喜欢此商品
           ],
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/18292929',
@@ -303,6 +302,7 @@ export default defineGkdApp({
         {
           preKeys: [50],
           key: 70,
+          name: '③点击[xx内容过多]',
           matches:
             '@FrameLayout[clickable=true] > [text="此类内容过多" || text="相似内容过多"][visibleToUser=true]',
           exampleUrls: 'https://e.gkd.li/2aba6082-1047-464e-959c-82ee62e492aa',
@@ -363,17 +363,17 @@ export default defineGkdApp({
             'com.bilibili.vip.web.VipWebActivity',
           ],
           matches:
-            'ComposeView > View[childCount=7] > @View[clickable=true][childCount=0] <<n [vid="vip_panel"]',
-          exampleUrls:
-            'https://m.gkd.li/57941037/a78a7719-b148-4df2-a225-f7a24be0c413',
+            '@View[clickable=true][right>getPrev(1).right.minus(20)] -(1,2) [index=0][text*="套餐"] <<n [vid="vip_panel"][height>500]',
           snapshotUrls: [
             'https://i.gkd.li/i/15523975',
             'https://i.gkd.li/i/15814146',
+            'https://i.gkd.li/i/34776793',
           ],
+          excludeSnapshotUrls: 'https://i.gkd.li/i/34777480', //已折叠, [vid="vip_panel"][height=243]
+          exampleUrls: 'https://e.gkd.li/41a7f3ae-c01d-4f1e-a90a-5fefa4606393',
         },
         {
           key: 5,
-          fastQuery: true,
           activityIds: 'com.bilibili.vip.web.VipWebActivity',
           matches:
             '@TextView[width<130 && height<130] - TextView[childCount=0][id="dialog-canvas"] <<n [vid="webview"]',
@@ -470,6 +470,7 @@ export default defineGkdApp({
             'https://i.gkd.li/i/23933925', // vid="bottom_container"
             'https://i.gkd.li/i/17675894', // 直播 vid="live_lottie_layout"
             'https://i.gkd.li/i/18306858', // 直播
+            'https://i.gkd.li/i/34722511', // 纪录片
           ],
           // excludeSnapshotUrls: 'https://i.gkd.li/i/24365466', // [vid="second_to_last_line_area"]
           exampleUrls: 'https://e.gkd.li/f7a90a07-6c8e-4986-8306-f64db4412e36',
@@ -496,11 +497,21 @@ export default defineGkdApp({
             'https://i.gkd.li/i/30885647', // 减少直播推荐、和当前视频无关
           ],
         },
+        {
+          key: 51,
+          preKeys: [0, 1],
+          name: '②点击[不感兴趣]2', //无快查版
+          actionCdKey: 50,
+          actionMaximumKey: 50,
+          matches:
+            '@[clickable=true] > [visibleToUser=true][text*="不感兴趣" || text="相似内容过多" || text*="不想看" || text$="质量差" || text="减少直播推荐" || text="和当前视频无关"]',
+          snapshotUrls: ['https://i.gkd.li/i/34722513'],
+        },
 
         // 第三段
         {
           key: 70,
-          preKeys: [50],
+          preKeys: [50, 51],
           name: '③点击[关闭]',
           anyMatches: [
             '[vid="close_dislike"][visibleToUser=true]',

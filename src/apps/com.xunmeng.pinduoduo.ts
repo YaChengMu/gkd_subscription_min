@@ -248,26 +248,35 @@ export default defineGkdApp({
     },
     {
       key: 10,
-      name: '全屏广告-多多视频划到广告自动跳过',
-      desc: '点击返回自动刷新，从而跳过广告',
-      fastQuery: true,
-      activityIds: '.ui.activity.HomeActivity',
+      name: '功能类-[上滑]继续看视频',
+      desc: '刷视频刷到 广告/直播 时自动[上滑]',
       rules: [
         {
           key: 0,
-          matches: [
-            'TextView[text="正在直播"]',
-            '@ImageView[desc="返回"] <4 ViewGroup < * < * < [id="android:id/content"]',
+          fastQuery: true,
+          activityIds: [
+            '.ui.activity.HomeActivity',
+            '.ui.activity.MainFrameActivity',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/13446291',
-        },
-        {
-          key: 1,
-          matches: [
-            'TextView[text="查看更多低价商品"]',
-            '@ImageView[desc="返回"] <4 ViewGroup < * < * < [id="android:id/content"]',
+          swipeArg: {
+            start: {
+              x: 'screenWidth/2',
+              y: 'screenHeight * 0.7',
+            },
+            end: {
+              x: 'screenWidth/2',
+              y: 'screenHeight * 0.3',
+            },
+            duration: 200,
+          },
+          matches:
+            '[text="上滑继续看视频" || text="点击进入直播间"][visibleToUser=true]',
+          snapshotUrls: [
+            'https://i.gkd.li/i/13791119',
+            'https://i.gkd.li/i/13446291',
+            'https://i.gkd.li/i/35063484',
           ],
-          snapshotUrls: 'https://i.gkd.li/i/13791119',
+          exampleUrls: 'https://e.gkd.li/136b0844-1d93-4192-95c7-ad42129e86b9',
         },
       ],
     },
@@ -300,13 +309,16 @@ export default defineGkdApp({
           ],
           action: 'clickCenter',
           matches:
-            '@Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true] <n View[childCount>1] <<(1,2) View[id="main"] <<2 WebView[text="拼多多"] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id="android:id/content"]',
+            '@Button[text="关闭弹窗" || desc="关闭弹窗"][clickable=true] <n View[childCount>1] <<(1,2) View[id="main"] <<2 WebView[text="拼多多" || text=""] <<3 FrameLayout[vid!=null] <2 ViewGroup <2 FrameLayout <<3 [id="android:id/content"]',
           snapshotUrls: [
             'https://i.gkd.li/i/13308175', // 老快照无vid
+            // WebView[text="拼多多"]
             'https://i.gkd.li/i/13927594',
             'https://i.gkd.li/i/14434154',
             'https://i.gkd.li/i/14456017',
             'https://i.gkd.li/i/23256823',
+            // WebView[text=""]
+            'https://i.gkd.li/i/34986289',
           ],
         },
         {
@@ -474,8 +486,14 @@ export default defineGkdApp({
           name: '通用[展开]_fastQ',
           fastQuery: true,
           action: 'clickCenter', // 不响应无障碍事件
+          excludeMatches: '[text$="相册" || text="追剧"][visibleToUser=true]',
           matches: '[text="展开"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/29405868',
+          excludeSnapshotUrls: [
+            'https://i.gkd.li/i/34986764', // 我的相册
+            'https://i.gkd.li/i/35064077', // 追剧
+            'https://i.gkd.li/i/35064076', // 追剧
+          ],
         },
         {
           key: 1,
@@ -499,7 +517,7 @@ export default defineGkdApp({
           fastQuery: true,
           activityIds: '.activity.NewPageActivity',
           matches:
-            '@[desc="展开"][clickable=true] - FrameLayout > ViewGroup[vid="pdd"][childCount>5] >2 [text^="全部("]',
+            '@[desc="展开"][clickable=true] - FrameLayout > ViewGroup[childCount>5][vid="pdd"] >2 [text^="全部("]',
           snapshotUrls: 'https://i.gkd.li/i/29604643',
         },
       ],
@@ -668,6 +686,21 @@ export default defineGkdApp({
           matches: '[id=null][text="立即加入抽福袋"][visibleToUser=true]',
           snapshotUrls: 'https://i.gkd.li/i/30295232',
           exampleUrls: 'https://e.gkd.li/a057d535-db79-4faa-9c8f-69069dee91f6',
+        },
+      ],
+    },
+    {
+      key: 34,
+      name: '功能类-搜索页-长按词条直接删除',
+      desc: '你的搜索商品历史,长按一个词条-> x掉',
+      rules: [
+        {
+          fastQuery: true,
+          activityIds: '.activity.NewPageActivity',
+          matches:
+            '[desc^="清除"][clickable=true] - [text="最近搜索"] - [vid="icon"] < RelativeLayout[childCount=3] + ViewGroup > [text=""][clickable=true][visibleToUser=true]',
+          snapshotUrls: 'https://i.gkd.li/i/34990299',
+          exampleUrls: 'https://e.gkd.li/fbb6437e-63fe-4b6e-8685-8ec5b5d32353',
         },
       ],
     },

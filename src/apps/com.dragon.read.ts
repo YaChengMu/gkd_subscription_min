@@ -193,7 +193,7 @@ export default defineGkdApp({
         {
           key: 0,
           matches:
-            '@[(name$="ImageView" || getChild(0).name$="ImageView") && desc!="back_unfold"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*="查看" || text$="优惠" || text^="立即" || text^="马上" || text*="参与" || text*="参加" || text*="免费" || text^="领" || text$="金币"][text!="查看下载"][text.length<10]',
+            '@[(name$="ImageView" || getChild(0).name$="ImageView") && desc!="back_unfold"][clickable=true][visibleToUser=true][width<102 && height<102] <n [childCount>1] >(2,3) [text*="查看" || text$="优惠" || text^="立即" || text^="马上" || text*="参与" || text*="参加" || text*="免费" || text^="领" || text$="金币"][!(text="查看下载" || text="立即播放")][text.length<10]',
           snapshotUrls: [
             'https://i.gkd.li/i/12908734', // 查看详情
             'https://i.gkd.li/i/18138903', // 立享优惠
@@ -210,7 +210,8 @@ export default defineGkdApp({
           excludeSnapshotUrls: [
             'https://i.gkd.li/i/28821485', // 用 [name$="ImageView" || getChild(0).name$="ImageView"][visibleToUser=false] 排除
             'https://i.gkd.li/i/31111672', // 添加 desc!="back_unfold" 条件排除
-            'https://i.gkd.li/i/32085481', // 添加 [text!="查看下载"] 条件排除
+            'https://i.gkd.li/i/32085481', // 排除 [text="查看下载"]
+            'https://i.gkd.li/i/35098348', // 排除 [text="立即播放"]
           ],
           exampleUrls: 'https://e.gkd.li/3de0d5d9-0c02-4fe7-b5e8-b9fdb6688f8e',
         },
@@ -246,12 +247,15 @@ export default defineGkdApp({
             left: 'width * 0.77',
             top: 'height * 0.64',
           },
-          matches:
+          anyMatches: [
             '@ViewGroup[visibleToUser=true][height<150][width=prev.width] < [childCount=2] <(2,3) FrameLayout[childCount<4] >7 [vid="ttlive_player_render_view"]',
+            '@ViewGroup[visibleToUser=true][height<150][width=prev.width] -2 [index=0] < FrameLayout[childCount<5] >7 [vid="ttlive_player_render_view"]', //②
+          ],
           snapshotUrls: [
             'https://i.gkd.li/i/27706770',
             'https://i.gkd.li/i/28834344',
             'https://i.gkd.li/i/32435385',
+            'https://i.gkd.li/i/34807130', //②
           ],
           exampleUrls: 'https://e.gkd.li/aef38288-d84b-4e13-8161-ebebc27b822b',
         },
@@ -482,13 +486,17 @@ export default defineGkdApp({
           key: 1,
           name: '①点击[静音]',
           matches:
-            '@ImageView[visibleToUser=true][width>20 && width<93 && height>20 && height<108][right<prev.width.div(3)][bottom<prev.height.div(10)] <<n [id="android:id/content"]',
+            '@ImageView[visibleToUser=true][width>20 && width<93 && height>20 && height<130][right<prev.width.div(3)][bottom<prev.height.div(10)] <<n [id="android:id/content"]',
           /*
            ** 从选择器右侧 [id="android:id/content"] 节点获取屏幕宽高, 限制目标节点位于屏幕左上角
            ** [right<prev.width.div(3)] 表示目标节点的 right 要小于屏幕宽度的 1/3
            ** [bottom<prev.height.div(10)] 表示目标节点的 bottom 要小于屏幕高度的 1/10
            */
-          snapshotUrls: 'https://i.gkd.li/i/28907595',
+          snapshotUrls: [
+            'https://i.gkd.li/i/28907595',
+            'https://i.gkd.li/i/34841008',
+            'https://i.gkd.li/i/34840554',
+          ],
         },
         {
           key: 2,
@@ -500,7 +508,7 @@ export default defineGkdApp({
           matches:
             '@ImageView[width>20 && width<93 && height<0][right<prev.width.div(3)][bottom<prev.height.div(10)] <<n [id="android:id/content"]',
           exampleUrls: 'https://e.gkd.li/d8949efa-e2f7-49d2-a8d7-4837ed349aef',
-          snapshotUrls: 'https://i.gkd.li/i/26528931', // [height<0]
+          snapshotUrls: 'https://i.gkd.li/i/34847712', // [height<0]
         },
       ],
     },
